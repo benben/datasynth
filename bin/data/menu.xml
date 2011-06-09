@@ -1,6 +1,20 @@
-<ENTRY NAME="Add Node1"></ENTRY>
-<ENTRY NAME="Add Node2"></ENTRY>
-<ENTRY NAME="Add Node3"></ENTRY>
-<ENTRY NAME="Add Node4"></ENTRY>
-<ENTRY NAME="Add Node5"></ENTRY>
-
+<MENU>
+	<ENTRY NAME="Add Node1">
+    <ENTRY NAME="Add Node1_1">
+      <ENTRY NAME="Add Node1_1_1">
+      </ENTRY>
+      <ENTRY NAME="Add Node1_1_2">
+      </ENTRY>
+    </ENTRY>
+    <ENTRY NAME="Add Node1_2">
+    </ENTRY>
+  </ENTRY>
+	<ENTRY NAME="Add Node2">
+  </ENTRY>
+	<ENTRY NAME="Add Node3">
+  </ENTRY>
+	<ENTRY NAME="Add Node4">
+  </ENTRY>
+	<ENTRY NAME="Add Node5">
+  </ENTRY>
+</MENU>

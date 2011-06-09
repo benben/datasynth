@@ -14,13 +14,40 @@ void menu::init()
 {
     bIsVisible = false;
     XML.loadFile("menu.xml");
-    XmlEntries = XML.getNumTags("ENTRY");
+    XML.pushTag("MENU", 0);
+    bool bScan = true;
+
+    while(bScan)
+    {
+        if(XML.getNumTags("ENTRY") != 0)
+        {
+            printf("%s\n", XML.getAttribute("ENTRY","NAME", "", 0).c_str());
+            XML.pushTag("ENTRY", 0);
+        }
+        else
+        {
+            XML.popTag();
+            if (XML.tagExists("ENTRY", 0))
+            {
+                XML.removeTag("ENTRY", 0);
+            }
+            else
+            {
+                bScan = false;
+            }
+        }
+    }
+
+    /*
     for(int i = 0; i < XmlEntries; i++)
     {
         entry temp;
         temp.text = XML.getAttribute("ENTRY","NAME", "", i);
+        XML.pushTag("ENTRY", i);
+        printf("%d\n", XML.getNumTags("ENTRY"));
+        XML.popTag();
         entries.push_back(temp);
-    }
+    } */
     ofAddListener(ofEvents.draw, this, &menu::draw);
     ofAddListener(ofEvents.mouseMoved, this, &menu::updateMouse);
     ofAddListener(ofEvents.mouseReleased, this, &menu::toggle);

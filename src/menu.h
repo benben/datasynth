@@ -9,6 +9,7 @@ struct entry
 {
   string text;
   ofRectangle box;
+  int parent;
 };
 
 class menu
