@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofEvents.h"
 #include "src/node.h"
 #include "src/menu.h"
 

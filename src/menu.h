@@ -2,6 +2,8 @@
 #define MENU_H
 
 #include "ofxXmlSettings.h"
+#include "ofMain.h"
+#include "ofEvents.h"
 
 struct entry
 {
@@ -14,10 +16,10 @@ class menu
     public:
         menu();
         virtual ~menu();
-        void setup();
-        void draw();
         void init();
-        void close();
+        void draw(ofEventArgs & args);
+        void toggle(ofMouseEventArgs & args);
+        void updateMouse(ofMouseEventArgs & args);
 
         bool mouseIsOn(int _mouseX, int _mouseY, ofRectangle _box);
 

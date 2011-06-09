@@ -3,7 +3,6 @@
 menu::menu()
 {
     //ctor
-    //bIsVisible = false;
 }
 
 menu::~menu()
@@ -11,7 +10,7 @@ menu::~menu()
     //dtor
 }
 
-void menu::setup()
+void menu::init()
 {
     bIsVisible = false;
     XML.loadFile("menu.xml");
@@ -19,11 +18,14 @@ void menu::setup()
     for(int i = 0; i < XmlEntries; i++)
     {
         entry temp;
-        temp.text = XML.getValue("ENTRY", "", i);
+        temp.text = XML.getAttribute("ENTRY","NAME", "", i);
         entries.push_back(temp);
     }
+    ofAddListener(ofEvents.draw, this, &menu::draw);
+    ofAddListener(ofEvents.mouseMoved, this, &menu::updateMouse);
+    ofAddListener(ofEvents.mouseReleased, this, &menu::toggle);
 }
-void menu::draw()
+void menu::draw(ofEventArgs & args)
 {
     if(bIsVisible)
     {
@@ -57,20 +59,28 @@ bool menu::mouseIsOn(int _mouseX,int _mouseY,ofRectangle _box)
         return false;
     }
 }
-void menu::init()
+void menu::toggle(ofMouseEventArgs & args)
 {
-    x = mouseX+15;
-    y = mouseY+15;
-    for(int i = 0; i < entries.size(); i++)
+    if(args.button == 2)
     {
-        entries[i].box.x = x;
-        entries[i].box.y = y + (i * 16);
-        entries[i].box.width = 100;
-        entries[i].box.height = 15;
+        x = mouseX+15;
+        y = mouseY+15;
+        for(int i = 0; i < entries.size(); i++)
+        {
+            entries[i].box.x = x;
+            entries[i].box.y = y + (i * 16);
+            entries[i].box.width = 100;
+            entries[i].box.height = 15;
+        }
+        bIsVisible = true;
     }
-    bIsVisible = true;
+    else
+    {
+        bIsVisible = false;
+    }
 }
-void menu::close()
+void menu::updateMouse(ofMouseEventArgs & args)
 {
-    bIsVisible = false;
+    mouseX = args.x;
+    mouseY = args.y;
 }
