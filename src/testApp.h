@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
+#include "src/node.h"
+#include "src/menu.h"
 
 class testApp : public ofBaseApp{
 
@@ -18,5 +20,7 @@ class testApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		
+
+		vector <node> nodes;
+		menu* myMenu;
 };
