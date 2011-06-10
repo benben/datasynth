@@ -7,9 +7,10 @@
 
 struct entry
 {
-  string text;
-  ofRectangle box;
-  int parent;
+    int id;
+    int parent;
+    string name;
+    ofRectangle box;
 };
 
 class menu

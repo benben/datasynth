@@ -16,17 +16,27 @@ void menu::init()
     XML.loadFile("menu.xml");
     XML.pushTag("MENU", 0);
     bool bScan = true;
+    int id = 0;
+    vector <int> parents;
 
     while(bScan)
     {
         if(XML.getNumTags("ENTRY") != 0)
         {
-            printf("%s\n", XML.getAttribute("ENTRY","NAME", "", 0).c_str());
+            entry temp;
+            temp.name = XML.getAttribute("ENTRY","NAME", "", 0);
+            id++;
+            temp.id = id;
+            parents.push_back(id);
+            temp.parent = parents[parents.size() - 2];
+            //printf("%d - %d - %s\n", temp.id, parents[parents.size() - 2], temp.name.c_str());
+            entries.push_back(temp);
             XML.pushTag("ENTRY", 0);
         }
         else
         {
             XML.popTag();
+            parents.pop_back();
             if (XML.tagExists("ENTRY", 0))
             {
                 XML.removeTag("ENTRY", 0);
@@ -69,7 +79,7 @@ void menu::draw(ofEventArgs & args)
             }
             ofRect(entries[i].box.x,entries[i].box.y,entries[i].box.width,entries[i].box.height);
             ofSetColor(255,255,255,255);
-            ofDrawBitmapString(entries[i].text,entries[i].box.x + 3,entries[i].box.y + entries[i].box.height - 3);
+            ofDrawBitmapString(entries[i].name,entries[i].box.x + 3,entries[i].box.y + entries[i].box.height - 3);
         }
 
     }
