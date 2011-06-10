@@ -29,6 +29,8 @@ void menu::init()
             temp.id = id;
             parents.push_back(id);
             temp.parent = parents[parents.size() - 2];
+            temp.box.width = 100;
+            temp.box.height = 15;
             //printf("%d - %d - %s\n", temp.id, parents[parents.size() - 2], temp.name.c_str());
             entries.push_back(temp);
             XML.pushTag("ENTRY", 0);
@@ -47,19 +49,9 @@ void menu::init()
             }
         }
     }
-
-    /*
-    for(int i = 0; i < XmlEntries; i++)
-    {
-        entry temp;
-        temp.text = XML.getAttribute("ENTRY","NAME", "", i);
-        XML.pushTag("ENTRY", i);
-        printf("%d\n", XML.getNumTags("ENTRY"));
-        XML.popTag();
-        entries.push_back(temp);
-    } */
     ofAddListener(ofEvents.draw, this, &menu::draw);
     ofAddListener(ofEvents.mouseMoved, this, &menu::updateMouse);
+    ofAddListener(ofEvents.mouseDragged, this, &menu::updateMouse);
     ofAddListener(ofEvents.mouseReleased, this, &menu::toggle);
 }
 void menu::draw(ofEventArgs & args)
@@ -105,9 +97,7 @@ void menu::toggle(ofMouseEventArgs & args)
         for(int i = 0; i < entries.size(); i++)
         {
             entries[i].box.x = x;
-            entries[i].box.y = y + (i * 16);
-            entries[i].box.width = 100;
-            entries[i].box.height = 15;
+            entries[i].box.y = y + (i * (entries[i].box.height +1));
         }
         bIsVisible = true;
     }
