@@ -12,7 +12,6 @@ menu::~menu()
 
 void menu::init()
 {
-    bIsVisible = false;
     XML.loadFile("menu.xml");
     XML.pushTag("MENU", 0);
     bool bScan = true;
@@ -31,6 +30,7 @@ void menu::init()
             temp.parent = parents[parents.size() - 2];
             temp.box.width = 100;
             temp.box.height = 15;
+            temp.bIsVisible = false;
             //printf("%d - %d - %s\n", temp.id, parents[parents.size() - 2], temp.name.c_str());
             entries.push_back(temp);
             XML.pushTag("ENTRY", 0);
@@ -56,13 +56,25 @@ void menu::init()
 }
 void menu::draw(ofEventArgs & args)
 {
-    if(bIsVisible)
+    int k = 0;
+    for(int i = 0; i < entries.size(); i++)
     {
-        for(int i = 0; i < entries.size(); i++)
+        if(entries[i].bIsVisible)
         {
             ofFill();
             if(mouseIsOn(mouseX, mouseY,entries[i].box))
             {
+                for(int j = 0; j < entries.size(); j++)
+                {
+                    if(entries[j].parent == entries[i].id)
+                    {
+                        entries[j].box.x = entries[i].box.x + entries[i].box.width + 1;
+                        entries[j].box.y = entries[i].box.y + (k * (entries[i].box.height +1));
+                        k++;
+                        entries[j].bIsVisible = true;
+                    }
+                }
+                k = 0;
                 ofSetColor(150,150,150,255);
             }
             else
@@ -73,7 +85,6 @@ void menu::draw(ofEventArgs & args)
             ofSetColor(255,255,255,255);
             ofDrawBitmapString(entries[i].name,entries[i].box.x + 3,entries[i].box.y + entries[i].box.height - 3);
         }
-
     }
 }
 
@@ -94,16 +105,27 @@ void menu::toggle(ofMouseEventArgs & args)
     {
         x = mouseX+15;
         y = mouseY+15;
+        int j = 0;
         for(int i = 0; i < entries.size(); i++)
         {
-            entries[i].box.x = x;
-            entries[i].box.y = y + (i * (entries[i].box.height +1));
+            //make all visible entries invisible first
+            entries[i].bIsVisible = false;
+            //move only the entries of the root level to the mouse pos and make them visible
+            if(entries[i].parent == 0)
+            {
+                entries[i].box.x = x;
+                entries[i].box.y = y + (j * (entries[i].box.height +1));
+                entries[i].bIsVisible = true;
+                j++;
+            }
         }
-        bIsVisible = true;
     }
     else
     {
-        bIsVisible = false;
+        for(int i = 0; i < entries.size(); i++)
+        {
+            entries[i].bIsVisible = false;
+        }
     }
 }
 void menu::updateMouse(ofMouseEventArgs & args)

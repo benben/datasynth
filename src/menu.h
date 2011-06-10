@@ -11,6 +11,7 @@ struct entry
     int parent;
     string name;
     ofRectangle box;
+    bool bIsVisible;
 };
 
 class menu
@@ -28,7 +29,6 @@ class menu
         ofxXmlSettings XML;
         int XmlEntries;
         vector <entry> entries;
-        bool bIsVisible;
         int x, y, mouseX, mouseY;
     protected:
     private:
