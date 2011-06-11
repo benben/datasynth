@@ -9,6 +9,7 @@ struct entry
 {
     int id;
     int parent;
+    int level;
     string name;
     ofRectangle box;
     bool bIsVisible;

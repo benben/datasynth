@@ -28,10 +28,11 @@ void menu::init()
             temp.id = id;
             parents.push_back(id);
             temp.parent = parents[parents.size() - 2];
+            temp.level = XML.getPushLevel() - 1;
             temp.box.width = 100;
             temp.box.height = 15;
             temp.bIsVisible = false;
-            //printf("%d - %d - %s\n", temp.id, parents[parents.size() - 2], temp.name.c_str());
+            //printf("%d - %d - %d - %s\n", temp.id, parents[parents.size() - 2], temp.level, temp.name.c_str());
             entries.push_back(temp);
             XML.pushTag("ENTRY", 0);
         }
@@ -72,6 +73,13 @@ void menu::draw(ofEventArgs & args)
                         entries[j].box.y = entries[i].box.y + (k * (entries[i].box.height +1));
                         k++;
                         entries[j].bIsVisible = true;
+                    }
+                    else
+                    {
+                        if(entries[j].level > entries[i].level)
+                        {
+                            entries[j].bIsVisible = false;
+                        }
                     }
                 }
                 k = 0;
