@@ -57,7 +57,6 @@ void menu::init()
         }
     }
     XMLObjects.pushTag("OBJECTS", 0);
-    printf("%d\n", XMLObjects.getNumTags("OBJECT"));
     for(int i = 0; i < XMLObjects.getNumTags("OBJECT"); i++)
     {
         entry temp;
@@ -82,10 +81,9 @@ void menu::click(ofMouseEventArgs & args)
         {
             if(mouseIsOn(mouseX, mouseY,entries[i].box) && entries[i].bIsVisible)
             {
-                printf("clicked entry %s\n",entries[i].name.c_str());
                 for(int j = 0; j < XMLObjects.getNumTags("OBJECT"); j++)
                 {
-                    if(entries[i].name.c_str() == XMLObjects.getAttribute("OBJECT","NAME", "", j).c_str())
+                    if(entries[i].name == XMLObjects.getAttribute("OBJECT","NAME", "", j))
                     {
                         //printf("try to create object %s...\n",entries[i].name.c_str());
                         ofNotifyEvent(newObjectEvent,entries[i],this);
