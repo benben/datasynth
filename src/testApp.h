@@ -1,9 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofEvents.h"
-#include "src/node.h"
-#include "src/menu.h"
+#include "src/objectManager.h"
 
 class testApp : public ofBaseApp{
 
@@ -22,6 +20,5 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		vector <node> nodes;
-		menu* myMenu;
+		objectManager* myObjectManager;
 };

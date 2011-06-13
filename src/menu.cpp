@@ -2,7 +2,7 @@
 
 menu::menu()
 {
-    //ctor
+    XMLObjects.loadFile("objects.xml");
 }
 
 menu::~menu()
@@ -17,15 +17,21 @@ void menu::init()
     bool bScan = true;
     int id = 0;
     vector <int> parents;
+    int createId = 0;
 
     while(bScan)
     {
         if(XML.getNumTags("ENTRY") != 0)
         {
-            entry temp;
-            temp.name = XML.getAttribute("ENTRY","NAME", "", 0);
             id++;
+            entry temp;
             temp.id = id;
+            temp.name = XML.getAttribute("ENTRY","NAME", "", 0);
+            //get the entry id for creating objects
+            if(temp.name == "Create")
+            {
+                createId = temp.id;
+            }
             parents.push_back(id);
             temp.parent = parents[parents.size() - 2];
             temp.level = XML.getPushLevel() - 1;
@@ -50,6 +56,19 @@ void menu::init()
             }
         }
     }
+    XMLObjects.pushTag("OBJECTS", 0);
+    printf("%d\n", XMLObjects.getNumTags("OBJECT"));
+    for(int i = 0; i < XMLObjects.getNumTags("OBJECT"); i++)
+    {
+        entry temp;
+        temp.parent = createId;
+        temp.name = XMLObjects.getAttribute("OBJECT","NAME", "", i);
+        temp.level = 1;
+        temp.box.width = 100;
+        temp.box.height = 15;
+        temp.bIsVisible = false;
+        entries.push_back(temp);
+    }
     ofAddListener(ofEvents.draw, this, &menu::draw);
     ofAddListener(ofEvents.mouseMoved, this, &menu::updateMouse);
     ofAddListener(ofEvents.mouseDragged, this, &menu::updateMouse);
@@ -61,10 +80,17 @@ void menu::click(ofMouseEventArgs & args)
     {
         for(int i = 0; i < entries.size(); i++)
         {
-            if(mouseIsOn(mouseX, mouseY,entries[i].box))
+            if(mouseIsOn(mouseX, mouseY,entries[i].box) && entries[i].bIsVisible)
             {
                 printf("clicked entry %s\n",entries[i].name.c_str());
-                //CreateObject with vector in/outs and a virtual process method which will be overwritten
+                for(int j = 0; j < XMLObjects.getNumTags("OBJECT"); j++)
+                {
+                    if(entries[i].name.c_str() == XMLObjects.getAttribute("OBJECT","NAME", "", j).c_str())
+                    {
+                        //printf("try to create object %s...\n",entries[i].name.c_str());
+                        ofNotifyEvent(newObjectEvent,entries[i],this);
+                    }
+                }
             }
         }
     }

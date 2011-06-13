@@ -29,9 +29,12 @@ class menu
         bool mouseIsOn(int _mouseX, int _mouseY, ofRectangle _box);
 
         ofxXmlSettings XML;
+        ofxXmlSettings XMLObjects;
         int XmlEntries;
         vector <entry> entries;
         int x, y, mouseX, mouseY;
+
+        ofEvent<entry> newObjectEvent;
     protected:
     private:
 };

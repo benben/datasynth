@@ -45,6 +45,12 @@
 		<Unit filename="src/node.h">
 			<Option virtualFolder="src/" />
 		</Unit>
+		<Unit filename="src/objectManager.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/objectManager.h">
+			<Option virtualFolder="src/" />
+		</Unit>
 		<Unit filename="src/testApp.cpp">
 			<Option virtualFolder="src/" />
 		</Unit>
