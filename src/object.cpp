@@ -3,6 +3,8 @@
 object::object()
 {
     //ctor
+    name = "";
+    type = "";
 }
 
 object::~object()

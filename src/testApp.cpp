@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    ofBackground(80);
     myObjectManager = new objectManager();
     myObjectManager->init();
 }
