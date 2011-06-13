@@ -39,10 +39,10 @@
 		<Unit filename="src/menu.h">
 			<Option virtualFolder="src/" />
 		</Unit>
-		<Unit filename="src/node.cpp">
+		<Unit filename="src/object.cpp">
 			<Option virtualFolder="src/" />
 		</Unit>
-		<Unit filename="src/node.h">
+		<Unit filename="src/object.h">
 			<Option virtualFolder="src/" />
 		</Unit>
 		<Unit filename="src/objectManager.cpp">
