@@ -3,6 +3,11 @@
 
 #include <ofMain.h>
 
+struct pin
+{
+    string name;
+    string type;
+};
 
 class object : public ofRectangle
 {
@@ -10,8 +15,12 @@ class object : public ofRectangle
         object();
         virtual ~object();
         void draw();
-        vector <int> input;
-        vector <int> output;
+
+        string name;
+        string type;
+
+        vector <pin> input;
+        vector <pin> output;
         void process();
     protected:
     private:

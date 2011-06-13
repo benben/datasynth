@@ -13,7 +13,7 @@ class objectManager
         virtual ~objectManager();
         void init();
         void createObject(entry & args);
-        vector <object> objects;
+        vector <object*> objects;
 
         menu* myMenu;
         ofxXmlSettings XMLObjects;
