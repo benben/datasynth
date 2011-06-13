@@ -23,6 +23,7 @@ class menu
         void init();
         void draw(ofEventArgs & args);
         void toggle(ofMouseEventArgs & args);
+        void click(ofMouseEventArgs & args);
         void updateMouse(ofMouseEventArgs & args);
 
         bool mouseIsOn(int _mouseX, int _mouseY, ofRectangle _box);

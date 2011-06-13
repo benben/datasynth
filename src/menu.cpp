@@ -53,7 +53,22 @@ void menu::init()
     ofAddListener(ofEvents.draw, this, &menu::draw);
     ofAddListener(ofEvents.mouseMoved, this, &menu::updateMouse);
     ofAddListener(ofEvents.mouseDragged, this, &menu::updateMouse);
-    ofAddListener(ofEvents.mouseReleased, this, &menu::toggle);
+    ofAddListener(ofEvents.mouseReleased, this, &menu::click);
+}
+void menu::click(ofMouseEventArgs & args)
+{
+    if(args.button == 0)
+    {
+        for(int i = 0; i < entries.size(); i++)
+        {
+            if(mouseIsOn(mouseX, mouseY,entries[i].box))
+            {
+                printf("clicked entry %s\n",entries[i].name.c_str());
+                //CreateObject with vector in/outs and a virtual process method which will be overwritten
+            }
+        }
+    }
+    toggle(args);
 }
 void menu::draw(ofEventArgs & args)
 {
