@@ -95,8 +95,8 @@ void menu::click(ofMouseEventArgs & args)
     //toggle
     if(args.button == 2)
     {
-        x = mouseX+15;
-        y = mouseY+15;
+        x = mouseX;
+        y = mouseY;
         int j = 0;
         for(int i = 0; i < entries.size(); i++)
         {

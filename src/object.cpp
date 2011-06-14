@@ -2,7 +2,6 @@
 
 object::object()
 {
-    //ctor
     name = "";
     type = "";
     ofAddListener(ofEvents.draw, this, &object::draw);
@@ -11,13 +10,14 @@ object::object()
 
 object::~object()
 {
-    //dtor
+    ofRemoveListener(ofEvents.draw, this, &object::draw);
+    ofRemoveListener(ofEvents.mousePressed, this, &object::click);
 }
 void object::click(ofMouseEventArgs & args)
 {
     if(args.button == 2 && mouseIsOn(args))
     {
-        printf("delete me!\n");
+        delete this;
     }
 }
 void object::draw(ofEventArgs & args)

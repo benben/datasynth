@@ -22,7 +22,6 @@ class menu
         virtual ~menu();
         void init();
         void draw(ofEventArgs & args);
-        void toggle(ofMouseEventArgs & args);
         void click(ofMouseEventArgs & args);
         void updateMouse(ofMouseEventArgs & args);
 
