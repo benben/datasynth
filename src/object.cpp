@@ -5,6 +5,7 @@ object::object()
     name = "";
     type = "";
     ofAddListener(ofEvents.draw, this, &object::draw);
+    ofAddListener(ofEvents.mouseMoved, this, &object::updateMouse);
     ofAddListener(ofEvents.mousePressed, this, &object::click);
 }
 
@@ -15,7 +16,7 @@ object::~object()
 }
 void object::click(ofMouseEventArgs & args)
 {
-    if(args.button == 2 && mouseIsOn(args))
+    if(args.button == 2 && bMouseIsOn)
     {
         delete this;
     }
@@ -47,14 +48,14 @@ void object::process()
     //STUB
 }
 
-bool object::mouseIsOn(ofMouseEventArgs & args)
+void object::updateMouse(ofMouseEventArgs & args)
 {
     if((args.x >= x) && (args.x <= x + width) && (args.y >= y) && (args.y <= y + height))
     {
-        return true;
+        bMouseIsOn = true;
     }
     else
     {
-        return false;
+        bMouseIsOn = false;
     }
 }

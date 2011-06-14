@@ -17,7 +17,9 @@ class object : public ofRectangle
         virtual ~object();
         void draw(ofEventArgs & args);
         void click(ofMouseEventArgs & args);
-        bool mouseIsOn(ofMouseEventArgs & args);
+        void updateMouse(ofMouseEventArgs & args);
+
+        bool bMouseIsOn;
 
         string name;
         string type;

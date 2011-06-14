@@ -32,6 +32,7 @@ void objectManager::createObject(entry & args)
             temp->type = (string)XMLObjects.getAttribute("OBJECT","TYPE", "", i);
             temp->x = myMenu->x;
             temp->y = myMenu->y;
+            temp->bMouseIsOn = false;
             XMLObjects.pushTag("OBJECT",i);
             pin temp_pin;
             for(int j = 0; j < XMLObjects.getNumTags("INPUT"); j++)
