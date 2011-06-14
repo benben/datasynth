@@ -26,7 +26,7 @@ class menu
         void click(ofMouseEventArgs & args);
         void updateMouse(ofMouseEventArgs & args);
 
-        bool mouseIsOn(int _mouseX, int _mouseY, ofRectangle _box);
+        bool mouseIsOn(ofRectangle _box);
 
         ofxXmlSettings XML;
         ofxXmlSettings XMLObjects;

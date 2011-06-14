@@ -12,9 +12,7 @@ class objectManager
         objectManager();
         virtual ~objectManager();
         void init();
-        void draw(ofEventArgs & args);
         void createObject(entry & args);
-        vector <object*> objects;
 
         menu* myMenu;
         ofxXmlSettings XMLObjects;

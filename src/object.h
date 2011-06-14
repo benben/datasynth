@@ -2,6 +2,7 @@
 #define OBJECT_H
 
 #include <ofMain.h>
+#include "ofEvents.h"
 
 struct pin
 {
@@ -14,7 +15,9 @@ class object : public ofRectangle
     public:
         object();
         virtual ~object();
-        void draw();
+        void draw(ofEventArgs & args);
+        void click(ofMouseEventArgs & args);
+        bool mouseIsOn(ofMouseEventArgs & args);
 
         string name;
         string type;

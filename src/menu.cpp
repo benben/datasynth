@@ -79,7 +79,7 @@ void menu::click(ofMouseEventArgs & args)
     {
         for(int i = 0; i < entries.size(); i++)
         {
-            if(mouseIsOn(mouseX, mouseY,entries[i].box) && entries[i].bIsVisible)
+            if(mouseIsOn(entries[i].box) && entries[i].bIsVisible)
             {
                 for(int j = 0; j < XMLObjects.getNumTags("OBJECT"); j++)
                 {
@@ -92,7 +92,33 @@ void menu::click(ofMouseEventArgs & args)
             }
         }
     }
-    toggle(args);
+    //toggle
+    if(args.button == 2)
+    {
+        x = mouseX+15;
+        y = mouseY+15;
+        int j = 0;
+        for(int i = 0; i < entries.size(); i++)
+        {
+            //make all visible entries invisible first
+            entries[i].bIsVisible = false;
+            //move only the entries of the root level to the mouse pos and make them visible
+            if(entries[i].parent == 0)
+            {
+                entries[i].box.x = x;
+                entries[i].box.y = y + (j * (entries[i].box.height +1));
+                entries[i].bIsVisible = true;
+                j++;
+            }
+        }
+    }
+    else
+    {
+        for(int i = 0; i < entries.size(); i++)
+        {
+            entries[i].bIsVisible = false;
+        }
+    }
 }
 void menu::draw(ofEventArgs & args)
 {
@@ -102,7 +128,7 @@ void menu::draw(ofEventArgs & args)
         if(entries[i].bIsVisible)
         {
             ofFill();
-            if(mouseIsOn(mouseX, mouseY,entries[i].box))
+            if(mouseIsOn(entries[i].box))
             {
                 for(int j = 0; j < entries.size(); j++)
                 {
@@ -135,9 +161,9 @@ void menu::draw(ofEventArgs & args)
     }
 }
 
-bool menu::mouseIsOn(int _mouseX,int _mouseY,ofRectangle _box)
+bool menu::mouseIsOn(ofRectangle _box)
 {
-    if((_mouseX >= _box.x) && (_mouseX <= _box.x + _box.width) && (_mouseY >= _box.y) && (_mouseY <= _box.y + _box.height))
+    if((mouseX >= _box.x) && (mouseX <= _box.x + _box.width) && (mouseY >= _box.y) && (mouseY <= _box.y + _box.height))
     {
         return true;
     }
@@ -146,35 +172,7 @@ bool menu::mouseIsOn(int _mouseX,int _mouseY,ofRectangle _box)
         return false;
     }
 }
-void menu::toggle(ofMouseEventArgs & args)
-{
-    if(args.button == 2)
-    {
-        x = mouseX+15;
-        y = mouseY+15;
-        int j = 0;
-        for(int i = 0; i < entries.size(); i++)
-        {
-            //make all visible entries invisible first
-            entries[i].bIsVisible = false;
-            //move only the entries of the root level to the mouse pos and make them visible
-            if(entries[i].parent == 0)
-            {
-                entries[i].box.x = x;
-                entries[i].box.y = y + (j * (entries[i].box.height +1));
-                entries[i].bIsVisible = true;
-                j++;
-            }
-        }
-    }
-    else
-    {
-        for(int i = 0; i < entries.size(); i++)
-        {
-            entries[i].bIsVisible = false;
-        }
-    }
-}
+
 void menu::updateMouse(ofMouseEventArgs & args)
 {
     mouseX = args.x;
