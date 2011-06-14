@@ -12,9 +12,10 @@ class objectManager : public TSingleton<objectManager>
     public:
         objectManager();
         virtual ~objectManager();
-        void init();
+
         void createObject(entry & args);
         void destroyObject(object* _obj);
+
         void click(ofMouseEventArgs & args);
         void updateMouse(ofMouseEventArgs & args);
 

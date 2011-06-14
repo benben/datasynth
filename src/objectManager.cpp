@@ -2,21 +2,18 @@
 
 objectManager::objectManager()
 {
-    //ctor
-}
-
-objectManager::~objectManager()
-{
-    //dtor
-}
-
-void objectManager::init()
-{
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
     ofAddListener(ofEvents.mouseMoved, this, &objectManager::updateMouse);
     ofAddListener(ofEvents.mouseReleased, this, &objectManager::click);
     ofAddListener(menu::Get()->newObjectEvent, this, &objectManager::createObject);
+}
+
+objectManager::~objectManager()
+{
+    ofRemoveListener(ofEvents.mouseMoved, this, &objectManager::updateMouse);
+    ofRemoveListener(ofEvents.mouseReleased, this, &objectManager::click);
+    ofRemoveListener(menu::Get()->newObjectEvent, this, &objectManager::createObject);
 }
 
 void objectManager::createObject(entry & args)
