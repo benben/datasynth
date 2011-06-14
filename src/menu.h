@@ -4,6 +4,7 @@
 #include "ofxXmlSettings.h"
 #include "ofMain.h"
 #include "ofEvents.h"
+#include "src/singleton.h"
 
 struct entry
 {
@@ -15,21 +16,20 @@ struct entry
     bool bIsVisible;
 };
 
-class menu
+class menu : public TSingleton<menu>
 {
     public:
         menu();
         virtual ~menu();
-        void init();
         void draw(ofEventArgs & args);
         void click(ofMouseEventArgs & args);
         void updateMouse(ofMouseEventArgs & args);
 
         bool mouseIsOn(ofRectangle _box);
+        bool bMouseIsOnObject;
 
         ofxXmlSettings XML;
         ofxXmlSettings XMLObjects;
-        int XmlEntries;
         vector <entry> entries;
         int x, y, mouseX, mouseY;
 

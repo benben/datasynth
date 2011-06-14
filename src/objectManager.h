@@ -3,18 +3,22 @@
 
 #include "ofxXmlSettings.h"
 #include "ofEvents.h"
-#include "src/object.h"
+#include "src/singleton.h"
 #include "src/menu.h"
+#include "src/object.h"
 
-class objectManager
+class objectManager : public TSingleton<objectManager>
 {
     public:
         objectManager();
         virtual ~objectManager();
         void init();
         void createObject(entry & args);
+        void destroyObject(object* _obj);
+        void click(ofMouseEventArgs & args);
+        void updateMouse(ofMouseEventArgs & args);
 
-        menu* myMenu;
+        vector <object*> objects;
         ofxXmlSettings XMLObjects;
     protected:
     private:

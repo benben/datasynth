@@ -2,25 +2,14 @@
 
 object::object()
 {
-    name = "";
-    type = "";
     ofAddListener(ofEvents.draw, this, &object::draw);
-    ofAddListener(ofEvents.mouseMoved, this, &object::updateMouse);
-    ofAddListener(ofEvents.mousePressed, this, &object::click);
 }
 
 object::~object()
 {
     ofRemoveListener(ofEvents.draw, this, &object::draw);
-    ofRemoveListener(ofEvents.mousePressed, this, &object::click);
 }
-void object::click(ofMouseEventArgs & args)
-{
-    if(args.button == 2 && bMouseIsOn)
-    {
-        delete this;
-    }
-}
+
 void object::draw(ofEventArgs & args)
 {
     ofSetColor(255,230,0,255);
@@ -46,16 +35,4 @@ void object::draw(ofEventArgs & args)
 void object::process()
 {
     //STUB
-}
-
-void object::updateMouse(ofMouseEventArgs & args)
-{
-    if((args.x >= x) && (args.x <= x + width) && (args.y >= y) && (args.y <= y + height))
-    {
-        bMouseIsOn = true;
-    }
-    else
-    {
-        bMouseIsOn = false;
-    }
 }

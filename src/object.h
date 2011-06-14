@@ -3,6 +3,7 @@
 
 #include <ofMain.h>
 #include "ofEvents.h"
+#include "src/menu.h"
 
 struct pin
 {
@@ -16,10 +17,6 @@ class object : public ofRectangle
         object();
         virtual ~object();
         void draw(ofEventArgs & args);
-        void click(ofMouseEventArgs & args);
-        void updateMouse(ofMouseEventArgs & args);
-
-        bool bMouseIsOn;
 
         string name;
         string type;

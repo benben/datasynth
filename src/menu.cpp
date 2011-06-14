@@ -3,15 +3,6 @@
 menu::menu()
 {
     XMLObjects.loadFile("objects.xml");
-}
-
-menu::~menu()
-{
-    //dtor
-}
-
-void menu::init()
-{
     XML.loadFile("menu.xml");
     XML.pushTag("MENU", 0);
     bool bScan = true;
@@ -73,6 +64,12 @@ void menu::init()
     ofAddListener(ofEvents.mouseDragged, this, &menu::updateMouse);
     ofAddListener(ofEvents.mouseReleased, this, &menu::click);
 }
+
+menu::~menu()
+{
+    //dtor
+}
+
 void menu::click(ofMouseEventArgs & args)
 {
     if(args.button == 0)
@@ -93,7 +90,7 @@ void menu::click(ofMouseEventArgs & args)
         }
     }
     //toggle
-    if(args.button == 2)
+    if(args.button == 2 && !bMouseIsOnObject)
     {
         x = mouseX;
         y = mouseY;
