@@ -82,7 +82,7 @@ void Core::mouseMoved(int x, int y )
 {
     bool temp = false;
     //check if mouse is over an object
-    for(int i = 0; i < objects.size(); i++)
+    for(unsigned int i = 0; i < objects.size(); i++)
     {
         if((x >= objects[i]->x) && (x <= objects[i]->x + objects[i]->width) && (y >= objects[i]->y) && (y <= objects[i]->y + objects[i]->height))
         {
@@ -112,7 +112,7 @@ void Core::mousePressed(int x, int y, int button)
 {
     if(button == 2)
     {
-        for(int i = 0; i < objects.size(); i++)
+        for(unsigned int i = 0; i < objects.size(); i++)
         {
             if((x >= objects[i]->x) && (x <= objects[i]->x + objects[i]->width) && (y >= objects[i]->y) && (y <= objects[i]->y + objects[i]->height))
             {

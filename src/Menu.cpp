@@ -74,7 +74,7 @@ void Menu::click(ofMouseEventArgs & args)
 {
     if(args.button == 0)
     {
-        for(int i = 0; i < entries.size(); i++)
+        for(unsigned int i = 0; i < entries.size(); i++)
         {
             if(mouseIsOn(entries[i].box) && entries[i].bIsVisible)
             {
@@ -95,7 +95,7 @@ void Menu::click(ofMouseEventArgs & args)
         x = mouseX;
         y = mouseY;
         int j = 0;
-        for(int i = 0; i < entries.size(); i++)
+        for(unsigned int i = 0; i < entries.size(); i++)
         {
             //make all visible entries invisible first
             entries[i].bIsVisible = false;
@@ -111,7 +111,7 @@ void Menu::click(ofMouseEventArgs & args)
     }
     else
     {
-        for(int i = 0; i < entries.size(); i++)
+        for(unsigned int i = 0; i < entries.size(); i++)
         {
             entries[i].bIsVisible = false;
         }
@@ -120,14 +120,14 @@ void Menu::click(ofMouseEventArgs & args)
 void Menu::draw(ofEventArgs & args)
 {
     int k = 0;
-    for(int i = 0; i < entries.size(); i++)
+    for(unsigned int i = 0; i < entries.size(); i++)
     {
         if(entries[i].bIsVisible)
         {
             ofFill();
             if(mouseIsOn(entries[i].box))
             {
-                for(int j = 0; j < entries.size(); j++)
+                for(unsigned int j = 0; j < entries.size(); j++)
                 {
                     if(entries[j].parent == entries[i].id)
                     {
