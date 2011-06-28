@@ -1,22 +1,25 @@
-#include "objectManager.h"
+#include "dsCore.h"
 
-objectManager::objectManager()
+//--------------------------------------------------------------
+void dsCore::setup()
 {
+    cout << "setup started" << endl;
+    ofBackground(80);
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
-    ofAddListener(ofEvents.mouseMoved, this, &objectManager::updateMouse);
-    ofAddListener(ofEvents.mouseReleased, this, &objectManager::click);
-    ofAddListener(menu::Get()->newObjectEvent, this, &objectManager::createObject);
+    ofAddListener(menu::Get()->newObjectEvent, this, &dsCore::createObject);
+    cout << "setup finished" << endl;
 }
-
-objectManager::~objectManager()
+//--------------------------------------------------------------
+void dsCore::update()
 {
-    ofRemoveListener(ofEvents.mouseMoved, this, &objectManager::updateMouse);
-    ofRemoveListener(ofEvents.mouseReleased, this, &objectManager::click);
-    ofRemoveListener(menu::Get()->newObjectEvent, this, &objectManager::createObject);
+}
+//--------------------------------------------------------------
+void dsCore::draw()
+{
 }
 
-void objectManager::createObject(entry & args)
+void dsCore::createObject(entry & args)
 {
     for(int i = 0; i < XMLObjects.getNumTags("OBJECT"); i++)
     {
@@ -61,34 +64,26 @@ void objectManager::createObject(entry & args)
     }
 }
 
-void objectManager::click(ofMouseEventArgs & args)
-{
-    if(args.button == 2)
-    {
-        for(int i = 0; i < objects.size(); i++)
-        {
-            if((args.x >= objects[i]->x) && (args.x <= objects[i]->x + objects[i]->width) && (args.y >= objects[i]->y) && (args.y <= objects[i]->y + objects[i]->height))
-            {
-                destroyObject(objects[i]);
-                objects.erase(objects.begin()+i);
-                break;
-            }
-        }
-    }
-}
-
-void objectManager::destroyObject(object* _obj)
+void dsCore::destroyObject(object* _obj)
 {
     delete _obj;
 }
-
-void objectManager::updateMouse(ofMouseEventArgs & args)
+//--------------------------------------------------------------
+void dsCore::keyPressed(int key)
+{
+}
+//--------------------------------------------------------------
+void dsCore::keyReleased(int key)
+{
+}
+//--------------------------------------------------------------
+void dsCore::mouseMoved(int x, int y )
 {
     bool temp = false;
     //check if mouse is over an object
     for(int i = 0; i < objects.size(); i++)
     {
-        if((args.x >= objects[i]->x) && (args.x <= objects[i]->x + objects[i]->width) && (args.y >= objects[i]->y) && (args.y <= objects[i]->y + objects[i]->height))
+        if((x >= objects[i]->x) && (x <= objects[i]->x + objects[i]->width) && (y >= objects[i]->y) && (y <= objects[i]->y + objects[i]->height))
         {
             temp = true;
             break;
@@ -101,9 +96,52 @@ void objectManager::updateMouse(ofMouseEventArgs & args)
     if(temp)
     {
         menu::Get()->bMouseIsOnObject = true;
+        cout << "true" << endl;
     }
     else
     {
         menu::Get()->bMouseIsOnObject = false;
+        cout << "false" << endl;
     }
+}
+//--------------------------------------------------------------
+void dsCore::mouseDragged(int x, int y, int button)
+{
+}
+//--------------------------------------------------------------
+void dsCore::mousePressed(int x, int y, int button)
+{
+    if(button == 2)
+    {
+        for(int i = 0; i < objects.size(); i++)
+        {
+            if((x >= objects[i]->x) && (x <= objects[i]->x + objects[i]->width) && (y >= objects[i]->y) && (y <= objects[i]->y + objects[i]->height))
+            {
+                destroyObject(objects[i]);
+                objects.erase(objects.begin()+i);
+                break;
+            }
+        }
+    }
+}
+//--------------------------------------------------------------
+void dsCore::mouseReleased(int x, int y, int button)
+{
+}
+//--------------------------------------------------------------
+void dsCore::windowResized(int w, int h)
+{
+}
+//--------------------------------------------------------------
+void dsCore::gotMessage(ofMessage msg)
+{
+}
+//--------------------------------------------------------------
+void dsCore::dragEvent(ofDragInfo dragInfo)
+{
+}
+//--------------------------------------------------------------
+void dsCore::exit()
+{
+    ofRemoveListener(menu::Get()->newObjectEvent, this, &dsCore::createObject);
 }

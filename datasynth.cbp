@@ -30,6 +30,12 @@
 		<Unit filename="config.make">
 			<Option virtualFolder="build config" />
 		</Unit>
+		<Unit filename="src/dsCore.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/dsCore.h">
+			<Option virtualFolder="src/" />
+		</Unit>
 		<Unit filename="src/main.cpp">
 			<Option virtualFolder="src/" />
 		</Unit>
@@ -45,19 +51,7 @@
 		<Unit filename="src/object.h">
 			<Option virtualFolder="src/" />
 		</Unit>
-		<Unit filename="src/objectManager.cpp">
-			<Option virtualFolder="src/" />
-		</Unit>
-		<Unit filename="src/objectManager.h">
-			<Option virtualFolder="src/" />
-		</Unit>
 		<Unit filename="src/singleton.h">
-			<Option virtualFolder="src/" />
-		</Unit>
-		<Unit filename="src/testApp.cpp">
-			<Option virtualFolder="src/" />
-		</Unit>
-		<Unit filename="src/testApp.h">
 			<Option virtualFolder="src/" />
 		</Unit>
 		<Extensions>

@@ -1,14 +1,17 @@
 #pragma once
 
 #include "ofMain.h"
-#include "src/objectManager.h"
+#include "ofxXmlSettings.h"
+#include "src/menu.h"
+#include "src/object.h"
 
-class testApp : public ofBaseApp{
+class dsCore : public ofBaseApp{
 
 	public:
 		void setup();
 		void update();
 		void draw();
+        void exit();
 
 		void keyPressed  (int key);
 		void keyReleased(int key);
@@ -19,4 +22,10 @@ class testApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+
+		void createObject(entry & args);
+        void destroyObject(object* _obj);
+
+        vector <object*> objects;
+        ofxXmlSettings XMLObjects;
 };
