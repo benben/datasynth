@@ -4,7 +4,7 @@
 #include "ofxXmlSettings.h"
 #include "ofMain.h"
 #include "ofEvents.h"
-#include "src/singleton.h"
+#include "src/Singleton.h"
 
 struct entry
 {
@@ -16,11 +16,11 @@ struct entry
     bool bIsVisible;
 };
 
-class menu : public TSingleton<menu>
+class Menu : public TSingleton<Menu>
 {
     public:
-        menu();
-        virtual ~menu();
+        Menu();
+        virtual ~Menu();
         void draw(ofEventArgs & args);
         void click(ofMouseEventArgs & args);
         void updateMouse(ofMouseEventArgs & args);

@@ -1,16 +1,22 @@
-#include "object.h"
+#include "Object.h"
+using namespace ds;
 
-object::object()
+Object::Object()
 {
-    ofAddListener(ofEvents.draw, this, &object::draw);
+    ofAddListener(ofEvents.draw, this, &Object::draw);
 }
 
-object::~object()
+Object::~Object()
 {
-    ofRemoveListener(ofEvents.draw, this, &object::draw);
+    ofRemoveListener(ofEvents.draw, this, &Object::draw);
 }
 
-void object::draw(ofEventArgs & args)
+void Object::process()
+{
+    cout << "process from Object()\n";
+}
+
+void Object::draw(ofEventArgs & args)
 {
     ofSetColor(255,230,0,255);
     ofRect(x,y,width,height);
@@ -30,9 +36,4 @@ void object::draw(ofEventArgs & args)
         ofSetColor(255,230,0,255);
         ofRect(x+(j*8),y+height-7,7,7);
     }
-}
-
-void object::process()
-{
-    //STUB
 }

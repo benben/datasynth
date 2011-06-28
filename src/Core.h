@@ -2,10 +2,13 @@
 
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
-#include "src/menu.h"
-#include "src/object.h"
+#include "src/Menu.h"
+#include "src/Connection.h"
+#include "src/Nodes.h"
 
-class dsCore : public ofBaseApp{
+namespace ds {
+
+class Core : public ofBaseApp{
 
 	public:
 		void setup();
@@ -24,8 +27,10 @@ class dsCore : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		void createObject(entry & args);
-        void destroyObject(object* _obj);
+        void destroyObject(Object* _obj);
 
-        vector <object*> objects;
+        vector <Object*> objects;
         ofxXmlSettings XMLObjects;
 };
+
+}

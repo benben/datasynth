@@ -10,7 +10,7 @@ OF_ROOT = ../openFrameworks
 # for example search paths like:
 # USER_CFLAGS = -I src/objects
 
-USER_CFLAGS = 
+USER_CFLAGS = -I/home/ben/Downloads/boost_1_46_1/
 
 
 # USER_LDFLAGS allows to pass custom flags to the linker
@@ -37,7 +37,7 @@ ANDROID_COMPILER_OPTIMIZATION = -Os
 # useful if you need to share a folder with code between 2 apps. The makefile will search recursively
 # you can only set 1 path here
 
-USER_SOURCE_DIR = 
+USER_SOURCE_DIR =
 
 # you shouldn't need to change this for usual OF apps, it allows to exclude code from some directories
 # useful if you have some code for reference in the project folder but don't want it to be compiled

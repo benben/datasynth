@@ -1,25 +1,26 @@
-#include "dsCore.h"
+#include "Core.h"
+using namespace ds;
 
 //--------------------------------------------------------------
-void dsCore::setup()
+void Core::setup()
 {
     cout << "setup started" << endl;
     ofBackground(80);
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
-    ofAddListener(menu::Get()->newObjectEvent, this, &dsCore::createObject);
+    ofAddListener(Menu::Get()->newObjectEvent, this, &Core::createObject);
     cout << "setup finished" << endl;
 }
 //--------------------------------------------------------------
-void dsCore::update()
+void Core::update()
 {
 }
 //--------------------------------------------------------------
-void dsCore::draw()
+void Core::draw()
 {
 }
-
-void dsCore::createObject(entry & args)
+//--------------------------------------------------------------
+void Core::createObject(entry & args)
 {
     for(int i = 0; i < XMLObjects.getNumTags("OBJECT"); i++)
     {
@@ -27,13 +28,13 @@ void dsCore::createObject(entry & args)
         {
             printf("creating %s!\n", XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str());
             printf("\ttype:\t%s!\n", XMLObjects.getAttribute("OBJECT","TYPE", "", i).c_str());
-            object* temp = new object();
+            Object* temp = new Object();
             temp->name = (string)XMLObjects.getAttribute("OBJECT","NAME", "", i);
             temp->type = (string)XMLObjects.getAttribute("OBJECT","TYPE", "", i);
-            temp->x = menu::Get()->x;
-            temp->y = menu::Get()->y;
+            temp->x = Menu::Get()->x;
+            temp->y = Menu::Get()->y;
             XMLObjects.pushTag("OBJECT",i);
-            pin temp_pin;
+            /*Pin temp_pin;
             for(int j = 0; j < XMLObjects.getNumTags("INPUT"); j++)
             {
                 printf("\tinput[%d]:\t%s\t(%s)\n", j, XMLObjects.getAttribute("INPUT","NAME", "", j).c_str(), XMLObjects.getAttribute("INPUT","TYPE", "", j).c_str());
@@ -47,7 +48,7 @@ void dsCore::createObject(entry & args)
                 temp_pin.name = XMLObjects.getAttribute("OUTPUT","NAME", "", j);
                 temp_pin.type = XMLObjects.getAttribute("OUTPUT","TYPE", "", j);
                 temp->output.push_back(temp_pin);
-            }
+            }*/
             if(temp->output.size() >= temp->input.size())
             {
                 temp->width = (temp->output.size() * 10) + 50;
@@ -63,21 +64,21 @@ void dsCore::createObject(entry & args)
         }
     }
 }
-
-void dsCore::destroyObject(object* _obj)
+//--------------------------------------------------------------
+void Core::destroyObject(Object* _obj)
 {
     delete _obj;
 }
 //--------------------------------------------------------------
-void dsCore::keyPressed(int key)
+void Core::keyPressed(int key)
 {
 }
 //--------------------------------------------------------------
-void dsCore::keyReleased(int key)
+void Core::keyReleased(int key)
 {
 }
 //--------------------------------------------------------------
-void dsCore::mouseMoved(int x, int y )
+void Core::mouseMoved(int x, int y )
 {
     bool temp = false;
     //check if mouse is over an object
@@ -95,21 +96,19 @@ void dsCore::mouseMoved(int x, int y )
     }
     if(temp)
     {
-        menu::Get()->bMouseIsOnObject = true;
-        cout << "true" << endl;
+        Menu::Get()->bMouseIsOnObject = true;
     }
     else
     {
-        menu::Get()->bMouseIsOnObject = false;
-        cout << "false" << endl;
+        Menu::Get()->bMouseIsOnObject = false;
     }
 }
 //--------------------------------------------------------------
-void dsCore::mouseDragged(int x, int y, int button)
+void Core::mouseDragged(int x, int y, int button)
 {
 }
 //--------------------------------------------------------------
-void dsCore::mousePressed(int x, int y, int button)
+void Core::mousePressed(int x, int y, int button)
 {
     if(button == 2)
     {
@@ -125,23 +124,23 @@ void dsCore::mousePressed(int x, int y, int button)
     }
 }
 //--------------------------------------------------------------
-void dsCore::mouseReleased(int x, int y, int button)
+void Core::mouseReleased(int x, int y, int button)
 {
 }
 //--------------------------------------------------------------
-void dsCore::windowResized(int w, int h)
+void Core::windowResized(int w, int h)
 {
 }
 //--------------------------------------------------------------
-void dsCore::gotMessage(ofMessage msg)
+void Core::gotMessage(ofMessage msg)
 {
 }
 //--------------------------------------------------------------
-void dsCore::dragEvent(ofDragInfo dragInfo)
+void Core::dragEvent(ofDragInfo dragInfo)
 {
 }
 //--------------------------------------------------------------
-void dsCore::exit()
+void Core::exit()
 {
-    ofRemoveListener(menu::Get()->newObjectEvent, this, &dsCore::createObject);
+    ofRemoveListener(Menu::Get()->newObjectEvent, this, &Core::createObject);
 }

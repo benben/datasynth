@@ -1,6 +1,6 @@
-#include "menu.h"
+#include "Menu.h"
 
-menu::menu()
+Menu::Menu()
 {
     XMLObjects.loadFile("objects.xml");
     XML.loadFile("menu.xml");
@@ -59,18 +59,18 @@ menu::menu()
         temp.bIsVisible = false;
         entries.push_back(temp);
     }
-    ofAddListener(ofEvents.draw, this, &menu::draw);
-    ofAddListener(ofEvents.mouseMoved, this, &menu::updateMouse);
-    ofAddListener(ofEvents.mouseDragged, this, &menu::updateMouse);
-    ofAddListener(ofEvents.mouseReleased, this, &menu::click);
+    ofAddListener(ofEvents.draw, this, &Menu::draw);
+    ofAddListener(ofEvents.mouseMoved, this, &Menu::updateMouse);
+    ofAddListener(ofEvents.mouseDragged, this, &Menu::updateMouse);
+    ofAddListener(ofEvents.mouseReleased, this, &Menu::click);
 }
 
-menu::~menu()
+Menu::~Menu()
 {
     //dtor
 }
 
-void menu::click(ofMouseEventArgs & args)
+void Menu::click(ofMouseEventArgs & args)
 {
     if(args.button == 0)
     {
@@ -117,7 +117,7 @@ void menu::click(ofMouseEventArgs & args)
         }
     }
 }
-void menu::draw(ofEventArgs & args)
+void Menu::draw(ofEventArgs & args)
 {
     int k = 0;
     for(int i = 0; i < entries.size(); i++)
@@ -158,7 +158,7 @@ void menu::draw(ofEventArgs & args)
     }
 }
 
-bool menu::mouseIsOn(ofRectangle _box)
+bool Menu::mouseIsOn(ofRectangle _box)
 {
     if((mouseX >= _box.x) && (mouseX <= _box.x + _box.width) && (mouseY >= _box.y) && (mouseY <= _box.y + _box.height))
     {
@@ -170,7 +170,7 @@ bool menu::mouseIsOn(ofRectangle _box)
     }
 }
 
-void menu::updateMouse(ofMouseEventArgs & args)
+void Menu::updateMouse(ofMouseEventArgs & args)
 {
     mouseX = args.x;
     mouseY = args.y;
