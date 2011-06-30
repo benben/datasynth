@@ -4,7 +4,7 @@
 #include "ofMain.h"
 #include "boost/variant.hpp"
 
-typedef boost::variant<float, int> Type;
+typedef boost::variant<int, float, double> Type;
 
 namespace ds {
 

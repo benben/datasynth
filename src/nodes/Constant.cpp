@@ -1,15 +1,13 @@
 #include "Constant.h"
 using namespace ds;
 
-Constant::Constant(float _var)
+Constant::Constant()
 {
-  output.push_back(_var);
+  output.push_back(0);
 }
 
 Constant::~Constant()
 {
-  cout << "process from Constant()\n";
-  cout << "output pin: " << output[0] << endl;
 }
 
 void Constant::process()

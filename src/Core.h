@@ -6,6 +6,38 @@
 #include "src/Connection.h"
 #include "src/Nodes.h"
 
+#include <boost/foreach.hpp>
+#include <boost/function.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/spirit/include/phoenix.hpp>
+
+//typedef boost::variant<ds::Constant, ds::Multiply> ObjectType;
+typedef boost::shared_ptr<ds::Object> ObjectPtr;
+
+struct bad_type_exception : std::exception {
+    char const * what() const throw() { return "No such class!"; }
+};
+
+struct Factory {
+
+    typedef std::map<std::string, boost::function<ObjectPtr()> > FactoryMap;
+    FactoryMap f;
+
+    Factory() {
+        using boost::phoenix::new_;
+        using boost::phoenix::construct;
+        f["Constant"] = construct<ObjectPtr>(new_<ds::Constant>());
+        f["Multiply"] = construct<ObjectPtr>(new_<ds::Multiply>());
+        // ...
+    }
+
+    ObjectPtr operator()(std::string const & type) const {
+        FactoryMap::const_iterator it = f.find(type);
+        if (it == f.end()) throw bad_type_exception();
+        return it->second();
+    }
+};
+
 namespace ds {
 
 class Core : public ofBaseApp{
@@ -27,9 +59,10 @@ class Core : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		void createObject(entry & args);
-        void destroyObject(Object* _obj);
 
-        vector <Object*> objects;
+        Factory factory;
+
+        vector <ObjectPtr> objects;
         ofxXmlSettings XMLObjects;
 };
 

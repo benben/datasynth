@@ -31,22 +31,23 @@ void Core::createObject(entry & args)
             printf("\ttype:\t%s!\n", XMLObjects.getAttribute("OBJECT","TYPE", "", i).c_str());
 
             //create objects here
+            ObjectPtr temp = factory(XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str());
 
-            Object* temp = new Object();
             temp->name = (string)XMLObjects.getAttribute("OBJECT","NAME", "", i);
             temp->type = (string)XMLObjects.getAttribute("OBJECT","TYPE", "", i);
             temp->x = Menu::Get()->x;
             temp->y = Menu::Get()->y;
             XMLObjects.pushTag("OBJECT",i);
 
-            if(temp->output.size() >= temp->input.size())
+            /*if(temp->output.size() >= temp->input.size())
             {
                 temp->width = (temp->output.size() * 10) + 50;
             }
             else
             {
                 temp->width = (temp->input.size() * 10) + 50;
-            }
+            } */
+            temp->width = 150;
             temp->height = 30;
             objects.push_back(temp);
             printf("\n");
@@ -55,17 +56,19 @@ void Core::createObject(entry & args)
     }
 }
 //--------------------------------------------------------------
-void Core::destroyObject(Object* _obj)
-{
-    delete _obj;
-}
-//--------------------------------------------------------------
 void Core::keyPressed(int key)
 {
 }
 //--------------------------------------------------------------
 void Core::keyReleased(int key)
 {
+    if (key == ' ')
+    {
+        cout << "processing..." << endl;
+        BOOST_FOREACH(ObjectPtr node, objects)
+            node->process();
+        cout << "...finished!" << endl;
+    }
 }
 //--------------------------------------------------------------
 void Core::mouseMoved(int x, int y )
@@ -106,7 +109,6 @@ void Core::mousePressed(int x, int y, int button)
         {
             if((x >= objects[i]->x) && (x <= objects[i]->x + objects[i]->width) && (y >= objects[i]->y) && (y <= objects[i]->y + objects[i]->height))
             {
-                destroyObject(objects[i]);
                 objects.erase(objects.begin()+i);
                 break;
             }

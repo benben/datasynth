@@ -7,7 +7,7 @@ namespace ds {
 class Constant : public Object
 {
   public:
-    Constant(float _var);
+    Constant();
     ~Constant();
     void process();
   protected:
