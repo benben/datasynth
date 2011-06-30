@@ -1,5 +1,7 @@
 #include "Menu.h"
 
+using namespace ds;
+
 Menu::Menu()
 {
     XMLObjects.loadFile("objects.xml");

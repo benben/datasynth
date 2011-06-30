@@ -6,6 +6,8 @@
 #include "ofEvents.h"
 #include "src/Singleton.h"
 
+namespace ds {
+
 struct entry
 {
     int id;
@@ -37,5 +39,7 @@ class Menu : public TSingleton<Menu>
     protected:
     private:
 };
+
+}
 
 #endif // MENU_H
