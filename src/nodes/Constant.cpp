@@ -3,7 +3,8 @@ using namespace ds;
 
 Constant::Constant()
 {
-  output.push_back(0);
+  output.push_back(0.0);
+  slider.init(&boost::get<double>(output[0]));
 }
 
 Constant::~Constant()
