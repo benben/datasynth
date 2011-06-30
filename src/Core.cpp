@@ -1,4 +1,5 @@
 #include "Core.h"
+
 using namespace ds;
 
 //--------------------------------------------------------------
@@ -28,27 +29,16 @@ void Core::createObject(entry & args)
         {
             printf("creating %s!\n", XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str());
             printf("\ttype:\t%s!\n", XMLObjects.getAttribute("OBJECT","TYPE", "", i).c_str());
+
+            //create objects here
+
             Object* temp = new Object();
             temp->name = (string)XMLObjects.getAttribute("OBJECT","NAME", "", i);
             temp->type = (string)XMLObjects.getAttribute("OBJECT","TYPE", "", i);
             temp->x = Menu::Get()->x;
             temp->y = Menu::Get()->y;
             XMLObjects.pushTag("OBJECT",i);
-            /*Pin temp_pin;
-            for(int j = 0; j < XMLObjects.getNumTags("INPUT"); j++)
-            {
-                printf("\tinput[%d]:\t%s\t(%s)\n", j, XMLObjects.getAttribute("INPUT","NAME", "", j).c_str(), XMLObjects.getAttribute("INPUT","TYPE", "", j).c_str());
-                temp_pin.name = XMLObjects.getAttribute("INPUT","NAME", "", j);
-                temp_pin.type = XMLObjects.getAttribute("INPUT","TYPE", "", j);
-                temp->input.push_back(temp_pin);
-            }
-            for(int j = 0; j < XMLObjects.getNumTags("OUTPUT"); j++)
-            {
-                printf("\toutput[%d]:\t%s\t(%s)\n", j, XMLObjects.getAttribute("OUTPUT","NAME", "", j).c_str(), XMLObjects.getAttribute("OUTPUT","TYPE", "", j).c_str());
-                temp_pin.name = XMLObjects.getAttribute("OUTPUT","NAME", "", j);
-                temp_pin.type = XMLObjects.getAttribute("OUTPUT","TYPE", "", j);
-                temp->output.push_back(temp_pin);
-            }*/
+
             if(temp->output.size() >= temp->input.size())
             {
                 temp->width = (temp->output.size() * 10) + 50;
