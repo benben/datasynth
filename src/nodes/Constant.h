@@ -13,6 +13,7 @@ class Constant : public Object
     ~Constant();
     Slider * slider;
     void process();
+    void draw(ofEventArgs & args);
   protected:
   private:
 };

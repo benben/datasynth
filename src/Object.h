@@ -23,7 +23,14 @@ class Object : public ofRectangle
         vector<Type> input;
         vector<Type> output;
         virtual void process();
+        virtual void basedraw(ofEventArgs & args);
         virtual void draw(ofEventArgs & args);
+
+        virtual void mouseMoved(ofMouseEventArgs & args);
+        virtual void mousePressed(ofMouseEventArgs & args);
+        virtual void mouseDragged(ofMouseEventArgs & args);
+        virtual void mouseReleased(ofMouseEventArgs & args);
+        float mouseX, mouseY;
     protected:
     private:
 };

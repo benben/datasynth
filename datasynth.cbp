@@ -83,10 +83,22 @@
 		<Unit filename="src/nodes/Constant.h">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
+		<Unit filename="src/nodes/EmptyNode.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/EmptyNode.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
 		<Unit filename="src/nodes/Multiply.cpp">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
 		<Unit filename="src/nodes/Multiply.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/OutBox.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/OutBox.h">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
 		<Extensions>

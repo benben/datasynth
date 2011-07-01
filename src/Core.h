@@ -28,6 +28,7 @@ struct Factory {
         using boost::phoenix::construct;
         f["Constant"] = construct<ObjectPtr>(new_<ds::Constant>());
         f["Multiply"] = construct<ObjectPtr>(new_<ds::Multiply>());
+        f["OutBox"] = construct<ObjectPtr>(new_<ds::OutBox>());
         // ...
     }
 

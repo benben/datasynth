@@ -4,37 +4,73 @@ using namespace ds;
 
 Object::Object()
 {
+    ofRegisterMouseEvents(this);
     ofAddListener(ofEvents.draw, this, &Object::draw);
+    mouseX = 0;
+    mouseY = 0;
 }
 
 Object::~Object()
 {
+    ofUnregisterMouseEvents(this);
     ofRemoveListener(ofEvents.draw, this, &Object::draw);
 }
 
 void Object::process()
 {
-    cout << "process from Object()\n";
 }
 
-void Object::draw(ofEventArgs & args)
+void Object::basedraw(ofEventArgs & args)
 {
-    ofSetColor(255,230,0,255);
+    if(inside(mouseX, mouseY))
+    {
+        ofSetColor(255,240,0,255);
+    }
+    else
+    {
+        ofSetColor(255,180,0,255);
+    }
     ofRect(x,y,width,height);
     for(unsigned int j = 0; j < input.size(); j++)
     {
-        ofSetColor(80,80,80,255);
-        ofRect(x+(j*8),y,8,8);
         ofSetColor(255,230,0,255);
-        ofRect(x+(j*8),y,7,7);
+        ofRect(x+(j*16),y-16,15,15);
     }
     ofSetColor(0,0,0,255);
     ofDrawBitmapString(name, x+2, y+20);
     for(unsigned int j = 0; j < output.size(); j++)
     {
-        ofSetColor(80,80,80,255);
-        ofRect(x+(j*8),y+height-8,8,8);
         ofSetColor(255,230,0,255);
-        ofRect(x+(j*8),y+height-7,7,7);
+        ofRect(x+(j*16),y+height+1,15,15);
     }
+}
+
+void Object::draw(ofEventArgs & args)
+{
+    basedraw(args);
+}
+
+void Object::mouseMoved(ofMouseEventArgs & args)
+{
+    mouseX = args.x;
+    mouseY = args.y;
+}
+
+void Object::mousePressed(ofMouseEventArgs & args)
+{
+}
+
+void Object::mouseDragged(ofMouseEventArgs & args)
+{
+    if(inside(mouseX, mouseY))
+    {
+        x = args.x - (mouseX-x);
+        y = args.y - (mouseY-y);
+    }
+    mouseX = args.x;
+    mouseY = args.y;
+}
+
+void Object::mouseReleased(ofMouseEventArgs & args)
+{
 }

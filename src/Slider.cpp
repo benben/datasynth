@@ -19,7 +19,6 @@ Slider::Slider(float* _x, float* _y, string* _name, double* _val)
 
 Slider::~Slider()
 {
-    //dtor
 }
 
 void Slider::draw(ofEventArgs & args)
