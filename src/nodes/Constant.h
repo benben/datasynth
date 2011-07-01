@@ -11,7 +11,7 @@ class Constant : public Object
   public:
     Constant();
     ~Constant();
-    Slider slider;
+    Slider * slider;
     void process();
   protected:
   private:
