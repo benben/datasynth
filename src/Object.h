@@ -1,10 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include "ofMain.h"
-#include "boost/variant.hpp"
-
-typedef boost::variant<int, float, double> Type;
+#include "src/Pin.h"
 
 namespace ds {
 
@@ -20,8 +17,8 @@ class Object : public ofRectangle
         string name;
         string type;
 
-        vector<Type> input;
-        vector<Type> output;
+        vector<Pin*> input;
+        vector<Pin*> output;
         virtual void process();
         virtual void basedraw(ofEventArgs & args);
         virtual void draw(ofEventArgs & args);

@@ -14,6 +14,8 @@ Object::~Object()
 {
     ofUnregisterMouseEvents(this);
     ofRemoveListener(ofEvents.draw, this, &Object::draw);
+    input.clear();
+    output.clear();
 }
 
 void Object::process()
@@ -31,18 +33,18 @@ void Object::basedraw(ofEventArgs & args)
         ofSetColor(255,180,0,255);
     }
     ofRect(x,y,width,height);
-    for(unsigned int j = 0; j < input.size(); j++)
+    ofSetColor(0,0,0,255);
+    ofDrawBitmapString(name, x+2, y+20);
+    /*for(unsigned int j = 0; j < input.size(); j++)
     {
         ofSetColor(255,230,0,255);
         ofRect(x+(j*16),y-16,15,15);
     }
-    ofSetColor(0,0,0,255);
-    ofDrawBitmapString(name, x+2, y+20);
     for(unsigned int j = 0; j < output.size(); j++)
     {
         ofSetColor(255,230,0,255);
         ofRect(x+(j*16),y+height+1,15,15);
-    }
+    }*/
 }
 
 void Object::draw(ofEventArgs & args)

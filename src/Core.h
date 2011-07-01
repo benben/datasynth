@@ -1,15 +1,15 @@
 #pragma once
 
+#include <boost/foreach.hpp>
+#include <boost/function.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/spirit/include/phoenix.hpp>
+
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
 #include "src/Menu.h"
 #include "src/Connection.h"
 #include "src/Nodes.h"
-
-#include <boost/foreach.hpp>
-#include <boost/function.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/spirit/include/phoenix.hpp>
 
 //typedef boost::variant<ds::Constant, ds::Multiply> ObjectType;
 typedef boost::shared_ptr<ds::Object> ObjectPtr;

@@ -37,21 +37,10 @@ void Core::createObject(entry & args)
             temp->type = (string)XMLObjects.getAttribute("OBJECT","TYPE", "", i);
             temp->x = Menu::Get()->x;
             temp->y = Menu::Get()->y;
-            XMLObjects.pushTag("OBJECT",i);
-
-            /*if(temp->output.size() >= temp->input.size())
-            {
-                temp->width = (temp->output.size() * 10) + 50;
-            }
-            else
-            {
-                temp->width = (temp->input.size() * 10) + 50;
-            } */
             temp->width = 150;
             temp->height = 30;
             objects.push_back(temp);
             printf("\n");
-            XMLObjects.popTag();
         }
     }
 }

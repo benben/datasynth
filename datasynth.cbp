@@ -9,7 +9,7 @@
 		<Option virtualFolders="addons/;src/;build config/;src/nodes/;" />
 		<MakeCommands>
 			<Build command="$make -j2 -f $makefile $target" />
-			<CompileFile command="$make -f $makefile $file" />
+			<CompileFile command="$make -j2 -f $makefile $file" />
 			<Clean command="$make -f $makefile clean$target" />
 			<DistClean command="$make -f $makefile distclean$target" />
 			<AskRebuildNeeded command="$make -j2 -q -f $makefile $target" />
@@ -63,6 +63,12 @@
 			<Option virtualFolder="src/" />
 		</Unit>
 		<Unit filename="src/Object.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/Pin.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/Pin.h">
 			<Option virtualFolder="src/" />
 		</Unit>
 		<Unit filename="src/Singleton.h">
