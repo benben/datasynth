@@ -2,6 +2,7 @@
 #define OBJECT_H
 
 #include "src/Pin.h"
+#include <boost/foreach.hpp>
 
 namespace ds {
 
@@ -13,6 +14,7 @@ class Object : public ofRectangle
 
         Object();
         virtual ~Object();
+        void basedelete();
 
         string name;
         string type;

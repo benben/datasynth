@@ -15,10 +15,28 @@ void Core::setup()
 //--------------------------------------------------------------
 void Core::update()
 {
+        //cout << "processing connections..." << endl;
+        for(unsigned int i = 0; i < connections.size(); i++)
+        {
+            if(connections[i]->bIsInvalid)
+            {
+                delete connections[i];
+                connections.erase(connections.begin()+i);
+            }
+            else
+            {
+                connections[i]->process();
+            }
+        }
+        //cout << "processing nodes..." << endl;
+        BOOST_FOREACH(ObjectPtr node, objects)
+            node->process();
+        //cout << "...finished!" << endl;
 }
 //--------------------------------------------------------------
 void Core::draw()
 {
+
 }
 //--------------------------------------------------------------
 void Core::createObject(entry & args)
@@ -53,10 +71,7 @@ void Core::keyReleased(int key)
 {
     if (key == ' ')
     {
-        cout << "processing..." << endl;
-        BOOST_FOREACH(ObjectPtr node, objects)
-            node->process();
-        cout << "...finished!" << endl;
+        cout << "test" << endl;
     }
 }
 //--------------------------------------------------------------
@@ -96,7 +111,7 @@ void Core::mousePressed(int x, int y, int button)
     {
         for(unsigned int i = 0; i < objects.size(); i++)
         {
-            if((x >= objects[i]->x) && (x <= objects[i]->x + objects[i]->width) && (y >= objects[i]->y) && (y <= objects[i]->y + objects[i]->height))
+            if(objects[i]->inside(x,y))
             {
                 objects.erase(objects.begin()+i);
                 break;
@@ -107,6 +122,33 @@ void Core::mousePressed(int x, int y, int button)
 //--------------------------------------------------------------
 void Core::mouseReleased(int x, int y, int button)
 {
+    Pin* in=0;
+    Pin* out=0;
+    for(unsigned int i = 0; i < objects.size(); i++)
+    {
+        for(unsigned int j = 0; j < objects[i]->input.size(); j++)
+        {
+            if(objects[i]->input[j]->bIsActive)
+            {
+                cout << "input active: " << i << " " << j << endl;
+                in = objects[i]->input[j];
+            }
+        }
+        for(unsigned int j = 0; j < objects[i]->output.size(); j++)
+        {
+            if(objects[i]->output[j]->bIsActive)
+            {
+                cout << "output active: " << i << " " << j << endl;
+                out = objects[i]->output[j];
+            }
+        }
+    }
+    if(in != NULL && out != NULL)
+    {
+        cout << "make connection!!!!" << endl;
+        //construct<ObjectPtr>(new_<ds::Constant>())
+        connections.push_back(new Connection(&out->x, &out->y, &in->x, &in->y, &out->value, &in->value, sizeof(in->value)));
+    }
 }
 //--------------------------------------------------------------
 void Core::windowResized(int w, int h)

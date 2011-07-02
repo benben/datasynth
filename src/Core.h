@@ -64,6 +64,7 @@ class Core : public ofBaseApp{
         Factory factory;
 
         vector <ObjectPtr> objects;
+        vector <Connection*> connections;
         ofxXmlSettings XMLObjects;
 };
 

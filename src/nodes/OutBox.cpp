@@ -9,11 +9,12 @@ OutBox::OutBox()
 
 OutBox::~OutBox()
 {
+    basedelete();
 }
 
 void OutBox::process()
 {
-    cout << "process from OutBox()\n";
+    //cout << "process from OutBox()\n";
     //cout << "output pin: " << output[0] << endl;
 }
 

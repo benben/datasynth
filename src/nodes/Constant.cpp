@@ -13,13 +13,14 @@ Constant::Constant()
 
 Constant::~Constant()
 {
+    basedelete();
     delete slider;
 }
 
 void Constant::process()
 {
-    cout << "process from Constant()\n";
-    cout << "output pin: " << output[0]->value << endl;
+    //cout << "process from Constant()\n";
+    //cout << "output pin: " << output[0]->value << endl;
 }
 
 void Constant::draw(ofEventArgs & args)
