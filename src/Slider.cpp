@@ -5,32 +5,33 @@ Slider::Slider(float* _x, float* _y, string* _name, double* _val)
     ofRegisterMouseEvents(this);
     ofAddListener(ofEvents.draw, this, &Slider::draw);
     val = _val;
-    namePtr = _name;
-    name = *namePtr;
+    name = _name;
     min = 0;
     max = 255;
-    parentXPtr = _x;
-    parentYPtr = _y;
-    b.x = *parentXPtr;
-    b.y = *parentYPtr;
+    x = _x;
+    y = _y;
+    b.x = *x;
+    b.y = *y;
     b.width = 200;
     b.height = 20;
 }
 
 Slider::~Slider()
 {
+    ofUnregisterMouseEvents(this);
+    ofRemoveListener(ofEvents.draw, this, &Slider::draw);
 }
 
 void Slider::draw(ofEventArgs & args)
 {
-    b.x = *parentXPtr;
-    b.y = *parentYPtr;
-    name = *namePtr;
+    b.x = *x;
+    b.y = *y;
+
     ofFill();
     ofSetColor(30, 30, 80);
     ofRect(b);
 
-    double valAsPct = ofMap( *val, min, max, 0, b.width, true );
+    double valAsPct = ofMap(*val, min, max, 0, b.width, true );
     ofEnableAlphaBlending();
     ofSetColor(180, 180, 180);
     ofRect(b.x+1, b.y+1, valAsPct-1, b.height-2);
@@ -39,7 +40,7 @@ void Slider::draw(ofEventArgs & args)
 
     float stringY = b.y + 14;
 
-    ofDrawBitmapString(name, b.x + 4, stringY);
+    ofDrawBitmapString(*name, b.x + 4, stringY);
     string valStr;
     valStr = ofToString(*val, 2);
     ofDrawBitmapString(valStr , (b.x + b.width) - 3 - valStr.length() * 8, stringY );
@@ -63,7 +64,7 @@ void Slider::mouseMoved(ofMouseEventArgs & args)
 
 void Slider::mousePressed(ofMouseEventArgs & args)
 {
-    setValue(args.x, args.y, true);
+   setValue(args.x, args.y, true);
 }
 
 void Slider::mouseDragged(ofMouseEventArgs & args)

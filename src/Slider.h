@@ -6,8 +6,8 @@
 class Slider
 {
     public:
-        Slider(float* _x , float* _y, string* name, double* _val);
-        virtual ~Slider();
+        Slider(float* _x, float* _y, string* _name, double* _val);
+        ~Slider();
         void draw(ofEventArgs & args);
         void setValue(float mx, float my, bool bCheck);
         virtual void mouseMoved(ofMouseEventArgs & args);
@@ -16,12 +16,11 @@ class Slider
         virtual void mouseReleased(ofMouseEventArgs & args);
 
         double* val;
+        float* x, * y;
         float min, max;
-        string name;
+        string* name;
         ofRectangle b;
 
-        float * parentXPtr, * parentYPtr;
-        string* namePtr;
     protected:
     private:
 };
