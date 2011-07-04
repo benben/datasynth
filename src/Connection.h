@@ -1,10 +1,11 @@
 #ifndef CONNECTION_H
 #define CONNECTION_H
 
-#include "src/Object.h"
+#include "src/Pin.h"
+
 namespace ds {
 
-class Connection : public Object
+class Connection
 {
   public:
     Connection(Pin * _out, Pin * _in);
@@ -13,6 +14,7 @@ class Connection : public Object
     Pin * out;
     void process();
     void draw(ofEventArgs & args);
+    void test(int & args);
 
     bool bIsInvalid;
   protected:

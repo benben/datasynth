@@ -13,7 +13,10 @@ class Pin : public ofRectangle
     public:
         Pin(Type _value);
         virtual ~Pin();
+
         Type value;
+
+        ofEvent<int> deleteEvent;
 
         float mouseX, mouseY;
         bool bMouseStartsOn, bMouseIsOn, bMouseEndsOn, bIsActive;

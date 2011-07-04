@@ -14,6 +14,9 @@ Pin::Pin(Type _value)
 
 Pin::~Pin()
 {
+    //notify event to connection
+    int x = 10;
+    ofNotifyEvent(deleteEvent,x,this);
     ofUnregisterMouseEvents(this);
     cout << "Pin killed!" << endl;
 }

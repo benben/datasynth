@@ -55,7 +55,7 @@ void Core::keyReleased(int key)
 {
     if (key == ' ')
     {
-                //cout << "processing connections..." << endl;
+        //cout << "processing connections..." << endl;
         for(unsigned int i = 0; i < connections.size(); i++)
         {
             if(connections[i]->bIsInvalid)

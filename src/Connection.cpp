@@ -4,15 +4,24 @@ using namespace ds;
 Connection::Connection(Pin * _out, Pin * _in)
 {
     cout << "creating connection..." << endl;
-    ofAddListener(ofEvents.draw, this, &Connection::draw);
     in = _in;
     out = _out;
+    ofAddListener(in->deleteEvent, this, &Connection::~Connection);
+    ofAddListener(out->deleteEvent, this, &Connection::test);
+    ofAddListener(ofEvents.draw, this, &Connection::draw);
     bIsInvalid = false;
+}
+
+void Connection::test(int & args)
+{
+    delete this;
 }
 
 Connection::~Connection()
 {
     cout << "removing connection" << endl;
+    ofRemoveListener(in->deleteEvent, this, &Connection::test);
+    ofRemoveListener(out->deleteEvent, this, &Connection::test);
     ofRemoveListener(ofEvents.draw, this, &Connection::draw);
 }
 
