@@ -77,7 +77,7 @@ void Object::basedelete()
 {
     ofUnregisterMouseEvents(this);
     ofRemoveListener(ofEvents.draw, this, &Object::draw);
-
+    cout << "calling basedelete!" << endl;
     BOOST_FOREACH(Pin* pin, input)
         delete pin;
     input.clear();

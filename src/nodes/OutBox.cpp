@@ -9,7 +9,6 @@ OutBox::OutBox()
 
 OutBox::~OutBox()
 {
-    basedelete();
 }
 
 void OutBox::process()

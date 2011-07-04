@@ -13,7 +13,6 @@ Constant::Constant()
 
 Constant::~Constant()
 {
-    basedelete();
     delete slider;
 }
 

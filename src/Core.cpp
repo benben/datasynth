@@ -15,23 +15,7 @@ void Core::setup()
 //--------------------------------------------------------------
 void Core::update()
 {
-        //cout << "processing connections..." << endl;
-        for(unsigned int i = 0; i < connections.size(); i++)
-        {
-            if(connections[i]->bIsInvalid)
-            {
-                delete connections[i];
-                connections.erase(connections.begin()+i);
-            }
-            else
-            {
-                connections[i]->process();
-            }
-        }
-        //cout << "processing nodes..." << endl;
-        BOOST_FOREACH(ObjectPtr node, objects)
-            node->process();
-        //cout << "...finished!" << endl;
+
 }
 //--------------------------------------------------------------
 void Core::draw()
@@ -71,7 +55,23 @@ void Core::keyReleased(int key)
 {
     if (key == ' ')
     {
-        cout << "test" << endl;
+                //cout << "processing connections..." << endl;
+        for(unsigned int i = 0; i < connections.size(); i++)
+        {
+            if(connections[i]->bIsInvalid)
+            {
+                delete connections[i];
+                connections.erase(connections.begin()+i);
+            }
+            else
+            {
+                connections[i]->process();
+            }
+        }
+        //cout << "processing nodes..." << endl;
+        BOOST_FOREACH(ObjectPtr node, objects)
+            node->process();
+        //cout << "...finished!" << endl;
     }
 }
 //--------------------------------------------------------------
@@ -145,9 +145,8 @@ void Core::mouseReleased(int x, int y, int button)
     }
     if(in != NULL && out != NULL)
     {
-        cout << "make connection!!!!" << endl;
-        //construct<ObjectPtr>(new_<ds::Constant>())
-        connections.push_back(new Connection(&out->x, &out->y, &in->x, &in->y, &out->value, &in->value, sizeof(in->value)));
+        cout << "make connection" << endl;
+        connections.push_back(new Connection(out, in));
     }
 }
 //--------------------------------------------------------------

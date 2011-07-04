@@ -15,6 +15,7 @@ Pin::Pin(Type _value)
 Pin::~Pin()
 {
     ofUnregisterMouseEvents(this);
+    cout << "Pin killed!" << endl;
 }
 
 void Pin::draw(float _x, float _y)

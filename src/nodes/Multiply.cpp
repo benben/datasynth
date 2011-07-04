@@ -10,7 +10,6 @@ Multiply::Multiply()
 
 Multiply::~Multiply()
 {
-    basedelete();
 }
 
 void Multiply::process()

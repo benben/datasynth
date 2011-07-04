@@ -1,17 +1,12 @@
 #include "Connection.h"
 using namespace ds;
 
-Connection::Connection(float* _outX, float* _outY, float* _inX, float* _inY, void * _in, void * _out, unsigned long _size)
+Connection::Connection(Pin * _out, Pin * _in)
 {
     cout << "creating connection..." << endl;
     ofAddListener(ofEvents.draw, this, &Connection::draw);
     in = _in;
     out = _out;
-    size = _size;
-    outXPtr = _outX;
-    outYPtr = _outY;
-    inXPtr = _inX;
-    inYPtr = _inY;
     bIsInvalid = false;
 }
 
@@ -23,16 +18,11 @@ Connection::~Connection()
 
 void Connection::process()
 {
-    memcpy(out,in,size);
-    //cout << "processing from connection..." << endl;
+    memcpy(&in->value,&out->value,sizeof(in->value));
 }
 
 void Connection::draw(ofEventArgs & args)
 {
-    startX = *outXPtr;
-    startY = *outYPtr;
-    endX = *inXPtr;
-    endY = *inYPtr;
     ofSetColor(255,255,255,255);
-    ofLine(startX+7, startY+7, endX+7, endY+7);
+    ofLine(out->x+7, out->y+7, in->x+7, in->y+7);
 }
