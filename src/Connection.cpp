@@ -6,7 +6,7 @@ Connection::Connection(Pin * _out, Pin * _in)
     cout << "creating connection..." << endl;
     in = _in;
     out = _out;
-    ofAddListener(in->deleteEvent, this, &Connection::~Connection);
+    ofAddListener(in->deleteEvent, this, &Connection::test);
     ofAddListener(out->deleteEvent, this, &Connection::test);
     ofAddListener(ofEvents.draw, this, &Connection::draw);
     bIsInvalid = false;
