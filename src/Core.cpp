@@ -1,6 +1,6 @@
 #include "Core.h"
 
-bool test(ConnectionPtr val)
+bool connectionIsValid(ConnectionPtr val)
 {
     return val->bIsInvalid;
 }
@@ -115,12 +115,7 @@ void Core::mousePressed(int x, int y, int button)
             }
         }
         //delete all connections to this node
-        cout << "size: " << connections.size() << endl;
-
-        connections.erase( remove_if(connections.begin(), connections.end(),test) , connections.end() );
-
-
-
+        connections.erase( remove_if(connections.begin(), connections.end(),connectionIsValid) , connections.end() );
     }
 }
 //--------------------------------------------------------------
