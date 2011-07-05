@@ -11,16 +11,22 @@ namespace ds {
 class Pin : public ofRectangle
 {
     public:
-        Pin(Type _value);
+        Pin(Type _value, int _maxConnections=0);
         virtual ~Pin();
 
         Type value;
+
+        int connections;
+        int maxConnections;
+        bool isFree();
 
         ofEvent<int> deleteEvent;
 
         float mouseX, mouseY;
         bool bMouseStartsOn, bMouseIsOn, bMouseEndsOn, bIsActive;
         void draw(float x, float y);
+        void addConnection();
+        void removeConnection();
         virtual void mouseMoved(ofMouseEventArgs & args);
         virtual void mousePressed(ofMouseEventArgs & args);
         virtual void mouseDragged(ofMouseEventArgs & args);

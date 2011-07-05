@@ -1,6 +1,6 @@
 #include "Core.h"
 
-bool connectionIsValid(ConnectionPtr val)
+bool connectionIsInvalid(ConnectionPtr val)
 {
     return val->bIsInvalid;
 }
@@ -111,7 +111,7 @@ void Core::mousePressed(int x, int y, int button)
             }
         }
         //delete all connections to this node
-        connections.erase( remove_if(connections.begin(), connections.end(),connectionIsValid) , connections.end() );
+        connections.erase( remove_if(connections.begin(), connections.end(),connectionIsInvalid) , connections.end() );
     }
 }
 //--------------------------------------------------------------
@@ -125,8 +125,15 @@ void Core::mouseReleased(int x, int y, int button)
         {
             if(nodes[i]->input[j]->bIsActive)
             {
-                cout << "input active: " << i << " " << j << endl;
-                in = nodes[i]->input[j];
+                if(nodes[i]->input[j]->isFree())
+                {
+                    cout << "input active: " << i << " " << j << endl;
+                    in = nodes[i]->input[j];
+                }
+                else
+                {
+                    cout << "too many connections on input pin: " << i << " " << j << endl;
+                }
             }
         }
         for(unsigned int j = 0; j < nodes[i]->output.size(); j++)

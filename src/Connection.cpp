@@ -6,6 +6,8 @@ Connection::Connection(Pin * _out, Pin * _in)
     cout << "creating connection..." << endl;
     in = _in;
     out = _out;
+    in->addConnection();
+    out->addConnection();
     ofAddListener(in->deleteEvent, this, &Connection::setInvalid);
     ofAddListener(out->deleteEvent, this, &Connection::setInvalid);
     ofAddListener(ofEvents.draw, this, &Connection::draw);
@@ -21,6 +23,8 @@ void Connection::setInvalid(int & args)
 Connection::~Connection()
 {
     cout << "removing connection" << endl;
+    in->removeConnection();
+    out->removeConnection();
     ofRemoveListener(ofEvents.draw, this, &Connection::draw);
 }
 

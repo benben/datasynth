@@ -7,7 +7,7 @@ OutBox::OutBox(float _x, float _y, string _name)
     x = _x;
     y = _y;
     name = _name;
-    input.push_back(new Pin(0.0));
+    input.push_back(new Pin(0.0, 1));
 }
 
 OutBox::~OutBox()
@@ -17,7 +17,6 @@ OutBox::~OutBox()
 void OutBox::process()
 {
     //cout << "process from OutBox()\n";
-    //cout << "output pin: " << output[0] << endl;
 }
 
 void OutBox::draw(ofEventArgs & args)

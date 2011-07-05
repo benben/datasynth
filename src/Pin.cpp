@@ -2,9 +2,11 @@
 
 using namespace ds;
 
-Pin::Pin(Type _value)
+Pin::Pin(Type _value, int _maxConnections)
 {
     ofRegisterMouseEvents(this);
+    connections = 0;
+    maxConnections = _maxConnections;
     value = _value;
     mouseX = 0;
     mouseY = 0;
@@ -19,6 +21,35 @@ Pin::~Pin()
     ofNotifyEvent(deleteEvent,x,this);
     ofUnregisterMouseEvents(this);
     cout << "Pin killed!" << endl;
+}
+
+bool Pin::isFree()
+{
+    if(maxConnections != 0)
+    {
+        if(connections < maxConnections)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return true;
+    }
+}
+
+void Pin::addConnection()
+{
+    connections++;
+}
+
+void Pin::removeConnection()
+{
+    connections--;
 }
 
 void Pin::draw(float _x, float _y)
