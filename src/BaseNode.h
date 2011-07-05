@@ -13,11 +13,11 @@ class BaseNode : public ofRectangle
         BaseNode& operator=(const BaseNode&);
 
         BaseNode();
+        //BaseNode(float _x, float _y, string _name);
         virtual ~BaseNode();
         void basedelete();
 
         string name;
-        string type;
 
         vector<Pin*> input;
         vector<Pin*> output;

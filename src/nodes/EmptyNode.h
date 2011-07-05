@@ -8,7 +8,7 @@ namespace ds {
 class EmptyNode : public BaseNode
 {
   public:
-    EmptyNode();
+    EmptyNode(float _x, float _y, string _name);
     ~EmptyNode();
     void process();
     void draw(ofEventArgs & args);

@@ -37,12 +37,8 @@ void Core::createNode(entry & args)
             printf("\ttype:\t%s!\n", XMLObjects.getAttribute("OBJECT","TYPE", "", i).c_str());
 
             //create objects here
-            NodePtr temp = factory(XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str());
+            NodePtr temp = factory(XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str(), Menu::Get()->x, Menu::Get()->y, XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str());
 
-            temp->name = (string)XMLObjects.getAttribute("OBJECT","NAME", "", i);
-            temp->type = (string)XMLObjects.getAttribute("OBJECT","TYPE", "", i);
-            temp->x = Menu::Get()->x;
-            temp->y = Menu::Get()->y;
             temp->width = 150;
             temp->height = 30;
             nodes.push_back(temp);

@@ -1,8 +1,11 @@
 #include "Multiply.h"
 using namespace ds;
 
-Multiply::Multiply()
+Multiply::Multiply(float _x, float _y, string _name)
 {
+    x = _x;
+    y = _y;
+    name = _name;
     input.push_back(new Pin(0.0));
     input.push_back(new Pin(0.0));
     output.push_back(new Pin(0.0));

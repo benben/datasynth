@@ -1,9 +1,12 @@
 #include "OutBox.h"
 using namespace ds;
 
-OutBox::OutBox()
+OutBox::OutBox(float _x, float _y, string _name)
 {
     //set inputs and outputs to initial values here
+    x = _x;
+    y = _y;
+    name = _name;
     input.push_back(new Pin(0.0));
 }
 

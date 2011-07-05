@@ -21,22 +21,23 @@ struct bad_type_exception : std::exception {
 
 struct Factory {
 
-    typedef std::map<std::string, boost::function<NodePtr()> > FactoryMap;
+    typedef std::map<std::string, boost::function<NodePtr(float, float, string)> > FactoryMap;
     FactoryMap f;
 
     Factory() {
         using boost::phoenix::new_;
         using boost::phoenix::construct;
-        f["Constant"] = construct<NodePtr>(new_<ds::Constant>());
-        f["Multiply"] = construct<NodePtr>(new_<ds::Multiply>());
-        f["OutBox"] = construct<NodePtr>(new_<ds::OutBox>());
+        using namespace boost::phoenix::arg_names;
+        f["Constant"] = construct<NodePtr>(new_<ds::Constant>(arg1, arg2, arg3));
+        f["Multiply"] = construct<NodePtr>(new_<ds::Multiply>(arg1, arg2, arg3));
+        f["OutBox"] = construct<NodePtr>(new_<ds::OutBox>(arg1, arg2, arg3));
         // ...
     }
 
-    NodePtr operator()(std::string const & type) const {
+    NodePtr operator()(std::string const & type, float x, float y, string name) const {
         FactoryMap::const_iterator it = f.find(type);
         if (it == f.end()) throw bad_type_exception();
-        return it->second();
+        return it->second(x, y, name);
     }
 };
 

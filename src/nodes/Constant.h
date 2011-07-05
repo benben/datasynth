@@ -9,7 +9,7 @@ namespace ds {
 class Constant : public BaseNode
 {
   public:
-    Constant();
+    Constant(float _x, float _y, string _name);
     ~Constant();
     Slider* slider;
     void process();
