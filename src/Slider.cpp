@@ -1,6 +1,6 @@
 #include "Slider.h"
 
-Slider::Slider(float* _x, float* _y, string* _name, double* _val)
+Slider::Slider(float* _x, float* _y, string _name, double* _val)
 {
     ofRegisterMouseEvents(this);
     ofAddListener(ofEvents.draw, this, &Slider::draw);
@@ -40,7 +40,7 @@ void Slider::draw(ofEventArgs & args)
 
     float stringY = b.y + 14;
 
-    ofDrawBitmapString(*name, b.x + 4, stringY);
+    ofDrawBitmapString(name, b.x + 4, stringY);
     string valStr;
     valStr = ofToString(*val, 2);
     ofDrawBitmapString(valStr , (b.x + b.width) - 3 - valStr.length() * 8, stringY );

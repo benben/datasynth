@@ -7,8 +7,7 @@ Constant::Constant(float _x, float _y, string _name)
     x = _x;
     y = _y;
     name = _name;
-    //TODO: remove this stupid reference to the name, since this is set only once (when factory is working with init vars... :) )
-    slider = new Slider(&x, &y, &name, &boost::get<double>(output[0]->value));
+    slider = new Slider(&x, &y, name, &boost::get<double>(output[0]->value));
 }
 
 Constant::~Constant()
