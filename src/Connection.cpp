@@ -6,22 +6,21 @@ Connection::Connection(Pin * _out, Pin * _in)
     cout << "creating connection..." << endl;
     in = _in;
     out = _out;
-    ofAddListener(in->deleteEvent, this, &Connection::test);
-    ofAddListener(out->deleteEvent, this, &Connection::test);
+    ofAddListener(in->deleteEvent, this, &Connection::setInvalid);
+    ofAddListener(out->deleteEvent, this, &Connection::setInvalid);
     ofAddListener(ofEvents.draw, this, &Connection::draw);
     bIsInvalid = false;
 }
 
-void Connection::test(int & args)
+void Connection::setInvalid(int & args)
 {
-    delete this;
+    cout << "setting bIsInvalid to true..." << endl;
+    bIsInvalid = true;
 }
 
 Connection::~Connection()
 {
     cout << "removing connection" << endl;
-    ofRemoveListener(in->deleteEvent, this, &Connection::test);
-    ofRemoveListener(out->deleteEvent, this, &Connection::test);
     ofRemoveListener(ofEvents.draw, this, &Connection::draw);
 }
 

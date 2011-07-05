@@ -1,11 +1,11 @@
 #ifndef OUTBOX_H
 #define OUTBOX_H
 
-#include "src/Object.h"
+#include "src/BaseNode.h"
 
 namespace ds {
 
-class OutBox : public Object
+class OutBox : public BaseNode
 {
   public:
     OutBox();

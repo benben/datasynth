@@ -1,25 +1,25 @@
-#include "Object.h"
+#include "BaseNode.h"
 
 using namespace ds;
 
-Object::Object()
+BaseNode::BaseNode()
 {
     ofRegisterMouseEvents(this);
-    ofAddListener(ofEvents.draw, this, &Object::draw);
+    ofAddListener(ofEvents.draw, this, &BaseNode::draw);
     mouseX = 0;
     mouseY = 0;
 }
 
-Object::~Object()
+BaseNode::~BaseNode()
 {
     basedelete();
 }
 
-void Object::process()
+void BaseNode::process()
 {
 }
 
-void Object::basedraw(ofEventArgs & args)
+void BaseNode::basedraw(ofEventArgs & args)
 {
     if(inside(mouseX, mouseY))
     {
@@ -43,22 +43,22 @@ void Object::basedraw(ofEventArgs & args)
     ofSetColor(0,0,0,255);
 }
 
-void Object::draw(ofEventArgs & args)
+void BaseNode::draw(ofEventArgs & args)
 {
     basedraw(args);
 }
 
-void Object::mouseMoved(ofMouseEventArgs & args)
+void BaseNode::mouseMoved(ofMouseEventArgs & args)
 {
     mouseX = args.x;
     mouseY = args.y;
 }
 
-void Object::mousePressed(ofMouseEventArgs & args)
+void BaseNode::mousePressed(ofMouseEventArgs & args)
 {
 }
 
-void Object::mouseDragged(ofMouseEventArgs & args)
+void BaseNode::mouseDragged(ofMouseEventArgs & args)
 {
     if(inside(mouseX, mouseY))
     {
@@ -69,14 +69,14 @@ void Object::mouseDragged(ofMouseEventArgs & args)
     mouseY = args.y;
 }
 
-void Object::mouseReleased(ofMouseEventArgs & args)
+void BaseNode::mouseReleased(ofMouseEventArgs & args)
 {
 }
 
-void Object::basedelete()
+void BaseNode::basedelete()
 {
     ofUnregisterMouseEvents(this);
-    ofRemoveListener(ofEvents.draw, this, &Object::draw);
+    ofRemoveListener(ofEvents.draw, this, &BaseNode::draw);
     cout << "calling basedelete!" << endl;
     BOOST_FOREACH(Pin* pin, input)
         delete pin;

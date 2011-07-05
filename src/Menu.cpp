@@ -85,14 +85,14 @@ void Menu::click(ofMouseEventArgs & args)
                     if(entries[i].name == XMLObjects.getAttribute("OBJECT","NAME", "", j))
                     {
                         //printf("try to create object %s...\n",entries[i].name.c_str());
-                        ofNotifyEvent(newObjectEvent,entries[i],this);
+                        ofNotifyEvent(newNodeEvent,entries[i],this);
                     }
                 }
             }
         }
     }
     //toggle
-    if(args.button == 2 && !bMouseIsOnObject)
+    if(args.button == 2 && !bMouseIsOnNode)
     {
         x = mouseX;
         y = mouseY;

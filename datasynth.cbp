@@ -38,6 +38,12 @@
 		<Unit filename="config.make">
 			<Option virtualFolder="build config" />
 		</Unit>
+		<Unit filename="src/BaseNode.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/BaseNode.h">
+			<Option virtualFolder="src/" />
+		</Unit>
 		<Unit filename="src/Connection.cpp">
 			<Option virtualFolder="src/" />
 		</Unit>
@@ -57,12 +63,6 @@
 			<Option virtualFolder="src/" />
 		</Unit>
 		<Unit filename="src/Nodes.h">
-			<Option virtualFolder="src/" />
-		</Unit>
-		<Unit filename="src/Object.cpp">
-			<Option virtualFolder="src/" />
-		</Unit>
-		<Unit filename="src/Object.h">
 			<Option virtualFolder="src/" />
 		</Unit>
 		<Unit filename="src/Pin.cpp">

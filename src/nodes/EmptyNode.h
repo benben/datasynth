@@ -1,11 +1,11 @@
 #ifndef EMPTYNODE_H
 #define EMPTYNODE_H
 
-#include "src/Object.h"
+#include "src/BaseNode.h"
 
 namespace ds {
 
-class EmptyNode : public Object
+class EmptyNode : public BaseNode
 {
   public:
     EmptyNode();

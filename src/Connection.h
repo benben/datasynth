@@ -14,7 +14,7 @@ class Connection
     Pin * out;
     void process();
     void draw(ofEventArgs & args);
-    void test(int & args);
+    void setInvalid(int & args);
 
     bool bIsInvalid;
   protected:

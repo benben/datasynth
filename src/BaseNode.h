@@ -1,19 +1,19 @@
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef BASENODE_H
+#define BASENODE_H
 
 #include "src/Pin.h"
 #include <boost/foreach.hpp>
 
 namespace ds {
 
-class Object : public ofRectangle
+class BaseNode : public ofRectangle
 {
     public:
-        Object(const Object&); //prevent copying
-        Object& operator=(const Object&);
+        BaseNode(const BaseNode&); //prevent copying
+        BaseNode& operator=(const BaseNode&);
 
-        Object();
-        virtual ~Object();
+        BaseNode();
+        virtual ~BaseNode();
         void basedelete();
 
         string name;
@@ -35,4 +35,4 @@ class Object : public ofRectangle
 };
 
 }
-#endif // OBJECT_H
+#endif // BASENODE_H

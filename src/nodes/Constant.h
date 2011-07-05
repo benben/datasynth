@@ -1,12 +1,12 @@
 #ifndef CONSTANT_H
 #define CONSTANT_H
 
-#include "src/Object.h"
+#include "src/BaseNode.h"
 #include "src/Slider.h"
 
 namespace ds {
 
-class Constant : public Object
+class Constant : public BaseNode
 {
   public:
     Constant();

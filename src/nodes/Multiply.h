@@ -1,10 +1,10 @@
 #ifndef MULTIPLY_H
 #define MULTIPLY_H
 
-#include "src/Object.h"
+#include "src/BaseNode.h"
 namespace ds {
 
-class Multiply : public Object
+class Multiply : public BaseNode
 {
   public:
     Multiply();

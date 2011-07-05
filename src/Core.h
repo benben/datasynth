@@ -12,7 +12,8 @@
 #include "src/Nodes.h"
 
 //typedef boost::variant<ds::Constant, ds::Multiply> ObjectType;
-typedef boost::shared_ptr<ds::Object> ObjectPtr;
+typedef boost::shared_ptr<ds::BaseNode> NodePtr;
+typedef boost::shared_ptr<ds::Connection> ConnectionPtr;
 
 struct bad_type_exception : std::exception {
     char const * what() const throw() { return "No such class!"; }
@@ -20,19 +21,19 @@ struct bad_type_exception : std::exception {
 
 struct Factory {
 
-    typedef std::map<std::string, boost::function<ObjectPtr()> > FactoryMap;
+    typedef std::map<std::string, boost::function<NodePtr()> > FactoryMap;
     FactoryMap f;
 
     Factory() {
         using boost::phoenix::new_;
         using boost::phoenix::construct;
-        f["Constant"] = construct<ObjectPtr>(new_<ds::Constant>());
-        f["Multiply"] = construct<ObjectPtr>(new_<ds::Multiply>());
-        f["OutBox"] = construct<ObjectPtr>(new_<ds::OutBox>());
+        f["Constant"] = construct<NodePtr>(new_<ds::Constant>());
+        f["Multiply"] = construct<NodePtr>(new_<ds::Multiply>());
+        f["OutBox"] = construct<NodePtr>(new_<ds::OutBox>());
         // ...
     }
 
-    ObjectPtr operator()(std::string const & type) const {
+    NodePtr operator()(std::string const & type) const {
         FactoryMap::const_iterator it = f.find(type);
         if (it == f.end()) throw bad_type_exception();
         return it->second();
@@ -59,12 +60,12 @@ class Core : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		void createObject(entry & args);
+		void createNode(entry & args);
 
         Factory factory;
 
-        vector <ObjectPtr> objects;
-        vector <Connection*> connections;
+        vector <NodePtr> nodes;
+        vector <ConnectionPtr> connections;
         ofxXmlSettings XMLObjects;
 };
 

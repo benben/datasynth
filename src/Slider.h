@@ -1,7 +1,7 @@
 #ifndef SLIDER_H
 #define SLIDER_H
 
-#include "src/Object.h"
+#include "src/BaseNode.h"
 
 class Slider
 {

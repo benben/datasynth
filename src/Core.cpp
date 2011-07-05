@@ -1,5 +1,10 @@
 #include "Core.h"
 
+bool test(ConnectionPtr val)
+{
+    return val->bIsInvalid;
+}
+
 using namespace ds;
 
 //--------------------------------------------------------------
@@ -9,13 +14,12 @@ void Core::setup()
     ofBackground(80);
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
-    ofAddListener(Menu::Get()->newObjectEvent, this, &Core::createObject);
+    ofAddListener(Menu::Get()->newNodeEvent, this, &Core::createNode);
     cout << "setup finished" << endl;
 }
 //--------------------------------------------------------------
 void Core::update()
 {
-
 }
 //--------------------------------------------------------------
 void Core::draw()
@@ -23,7 +27,7 @@ void Core::draw()
 
 }
 //--------------------------------------------------------------
-void Core::createObject(entry & args)
+void Core::createNode(entry & args)
 {
     for(int i = 0; i < XMLObjects.getNumTags("OBJECT"); i++)
     {
@@ -33,7 +37,7 @@ void Core::createObject(entry & args)
             printf("\ttype:\t%s!\n", XMLObjects.getAttribute("OBJECT","TYPE", "", i).c_str());
 
             //create objects here
-            ObjectPtr temp = factory(XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str());
+            NodePtr temp = factory(XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str());
 
             temp->name = (string)XMLObjects.getAttribute("OBJECT","NAME", "", i);
             temp->type = (string)XMLObjects.getAttribute("OBJECT","TYPE", "", i);
@@ -41,7 +45,7 @@ void Core::createObject(entry & args)
             temp->y = Menu::Get()->y;
             temp->width = 150;
             temp->height = 30;
-            objects.push_back(temp);
+            nodes.push_back(temp);
             printf("\n");
         }
     }
@@ -55,33 +59,25 @@ void Core::keyReleased(int key)
 {
     if (key == ' ')
     {
-        //cout << "processing connections..." << endl;
+        cout << "processing connections..." << endl;
         for(unsigned int i = 0; i < connections.size(); i++)
         {
-            if(connections[i]->bIsInvalid)
-            {
-                delete connections[i];
-                connections.erase(connections.begin()+i);
-            }
-            else
-            {
-                connections[i]->process();
-            }
+            connections[i]->process();
         }
-        //cout << "processing nodes..." << endl;
-        BOOST_FOREACH(ObjectPtr node, objects)
+        cout << "processing nodes..." << endl;
+        BOOST_FOREACH(NodePtr node, nodes)
             node->process();
-        //cout << "...finished!" << endl;
+        cout << "...finished!" << endl;
     }
 }
 //--------------------------------------------------------------
 void Core::mouseMoved(int x, int y )
 {
     bool temp = false;
-    //check if mouse is over an object
-    for(unsigned int i = 0; i < objects.size(); i++)
+    //check if mouse is over an node
+    for(unsigned int i = 0; i < nodes.size(); i++)
     {
-        if((x >= objects[i]->x) && (x <= objects[i]->x + objects[i]->width) && (y >= objects[i]->y) && (y <= objects[i]->y + objects[i]->height))
+        if(nodes[i]->inside(x,y))
         {
             temp = true;
             break;
@@ -93,11 +89,11 @@ void Core::mouseMoved(int x, int y )
     }
     if(temp)
     {
-        Menu::Get()->bMouseIsOnObject = true;
+        Menu::Get()->bMouseIsOnNode = true;
     }
     else
     {
-        Menu::Get()->bMouseIsOnObject = false;
+        Menu::Get()->bMouseIsOnNode = false;
     }
 }
 //--------------------------------------------------------------
@@ -109,14 +105,22 @@ void Core::mousePressed(int x, int y, int button)
 {
     if(button == 2)
     {
-        for(unsigned int i = 0; i < objects.size(); i++)
+        for(unsigned int i = 0; i < nodes.size(); i++)
         {
-            if(objects[i]->inside(x,y))
+            if(nodes[i]->inside(x,y))
             {
-                objects.erase(objects.begin()+i);
+                //delete the node
+                nodes.erase(nodes.begin()+i);
                 break;
             }
         }
+        //delete all connections to this node
+        cout << "size: " << connections.size() << endl;
+
+        connections.erase( remove_if(connections.begin(), connections.end(),test) , connections.end() );
+
+
+
     }
 }
 //--------------------------------------------------------------
@@ -124,29 +128,30 @@ void Core::mouseReleased(int x, int y, int button)
 {
     Pin* in=0;
     Pin* out=0;
-    for(unsigned int i = 0; i < objects.size(); i++)
+    for(unsigned int i = 0; i < nodes.size(); i++)
     {
-        for(unsigned int j = 0; j < objects[i]->input.size(); j++)
+        for(unsigned int j = 0; j < nodes[i]->input.size(); j++)
         {
-            if(objects[i]->input[j]->bIsActive)
+            if(nodes[i]->input[j]->bIsActive)
             {
                 cout << "input active: " << i << " " << j << endl;
-                in = objects[i]->input[j];
+                in = nodes[i]->input[j];
             }
         }
-        for(unsigned int j = 0; j < objects[i]->output.size(); j++)
+        for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
         {
-            if(objects[i]->output[j]->bIsActive)
+            if(nodes[i]->output[j]->bIsActive)
             {
                 cout << "output active: " << i << " " << j << endl;
-                out = objects[i]->output[j];
+                out = nodes[i]->output[j];
             }
         }
     }
     if(in != NULL && out != NULL)
     {
         cout << "make connection" << endl;
-        connections.push_back(new Connection(out, in));
+        ConnectionPtr val(new Connection(out, in));
+        connections.push_back(val);
     }
 }
 //--------------------------------------------------------------
@@ -164,5 +169,5 @@ void Core::dragEvent(ofDragInfo dragInfo)
 //--------------------------------------------------------------
 void Core::exit()
 {
-    ofRemoveListener(Menu::Get()->newObjectEvent, this, &Core::createObject);
+    ofRemoveListener(Menu::Get()->newNodeEvent, this, &Core::createNode);
 }

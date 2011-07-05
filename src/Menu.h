@@ -28,14 +28,14 @@ class Menu : public TSingleton<Menu>
         void updateMouse(ofMouseEventArgs & args);
 
         bool mouseIsOn(ofRectangle _box);
-        bool bMouseIsOnObject;
+        bool bMouseIsOnNode;
 
         ofxXmlSettings XML;
         ofxXmlSettings XMLObjects;
         vector <entry> entries;
         int x, y, mouseX, mouseY;
 
-        ofEvent<entry> newObjectEvent;
+        ofEvent<entry> newNodeEvent;
     protected:
     private:
 };
