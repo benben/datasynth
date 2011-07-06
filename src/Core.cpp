@@ -12,6 +12,7 @@ void Core::setup()
 {
     cout << "setup started" << endl;
     ofBackground(80);
+    ofSetFrameRate(60);
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
     ofAddListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
@@ -20,20 +21,81 @@ void Core::setup()
 //--------------------------------------------------------------
 void Core::update()
 {
-        //cout << "processing connections..." << endl;
+        /*int n = 0;
+        int ip = 0;
+        int op = 0;
+        int c = 0;
+        for(unsigned int i = 0; i < nodes.size(); i++)
+        {
+            n++;
+            for(unsigned int j = 0; j < nodes[i]->input.size(); j++)
+            {
+                ip++;
+            }
+            for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
+            {
+                op++;
+            }
+
+        }
+        for(unsigned int i = 0; i < connections.size(); i++)
+        {
+            c++;
+        }
+        cout << "n: " << n << " ip: " << ip << " op: " << op << " c: " << c << endl;*/
+        cout << "processing connections..." << endl;
         for(unsigned int i = 0; i < connections.size(); i++)
         {
             connections[i]->process();
         }
-        //cout << "processing nodes..." << endl;
+        cout << "processing nodes..." << endl;
         BOOST_FOREACH(NodePtr node, nodes)
             node->process();
-        //cout << "...finished!" << endl;
+        cout << "...finished!" << endl;
 }
 //--------------------------------------------------------------
 void Core::draw()
 {
+    ofSetColor(255,255,255,255);
+    ofDrawBitmapString(ofToString(ofGetFrameRate()), 20, 20);
+}
+//--------------------------------------------------------------
+void Core::save()
+{
+    saveXml.clear();
+    for(unsigned int i = 0; i < nodes.size(); i++)
+    {
+        cout << "saving node..." << endl;
+        saveXml.addTag("NODE");
+        saveXml.addAttribute("NODE", "NAME", nodes[i]->name, i);
+        saveXml.addAttribute("NODE", "TYPE", nodes[i]->type, i);
+        saveXml.addAttribute("NODE", "X", nodes[i]->x, i);
+        saveXml.addAttribute("NODE", "Y", nodes[i]->y, i);
+        saveXml.pushTag("NODE", i);
+        for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
+        {
+            saveXml.addTag("PIN");
+            saveXml.addAttribute("PIN", "VALUE", boost::get<double>(nodes[i]->output[i]->value), j);
+        }
+        saveXml.popTag();
+    }
+    saveXml.saveFile("default.xml");
+}
+//--------------------------------------------------------------
+void Core::load()
+{
+    nodes.erase(nodes.begin(),nodes.end());
+    loadXml.clear();
+    loadXml.loadFile("default.xml");
+    for(int i = 0; i < loadXml.getNumTags("NODE"); i++)
+    {
+        NodePtr temp = factory(loadXml.getAttribute("NODE","TYPE", "", i).c_str(), ofToFloat(loadXml.getAttribute("NODE","X", "", i).c_str()), ofToFloat(loadXml.getAttribute("NODE","Y", "", i).c_str()), loadXml.getAttribute("NODE","NAME", "", i).c_str());
+        temp->type = loadXml.getAttribute("NODE","TYPE", "", i).c_str();
+        temp->width = 150;
+        temp->height = 30;
 
+        nodes.push_back(temp);
+    }
 }
 //--------------------------------------------------------------
 void Core::handleMenuEvent(menuEventType & args)
@@ -44,14 +106,15 @@ void Core::handleMenuEvent(menuEventType & args)
         cout << "creating a node '"<< args.value << "' of type " << args.valueType << endl;
         //create nodes here
         NodePtr temp = factory(args.valueType, Menu::Get()->x, Menu::Get()->y, args.value);
+        temp->type = args.valueType;
         temp->width = 150;
         temp->height = 30;
         nodes.push_back(temp);
-        printf("\n");
     }
     else if(args.handler == "Save")
     {
         cout << "saving..." << endl;
+        save();
     }
     else if(args.handler == "SaveAs")
     {
@@ -60,6 +123,7 @@ void Core::handleMenuEvent(menuEventType & args)
     else if(args.handler == "Load")
     {
         cout << "loading..." << endl;
+        load();
     }
 }
 //--------------------------------------------------------------

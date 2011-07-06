@@ -23,5 +23,5 @@ void EmptyNode::process()
 void EmptyNode::draw(ofEventArgs & args)
 {
     //leave this if you wanna draw the basic shapes
-    basedraw(args);
+    basedraw();
 }

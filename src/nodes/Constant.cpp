@@ -24,5 +24,5 @@ void Constant::process()
 void Constant::draw(ofEventArgs & args)
 {
     //leave this if you wanna draw the basic shapes
-    basedraw(args);
+    basedraw();
 }

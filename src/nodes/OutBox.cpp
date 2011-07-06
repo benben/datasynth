@@ -22,6 +22,6 @@ void OutBox::process()
 void OutBox::draw(ofEventArgs & args)
 {
     //leave this if you wanna draw the basic shapes
-    basedraw(args);
+    basedraw();
     ofDrawBitmapString(ofToString(input[0]->value),x+80, y+20);
 }

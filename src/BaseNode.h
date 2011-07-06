@@ -13,17 +13,16 @@ class BaseNode : public ofRectangle
         BaseNode& operator=(const BaseNode&);
 
         BaseNode();
-        //BaseNode(float _x, float _y, string _name);
         virtual ~BaseNode();
         void basedelete();
 
         string name;
-        string Type;
+        string type;
 
         vector<Pin*> input;
         vector<Pin*> output;
         virtual void process();
-        virtual void basedraw(ofEventArgs & args);
+        virtual void basedraw();
         virtual void draw(ofEventArgs & args);
 
         virtual void mouseMoved(ofMouseEventArgs & args);

@@ -4,8 +4,9 @@ using namespace ds;
 
 BaseNode::BaseNode()
 {
-    ofRegisterMouseEvents(this);
     ofAddListener(ofEvents.draw, this, &BaseNode::draw);
+    ofRegisterMouseEvents(this);
+    type = "";
     mouseX = 0;
     mouseY = 0;
 }
@@ -19,7 +20,7 @@ void BaseNode::process()
 {
 }
 
-void BaseNode::basedraw(ofEventArgs & args)
+void BaseNode::basedraw()
 {
     if(inside(mouseX, mouseY))
     {
@@ -45,7 +46,7 @@ void BaseNode::basedraw(ofEventArgs & args)
 
 void BaseNode::draw(ofEventArgs & args)
 {
-    basedraw(args);
+    basedraw();
 }
 
 void BaseNode::mouseMoved(ofMouseEventArgs & args)
