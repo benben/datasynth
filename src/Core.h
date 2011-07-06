@@ -55,6 +55,7 @@ class Core : public ofBaseApp{
         ofxXmlSettings saveXml;
         void load();
         ofxXmlSettings loadXml;
+        bool bLoad;
 
 		void keyPressed  (int key);
 		void keyReleased(int key);

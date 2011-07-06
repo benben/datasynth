@@ -4,6 +4,7 @@ using namespace ds;
 
 Pin::Pin(Type _value, int _maxConnections)
 {
+    ofRegisterMouseEvents(this);
     connections = 0;
     maxConnections = _maxConnections;
     value = _value;
@@ -16,6 +17,7 @@ Pin::Pin(Type _value, int _maxConnections)
 Pin::~Pin()
 {
     //notify event to connection
+    ofUnregisterMouseEvents(this);
     int x = 10;
     ofNotifyEvent(deleteEvent,x,this);
     cout << "Pin killed!" << endl;

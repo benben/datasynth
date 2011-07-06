@@ -16,6 +16,7 @@ void Core::setup()
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
     ofAddListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
+    bLoad = false;
     cout << "setup finished" << endl;
 }
 //--------------------------------------------------------------
@@ -52,6 +53,11 @@ void Core::update()
         BOOST_FOREACH(NodePtr node, nodes)
             node->process();
         cout << "...finished!" << endl;
+        if(bLoad)
+        {
+            load();
+            bLoad = false;
+        }
 }
 //--------------------------------------------------------------
 void Core::draw()
@@ -84,6 +90,7 @@ void Core::save()
 //--------------------------------------------------------------
 void Core::load()
 {
+    cout << "really loading!" << endl;
     nodes.erase(nodes.begin(),nodes.end());
     loadXml.clear();
     loadXml.loadFile("default.xml");
@@ -123,7 +130,7 @@ void Core::handleMenuEvent(menuEventType & args)
     else if(args.handler == "Load")
     {
         cout << "loading..." << endl;
-        load();
+        bLoad = true;
     }
 }
 //--------------------------------------------------------------
