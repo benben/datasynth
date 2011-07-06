@@ -22,7 +22,7 @@ Menu::Menu()
             temp.name = XML.getAttribute("ENTRY","NAME", "", 0).c_str();
             if(XML.getAttribute("ENTRY","TYPE", "", 0) != "")
             {
-                temp.type = XML.getAttribute("ENTRY","TYPE", "", 0).c_str();
+                temp.handler = XML.getAttribute("ENTRY","TYPE", "", 0).c_str();
             }
             //get the entry id for creating objects
             if(temp.name == "Create")
@@ -58,8 +58,9 @@ Menu::Menu()
     {
         entry temp;
         temp.parent = createId;
-        temp.name = XMLObjects.getAttribute("OBJECT","NAME", "", i);
-        temp.type = "CreateNode";
+        temp.name = XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str();
+        temp.type = XMLObjects.getAttribute("OBJECT","TYPE", "", i).c_str();
+        temp.handler = "CreateNode";
         temp.level = 1;
         temp.box.width = 100;
         temp.box.height = 15;
@@ -136,8 +137,9 @@ void Menu::mousePressed(ofMouseEventArgs & args)
                 if(entries[i].box.inside(mouseX, mouseY) && entries[i].bIsVisible)
                 {
                     menuEventType temp;
-                    temp.type = entries[i].type;
+                    temp.handler = entries[i].handler;
                     temp.value = entries[i].name;
+                    temp.valueType = entries[i].type;
                     ofNotifyEvent(menuEvent,temp,this);
                 }
             }

@@ -39,35 +39,25 @@ void Core::draw()
 void Core::handleMenuEvent(menuEventType & args)
 {
     //cout << args.type << ": " << args.value << endl;
-    if(args.type == "CreateNode")
+    if(args.handler == "CreateNode")
     {
-        cout << "creating a node of type " << args.value << endl;
-        for(int i = 0; i < XMLObjects.getNumTags("OBJECT"); i++)
-        {
-            if(args.value == XMLObjects.getAttribute("OBJECT","NAME", "", i))
-            {
-                printf("creating %s!\n", XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str());
-                printf("\ttype:\t%s!\n", XMLObjects.getAttribute("OBJECT","TYPE", "", i).c_str());
-
-                //create objects here
-                NodePtr temp = factory(XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str(), Menu::Get()->x, Menu::Get()->y, XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str());
-
-                temp->width = 150;
-                temp->height = 30;
-                nodes.push_back(temp);
-                printf("\n");
-            }
-        }
+        cout << "creating a node '"<< args.value << "' of type " << args.valueType << endl;
+        //create nodes here
+        NodePtr temp = factory(args.valueType, Menu::Get()->x, Menu::Get()->y, args.value);
+        temp->width = 150;
+        temp->height = 30;
+        nodes.push_back(temp);
+        printf("\n");
     }
-    else if(args.type == "Save")
+    else if(args.handler == "Save")
     {
         cout << "saving..." << endl;
     }
-    else if(args.type == "SaveAs")
+    else if(args.handler == "SaveAs")
     {
         cout << "saving as..." << endl;
     }
-    else if(args.type == "Load")
+    else if(args.handler == "Load")
     {
         cout << "loading..." << endl;
     }

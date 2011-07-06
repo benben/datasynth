@@ -17,7 +17,7 @@ Multiply::~Multiply()
 
 void Multiply::process()
 {
-    cout << "process from Multiply()\n";
+    //cout << "process from Multiply()\n";
     output[0]->value = boost::get<double>(input[0]->value) * boost::get<double>(input[1]->value);
-    cout << "output pin: " << output[0]->value << endl;
+    //cout << "output pin: " << output[0]->value << endl;
 }

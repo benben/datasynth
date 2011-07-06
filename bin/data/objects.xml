@@ -1,20 +1,10 @@
 <OBJECTS>
-  <OBJECT NAME="Constant" TYPE="Node">
-    <OUTPUT NAME="Constant" TYPE="FLOAT"></OUTPUT>
+  <OBJECT NAME="Constant" TYPE="Constant">
   </OBJECT>
-  <OBJECT NAME="OutBox" TYPE="Node">
-    <OUTPUT NAME="Constant" TYPE="FLOAT"></OUTPUT>
+  <OBJECT NAME="OutBox" TYPE="OutBox">
   </OBJECT>
-  <OBJECT NAME="Multiply" TYPE="Node">
-    <INPUT NAME="Factor1" TYPE="FLOAT"></INPUT>
-    <INPUT NAME="Factor2" TYPE="FLOAT"></INPUT>
-    <OUTPUT NAME="Result" TYPE="FLOAT"></OUTPUT>
+  <OBJECT NAME="Multiply" TYPE="Multiply">
   </OBJECT>
-  <OBJECT NAME="Render" TYPE="Node">
-    <INPUT NAME="View" TYPE="View"></INPUT>
-    <INPUT NAME="Camera" TYPE="Camera"></INPUT>
-    <INPUT NAME="Transform" TYPE="Transform"></INPUT>
-    <INPUT NAME="Scale" TYPE="Scale"></INPUT>
-    <INPUT NAME="Rotate" TYPE="Rotate"></INPUT>
+  <OBJECT NAME="Render" TYPE="Render">
   </OBJECT>
 </OBJECTS>

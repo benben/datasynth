@@ -18,6 +18,7 @@ class BaseNode : public ofRectangle
         void basedelete();
 
         string name;
+        string Type;
 
         vector<Pin*> input;
         vector<Pin*> output;

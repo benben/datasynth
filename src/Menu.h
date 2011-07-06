@@ -15,14 +15,16 @@ struct entry
     int level;
     string name;
     string type;
+    string handler;
     ofRectangle box;
     bool bIsVisible;
 };
 
 struct menuEventType
 {
-    string type;
+    string handler;
     string value;
+    string valueType;
 };
 
 class Menu : public TSingleton<Menu>
