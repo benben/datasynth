@@ -61,7 +61,7 @@ class Core : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		void createNode(entry & args);
+		void handleMenuEvent(menuEventType & args);
 
         Factory factory;
 

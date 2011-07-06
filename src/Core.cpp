@@ -14,7 +14,7 @@ void Core::setup()
     ofBackground(80);
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
-    ofAddListener(Menu::Get()->newNodeEvent, this, &Core::createNode);
+    ofAddListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
     cout << "setup finished" << endl;
 }
 //--------------------------------------------------------------
@@ -36,23 +36,40 @@ void Core::draw()
 
 }
 //--------------------------------------------------------------
-void Core::createNode(entry & args)
+void Core::handleMenuEvent(menuEventType & args)
 {
-    for(int i = 0; i < XMLObjects.getNumTags("OBJECT"); i++)
+    //cout << args.type << ": " << args.value << endl;
+    if(args.type == "CreateNode")
     {
-        if(args.name == XMLObjects.getAttribute("OBJECT","NAME", "", i))
+        cout << "creating a node of type " << args.value << endl;
+        for(int i = 0; i < XMLObjects.getNumTags("OBJECT"); i++)
         {
-            printf("creating %s!\n", XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str());
-            printf("\ttype:\t%s!\n", XMLObjects.getAttribute("OBJECT","TYPE", "", i).c_str());
+            if(args.value == XMLObjects.getAttribute("OBJECT","NAME", "", i))
+            {
+                printf("creating %s!\n", XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str());
+                printf("\ttype:\t%s!\n", XMLObjects.getAttribute("OBJECT","TYPE", "", i).c_str());
 
-            //create objects here
-            NodePtr temp = factory(XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str(), Menu::Get()->x, Menu::Get()->y, XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str());
+                //create objects here
+                NodePtr temp = factory(XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str(), Menu::Get()->x, Menu::Get()->y, XMLObjects.getAttribute("OBJECT","NAME", "", i).c_str());
 
-            temp->width = 150;
-            temp->height = 30;
-            nodes.push_back(temp);
-            printf("\n");
+                temp->width = 150;
+                temp->height = 30;
+                nodes.push_back(temp);
+                printf("\n");
+            }
         }
+    }
+    else if(args.type == "Save")
+    {
+        cout << "saving..." << endl;
+    }
+    else if(args.type == "SaveAs")
+    {
+        cout << "saving as..." << endl;
+    }
+    else if(args.type == "Load")
+    {
+        cout << "loading..." << endl;
     }
 }
 //--------------------------------------------------------------
@@ -192,5 +209,5 @@ void Core::exit()
 {
     nodes.clear();
     connections.clear();
-    ofRemoveListener(Menu::Get()->newNodeEvent, this, &Core::createNode);
+    ofRemoveListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
 }

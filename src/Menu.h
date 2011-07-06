@@ -14,8 +14,15 @@ struct entry
     int parent;
     int level;
     string name;
+    string type;
     ofRectangle box;
     bool bIsVisible;
+};
+
+struct menuEventType
+{
+    string type;
+    string value;
 };
 
 class Menu : public TSingleton<Menu>
@@ -24,10 +31,11 @@ class Menu : public TSingleton<Menu>
         Menu();
         virtual ~Menu();
         void draw(ofEventArgs & args);
-        void click(ofMouseEventArgs & args);
-        void updateMouse(ofMouseEventArgs & args);
+        virtual void mouseMoved(ofMouseEventArgs & args);
+        virtual void mousePressed(ofMouseEventArgs & args);
+        virtual void mouseDragged(ofMouseEventArgs & args);
+        virtual void mouseReleased(ofMouseEventArgs & args);
 
-        bool mouseIsOn(ofRectangle _box);
         bool bMouseIsOnNode;
 
         ofxXmlSettings XML;
@@ -35,7 +43,7 @@ class Menu : public TSingleton<Menu>
         vector <entry> entries;
         int x, y, mouseX, mouseY;
 
-        ofEvent<entry> newNodeEvent;
+        ofEvent<menuEventType> menuEvent;
     protected:
     private:
 };

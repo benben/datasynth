@@ -1,42 +1,10 @@
 <MENU>
   <ENTRY NAME="Create">
   </ENTRY>
-	<ENTRY NAME="Add Node1">
-    <ENTRY NAME="Add Node1_1">
-      <ENTRY NAME="Add Node1_1_1">
-      </ENTRY>
-      <ENTRY NAME="Add Node1_1_2">
-      </ENTRY>
-      <ENTRY NAME="Add Node1_1_3">
-        <ENTRY NAME="Add Node1_1_3_1">
-        </ENTRY>
-      </ENTRY>
-    </ENTRY>
-    <ENTRY NAME="Add Node1_2">
-    </ENTRY>
+  <ENTRY NAME="Load" TYPE="Load">
   </ENTRY>
-	<ENTRY NAME="Add Node2">
+  <ENTRY NAME="Save" TYPE="Save">
   </ENTRY>
-	<ENTRY NAME="Add Node3">
-  </ENTRY>
-	<ENTRY NAME="Add Node4">
-	  <ENTRY NAME="Add Node4_1">
-    </ENTRY>
-  </ENTRY>
-	<ENTRY NAME="Add Node5">
-  </ENTRY>
-	<ENTRY NAME="Add Node6">
-  </ENTRY>
-	<ENTRY NAME="Add Node7">
-  </ENTRY>
-	<ENTRY NAME="Add Node8">
-  </ENTRY>
-	<ENTRY NAME="Add Node9">
-  </ENTRY>
-	<ENTRY NAME="Add Node10">
-	  <ENTRY NAME="Add Node10_1">
-    </ENTRY>
-  </ENTRY>
-	<ENTRY NAME="Add Node11">
+  <ENTRY NAME="Save as..." TYPE="SaveAs">
   </ENTRY>
 </MENU>

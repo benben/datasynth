@@ -19,7 +19,11 @@ Menu::Menu()
             id++;
             entry temp;
             temp.id = id;
-            temp.name = XML.getAttribute("ENTRY","NAME", "", 0);
+            temp.name = XML.getAttribute("ENTRY","NAME", "", 0).c_str();
+            if(XML.getAttribute("ENTRY","TYPE", "", 0) != "")
+            {
+                temp.type = XML.getAttribute("ENTRY","TYPE", "", 0).c_str();
+            }
             //get the entry id for creating objects
             if(temp.name == "Create")
             {
@@ -55,70 +59,24 @@ Menu::Menu()
         entry temp;
         temp.parent = createId;
         temp.name = XMLObjects.getAttribute("OBJECT","NAME", "", i);
+        temp.type = "CreateNode";
         temp.level = 1;
         temp.box.width = 100;
         temp.box.height = 15;
         temp.bIsVisible = false;
         entries.push_back(temp);
     }
+    ofRegisterMouseEvents(this);
     ofAddListener(ofEvents.draw, this, &Menu::draw);
-    ofAddListener(ofEvents.mouseMoved, this, &Menu::updateMouse);
-    ofAddListener(ofEvents.mouseDragged, this, &Menu::updateMouse);
-    ofAddListener(ofEvents.mouseReleased, this, &Menu::click);
+    bMouseIsOnNode = false;
 }
 
 Menu::~Menu()
 {
-    //dtor
+    ofUnregisterMouseEvents(this);
+    ofRemoveListener(ofEvents.draw, this, &Menu::draw);
 }
 
-void Menu::click(ofMouseEventArgs & args)
-{
-    if(args.button == 0)
-    {
-        for(unsigned int i = 0; i < entries.size(); i++)
-        {
-            if(mouseIsOn(entries[i].box) && entries[i].bIsVisible)
-            {
-                for(int j = 0; j < XMLObjects.getNumTags("OBJECT"); j++)
-                {
-                    if(entries[i].name == XMLObjects.getAttribute("OBJECT","NAME", "", j))
-                    {
-                        //printf("try to create object %s...\n",entries[i].name.c_str());
-                        ofNotifyEvent(newNodeEvent,entries[i],this);
-                    }
-                }
-            }
-        }
-    }
-    //toggle
-    if(args.button == 2 && !bMouseIsOnNode)
-    {
-        x = mouseX;
-        y = mouseY;
-        int j = 0;
-        for(unsigned int i = 0; i < entries.size(); i++)
-        {
-            //make all visible entries invisible first
-            entries[i].bIsVisible = false;
-            //move only the entries of the root level to the mouse pos and make them visible
-            if(entries[i].parent == 0)
-            {
-                entries[i].box.x = x;
-                entries[i].box.y = y + (j * (entries[i].box.height +1));
-                entries[i].bIsVisible = true;
-                j++;
-            }
-        }
-    }
-    else
-    {
-        for(unsigned int i = 0; i < entries.size(); i++)
-        {
-            entries[i].bIsVisible = false;
-        }
-    }
-}
 void Menu::draw(ofEventArgs & args)
 {
     int k = 0;
@@ -127,7 +85,7 @@ void Menu::draw(ofEventArgs & args)
         if(entries[i].bIsVisible)
         {
             ofFill();
-            if(mouseIsOn(entries[i].box))
+            if(entries[i].box.inside(mouseX, mouseY))
             {
                 for(unsigned int j = 0; j < entries.size(); j++)
                 {
@@ -160,20 +118,65 @@ void Menu::draw(ofEventArgs & args)
     }
 }
 
-bool Menu::mouseIsOn(ofRectangle _box)
-{
-    if((mouseX >= _box.x) && (mouseX <= _box.x + _box.width) && (mouseY >= _box.y) && (mouseY <= _box.y + _box.height))
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-void Menu::updateMouse(ofMouseEventArgs & args)
+void Menu::mouseMoved(ofMouseEventArgs & args)
 {
     mouseX = args.x;
     mouseY = args.y;
+}
+
+void Menu::mousePressed(ofMouseEventArgs & args)
+{
+    //cout << "pressed " << args.button << " bMouseIsOnNode: " << bMouseIsOnNode << endl;
+    if(!bMouseIsOnNode)
+    {
+        if(args.button == 0)
+        {
+            for(unsigned int i = 0; i < entries.size(); i++)
+            {
+                if(entries[i].box.inside(mouseX, mouseY) && entries[i].bIsVisible)
+                {
+                    menuEventType temp;
+                    temp.type = entries[i].type;
+                    temp.value = entries[i].name;
+                    ofNotifyEvent(menuEvent,temp,this);
+                }
+            }
+        }
+        //toggle
+        if(args.button == 2)
+        {
+            x = args.x;
+            y = args.y;
+            int level = 0;
+            for(unsigned int i = 0; i < entries.size(); i++)
+            {
+                //make all visible entries invisible first
+                entries[i].bIsVisible = false;
+                //move only the entries of the root level to the mouse pos and make them visible
+                if(entries[i].parent == 0)
+                {
+
+                    entries[i].box.x = x;
+                    entries[i].box.y = y + (level * (entries[i].box.height +1));
+                    entries[i].bIsVisible = true;
+                    level++;
+                }
+            }
+        }
+        else
+        {
+            for(unsigned int i = 0; i < entries.size(); i++)
+            {
+                entries[i].bIsVisible = false;
+            }
+        }
+    }
+}
+
+void Menu::mouseDragged(ofMouseEventArgs & args)
+{
+}
+
+void Menu::mouseReleased(ofMouseEventArgs & args)
+{
 }
