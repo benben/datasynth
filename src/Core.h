@@ -70,7 +70,7 @@ class Core : public ofBaseApp{
 
         Factory factory;
 
-        vector <NodePtr> nodes;
+        list <NodePtr> nodes;
         vector <ConnectionPtr> connections;
         ofxXmlSettings XMLObjects;
 };

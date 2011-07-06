@@ -63,27 +63,30 @@ void Core::draw()
 void Core::save()
 {
     saveXml.clear();
-    for(unsigned int i = 0; i < nodes.size(); i++)
+    int i = 0;
+    BOOST_FOREACH(NodePtr node, nodes)
     {
         cout << "saving node..." << endl;
         saveXml.addTag("NODE");
-        saveXml.addAttribute("NODE", "NAME", nodes[i]->name, i);
-        saveXml.addAttribute("NODE", "TYPE", nodes[i]->type, i);
-        saveXml.addAttribute("NODE", "X", nodes[i]->x, i);
-        saveXml.addAttribute("NODE", "Y", nodes[i]->y, i);
+        saveXml.addAttribute("NODE", "NAME", node->name, i);
+        saveXml.addAttribute("NODE", "TYPE", node->type, i);
+        saveXml.addAttribute("NODE", "X", node->x, i);
+        saveXml.addAttribute("NODE", "Y", node->y, i);
         saveXml.pushTag("NODE", i);
-        for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
+        for(unsigned int j = 0; j < node->output.size(); j++)
         {
             saveXml.addTag("PIN");
-            saveXml.addAttribute("PIN", "VALUE", boost::get<double>(nodes[i]->output[i]->value), j);
+            saveXml.addAttribute("PIN", "VALUE", boost::get<double>(node->output[i]->value), j);
         }
         saveXml.popTag();
+        i++;
     }
     saveXml.saveFile("default.xml");
 }
 //--------------------------------------------------------------
 void Core::load()
 {
+    //
     nodes.erase(nodes.begin(),nodes.end());
     loadXml.clear();
     loadXml.loadFile("default.xml");
@@ -144,9 +147,9 @@ void Core::mouseMoved(int x, int y )
     bool temp = false;
     //TODO: do this only if the mouse is pressed
     //check if mouse is over an node
-    for(unsigned int i = 0; i < nodes.size(); i++)
+    BOOST_FOREACH(NodePtr node, nodes)
     {
-        if(nodes[i]->inside(x,y))
+        if(node->inside(x,y))
         {
             temp = true;
             break;
@@ -186,12 +189,13 @@ void Core::mousePressed(int x, int y, int button)
 {
     if(button == 2)
     {
-        for(unsigned int i = 0; i < nodes.size(); i++)
+        list<NodePtr>::iterator node;
+        for (node=nodes.begin(); node!=nodes.end(); ++node)
         {
-            if(nodes[i]->inside(x,y))
+            if((*node)->inside(x,y))
             {
                 //delete the node
-                nodes.erase(nodes.begin()+i);
+                nodes.erase(node);
                 break;
             }
         }
@@ -213,29 +217,29 @@ void Core::mouseReleased(int x, int y, int button)
 {
     Pin* in=0;
     Pin* out=0;
-    for(unsigned int i = 0; i < nodes.size(); i++)
+    BOOST_FOREACH(NodePtr node, nodes)
     {
-        for(unsigned int j = 0; j < nodes[i]->input.size(); j++)
+        for(unsigned int j = 0; j < node->input.size(); j++)
         {
-            if(nodes[i]->input[j]->bIsActive)
+            if(node->input[j]->bIsActive)
             {
-                if(nodes[i]->input[j]->isFree())
+                if(node->input[j]->isFree())
                 {
-                    cout << "input active: " << i << " " << j << endl;
-                    in = nodes[i]->input[j];
+                    cout << "input active: " << node->name << " " << j << endl;
+                    in = node->input[j];
                 }
                 else
                 {
-                    cout << "too many connections on input pin: " << i << " " << j << endl;
+                    cout << "too many connections on input pin: " << node->name << " " << j << endl;
                 }
             }
         }
-        for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
+        for(unsigned int j = 0; j < node->output.size(); j++)
         {
-            if(nodes[i]->output[j]->bIsActive)
+            if(node->output[j]->bIsActive)
             {
-                cout << "output active: " << i << " " << j << endl;
-                out = nodes[i]->output[j];
+                cout << "output active: " << node->name << " " << j << endl;
+                out = node->output[j];
             }
         }
     }
