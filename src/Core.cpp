@@ -20,6 +20,15 @@ void Core::setup()
 //--------------------------------------------------------------
 void Core::update()
 {
+        //cout << "processing connections..." << endl;
+        for(unsigned int i = 0; i < connections.size(); i++)
+        {
+            connections[i]->process();
+        }
+        //cout << "processing nodes..." << endl;
+        BOOST_FOREACH(NodePtr node, nodes)
+            node->process();
+        //cout << "...finished!" << endl;
 }
 //--------------------------------------------------------------
 void Core::draw()
@@ -55,25 +64,30 @@ void Core::keyReleased(int key)
 {
     if (key == ' ')
     {
-        cout << "processing connections..." << endl;
-        for(unsigned int i = 0; i < connections.size(); i++)
-        {
-            connections[i]->process();
-        }
-        cout << "processing nodes..." << endl;
-        BOOST_FOREACH(NodePtr node, nodes)
-            node->process();
-        cout << "...finished!" << endl;
+
     }
 }
 //--------------------------------------------------------------
 void Core::mouseMoved(int x, int y )
 {
     bool temp = false;
+    //TODO: do this only if the mouse is pressed
     //check if mouse is over an node
     for(unsigned int i = 0; i < nodes.size(); i++)
     {
         if(nodes[i]->inside(x,y))
+        {
+            temp = true;
+            break;
+        }
+        else
+        {
+            temp = false;
+        }
+    }
+    for(unsigned int i = 0; i < connections.size(); i++)
+    {
+        if(connections[i]->mouseIsOn())
         {
             temp = true;
             break;
@@ -112,6 +126,15 @@ void Core::mousePressed(int x, int y, int button)
         }
         //delete all connections to this node
         connections.erase( remove_if(connections.begin(), connections.end(),connectionIsInvalid) , connections.end() );
+        for(unsigned int i = 0; i < connections.size(); i++)
+        {
+            if(connections[i]->mouseIsOn())
+            {
+                //delete the connection
+                connections.erase(connections.begin()+i);
+                break;
+            }
+        }
     }
 }
 //--------------------------------------------------------------
@@ -167,5 +190,7 @@ void Core::dragEvent(ofDragInfo dragInfo)
 //--------------------------------------------------------------
 void Core::exit()
 {
+    nodes.clear();
+    connections.clear();
     ofRemoveListener(Menu::Get()->newNodeEvent, this, &Core::createNode);
 }

@@ -11,7 +11,10 @@ Connection::Connection(Pin * _out, Pin * _in)
     ofAddListener(in->deleteEvent, this, &Connection::setInvalid);
     ofAddListener(out->deleteEvent, this, &Connection::setInvalid);
     ofAddListener(ofEvents.draw, this, &Connection::draw);
+    ofRegisterMouseEvents(this);
     bIsInvalid = false;
+    mouseX = 0;
+    mouseY = 0;
 }
 
 void Connection::setInvalid(int & args)
@@ -26,6 +29,7 @@ Connection::~Connection()
     in->removeConnection();
     out->removeConnection();
     ofRemoveListener(ofEvents.draw, this, &Connection::draw);
+    ofUnregisterMouseEvents(this);
 }
 
 void Connection::process()
@@ -37,4 +41,65 @@ void Connection::draw(ofEventArgs & args)
 {
     ofSetColor(255,255,255,255);
     ofLine(out->x+7, out->y+7, in->x+7, in->y+7);
+}
+void Connection::mouseMoved(ofMouseEventArgs & args)
+{
+    mouseX = args.x;
+    mouseY = args.y;
+}
+
+void Connection::mousePressed(ofMouseEventArgs & args)
+{
+}
+
+void Connection::mouseDragged(ofMouseEventArgs & args)
+{
+}
+
+void Connection::mouseReleased(ofMouseEventArgs & args)
+{
+}
+
+bool Connection::mouseIsOn()
+{
+    float distance = 1000;
+    ofVec2f v1;
+    ofVec2f v2;
+    ofVec2f vMouse;
+    v1.set(out->x+7, out->y+7);
+    v2.set(in->x+7, in->y+7);
+    vMouse.set(mouseX, mouseY);
+    ofVec2f segment = v2 - v1;
+    if(segment.length() != 0)
+    {
+        distance = ((vMouse.x - v1.x)*(v2.x - v1.x) + (vMouse.y - v1.y)*(v2.y - v1.y)) / (segment.length() * segment.length());
+        if(distance < 1 && distance > 0)
+        {
+            distance = (v1.x*(vMouse.y-v2.y)+v2.x*(v1.y-vMouse.y)+vMouse.x*(v2.y-v1.y)) / sqrt( (v2.x-v1.x)*(v2.x-v1.x) + (v1.y-v2.y)*(v1.y-v2.y) );
+            distance = sqrt(distance*distance);
+        }
+        else
+        {
+            if((v1 - vMouse).length() < (v2 - vMouse).length())
+            {
+                distance = (v1 - vMouse).length();
+            }
+            else
+            {
+                distance = (v2 - vMouse).length();
+            }
+        }
+    }
+    else
+    {
+        return false;
+    }
+    if(distance < 10)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
