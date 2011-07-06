@@ -21,6 +21,7 @@ class BaseNode : public ofRectangle
 
         vector<Pin*> input;
         vector<Pin*> output;
+        virtual void init();
         virtual void process();
         virtual void basedraw();
         virtual void draw(ofEventArgs & args);

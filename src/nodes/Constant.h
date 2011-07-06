@@ -12,6 +12,7 @@ class Constant : public BaseNode
     Constant(float _x, float _y, string _name);
     ~Constant();
     Slider* slider;
+    void init();
     void process();
     void draw(ofEventArgs & args);
   protected:

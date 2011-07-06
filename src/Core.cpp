@@ -44,15 +44,15 @@ void Core::update()
             c++;
         }
         cout << "n: " << n << " ip: " << ip << " op: " << op << " c: " << c << endl;*/
-        cout << "processing connections..." << endl;
+        //cout << "processing connections..." << endl;
         for(unsigned int i = 0; i < connections.size(); i++)
         {
             connections[i]->process();
         }
-        cout << "processing nodes..." << endl;
+        //cout << "processing nodes..." << endl;
         BOOST_FOREACH(NodePtr node, nodes)
             node->process();
-        cout << "...finished!" << endl;
+        //cout << "...finished!" << endl;
         if(bLoad)
         {
             load();
@@ -92,6 +92,7 @@ void Core::load()
 {
     cout << "really loading!" << endl;
     nodes.erase(nodes.begin(),nodes.end());
+    connections.erase(connections.begin(), connections.end());
     loadXml.clear();
     loadXml.loadFile("default.xml");
     for(int i = 0; i < loadXml.getNumTags("NODE"); i++)
@@ -100,7 +101,13 @@ void Core::load()
         temp->type = loadXml.getAttribute("NODE","TYPE", "", i).c_str();
         temp->width = 150;
         temp->height = 30;
-
+        loadXml.pushTag("NODE", i);
+        for(int j = 0; j < loadXml.getNumTags("PIN"); j++)
+        {
+            temp->output[j]->value = (double)ofToFloat(loadXml.getAttribute("PIN","VALUE", "", j).c_str());
+            temp->init();
+        }
+        loadXml.popTag();
         nodes.push_back(temp);
     }
 }

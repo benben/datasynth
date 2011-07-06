@@ -18,7 +18,7 @@ Slider::Slider(float* _x, float* _y, string _name, double* _val)
 
 Slider::~Slider()
 {
-    ofRegisterMouseEvents(this);naja is s
+    ofRegisterMouseEvents(this);
     ofRemoveListener(ofEvents.draw, this, &Slider::draw);
 }
 
@@ -44,6 +44,10 @@ void Slider::draw(ofEventArgs & args)
     string valStr;
     valStr = ofToString(*val, 2);
     ofDrawBitmapString(valStr , (b.x + b.width) - 3 - valStr.length() * 8, stringY );
+}
+void Slider::setValue(Type _val)
+{
+    *val = boost::get<double>(_val);
 }
 
 void Slider::setValue(float mx, float my, bool bCheck)

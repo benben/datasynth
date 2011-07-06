@@ -16,6 +16,10 @@ BaseNode::~BaseNode()
     basedelete();
 }
 
+void BaseNode::init()
+{
+}
+
 void BaseNode::process()
 {
 }

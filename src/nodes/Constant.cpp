@@ -15,6 +15,12 @@ Constant::~Constant()
     delete slider;
 }
 
+void Constant::init()
+{
+    cout << "init from constant: " << output[0]->value << endl;
+    slider->setValue(output[0]->value);
+}
+
 void Constant::process()
 {
     //cout << "process from Constant()\n";
