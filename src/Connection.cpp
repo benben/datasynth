@@ -32,8 +32,9 @@ Connection::~Connection()
     cout << "removing connection" << endl;
     in->removeConnection();
     out->removeConnection();
-    ofRemoveListener(in->deleteEvent, this, &Connection::setInvalid);
-    ofRemoveListener(out->deleteEvent, this, &Connection::setInvalid);
+    //TODO: Since events are not fixed, ignore this
+    //ofRemoveListener(in->deleteEvent, this, &Connection::setInvalid);
+    //ofRemoveListener(out->deleteEvent, this, &Connection::setInvalid);
     ofRemoveListener(ofEvents.draw, this, &Connection::draw);
     ofUnregisterMouseEvents(this);
 }

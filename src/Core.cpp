@@ -12,7 +12,7 @@ void Core::setup()
 {
     cout << "setup started" << endl;
     ofBackground(80);
-    //ofSetFrameRate(60);
+    ofSetFrameRate(60);
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
     ofAddListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
@@ -325,8 +325,8 @@ void Core::dragEvent(ofDragInfo dragInfo)
 //--------------------------------------------------------------
 void Core::exit()
 {
-    nodes.clear();
     connections.clear();
+    nodes.clear();
     bLoad = false;
     ofRemoveListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
 }
