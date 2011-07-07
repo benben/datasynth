@@ -18,7 +18,7 @@ Slider::Slider(float* _x, float* _y, string _name, double* _val)
 
 Slider::~Slider()
 {
-    ofRegisterMouseEvents(this);
+    ofUnregisterMouseEvents(this);
     ofRemoveListener(ofEvents.draw, this, &Slider::draw);
 }
 
