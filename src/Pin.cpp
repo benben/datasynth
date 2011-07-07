@@ -16,11 +16,16 @@ Pin::Pin(Type _value, int _maxConnections)
 
 Pin::~Pin()
 {
-    //notify event to connection
+    cout << "Pin killed!" << endl;
+}
+
+void Pin::setInvalid()
+{
+    cout << "setting pin invalid..." << endl;
     ofUnregisterMouseEvents(this);
+    //notify event to connection
     int x = 10;
     ofNotifyEvent(deleteEvent,x,this);
-    cout << "Pin killed!" << endl;
 }
 
 bool Pin::isFree()

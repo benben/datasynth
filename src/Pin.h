@@ -19,6 +19,7 @@ class Pin : public ofRectangle
         int connections;
         int maxConnections;
         bool isFree();
+        void setInvalid();
 
         ofEvent<int> deleteEvent;
 

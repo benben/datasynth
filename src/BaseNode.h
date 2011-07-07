@@ -19,6 +19,9 @@ class BaseNode : public ofRectangle
         string name;
         string type;
 
+        bool bIsInvalid;
+        void setInvalid();
+
         vector<Pin*> input;
         vector<Pin*> output;
         virtual void init();

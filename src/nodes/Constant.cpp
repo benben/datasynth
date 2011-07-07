@@ -7,12 +7,12 @@ Constant::Constant(float _x, float _y, string _name)
     x = _x;
     y = _y;
     name = _name;
-    slider = new Slider(&x, &y, name, &boost::get<double>(output[0]->value));
+    SliderPtr s(new Slider(&x, &y, name, &boost::get<double>(output[0]->value)));
+    slider = s;
 }
 
 Constant::~Constant()
 {
-    delete slider;
 }
 
 void Constant::init()

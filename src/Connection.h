@@ -8,10 +8,11 @@ namespace ds {
 class Connection
 {
     public:
-        Connection(Pin * _out, Pin * _in);
+        Connection(Pin * _out, int _outNodeID, int _outPinID, Pin * _in, int _inNodeID, int _inPinID);
         ~Connection();
         Pin * in;
         Pin * out;
+        int outNodeID, outPinID, inNodeID, inPinID;
         void process();
         void draw(ofEventArgs & args);
         void setInvalid(int & args);

@@ -9,6 +9,7 @@ BaseNode::BaseNode()
     type = "";
     mouseX = 0;
     mouseY = 0;
+    bIsInvalid = false;
 }
 
 BaseNode::~BaseNode()
@@ -76,6 +77,15 @@ void BaseNode::mouseDragged(ofMouseEventArgs & args)
 
 void BaseNode::mouseReleased(ofMouseEventArgs & args)
 {
+}
+
+void BaseNode::setInvalid()
+{
+    bIsInvalid = true;
+    BOOST_FOREACH(Pin* pin, input)
+        pin->setInvalid();
+    BOOST_FOREACH(Pin* pin, output)
+        pin->setInvalid();
 }
 
 void BaseNode::basedelete()

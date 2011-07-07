@@ -1,11 +1,15 @@
 #include "Connection.h"
 using namespace ds;
 
-Connection::Connection(Pin * _out, Pin * _in)
+Connection::Connection(Pin * _out, int _outNodeID, int _outPinID, Pin * _in, int _inNodeID, int _inPinID)
 {
     cout << "creating connection..." << endl;
-    in = _in;
     out = _out;
+    outNodeID = _outNodeID;
+    outPinID = _outPinID;
+    in = _in;
+    inNodeID = _inNodeID;
+    inPinID = _inPinID;
     in->addConnection();
     out->addConnection();
     ofAddListener(in->deleteEvent, this, &Connection::setInvalid);
@@ -28,6 +32,8 @@ Connection::~Connection()
     cout << "removing connection" << endl;
     in->removeConnection();
     out->removeConnection();
+    ofRemoveListener(in->deleteEvent, this, &Connection::setInvalid);
+    ofRemoveListener(out->deleteEvent, this, &Connection::setInvalid);
     ofRemoveListener(ofEvents.draw, this, &Connection::draw);
     ofUnregisterMouseEvents(this);
 }

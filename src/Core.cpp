@@ -47,16 +47,37 @@ void Core::update()
         //cout << "processing connections..." << endl;
         for(unsigned int i = 0; i < connections.size(); i++)
         {
-            connections[i]->process();
+            if(connections[i]->bIsInvalid)
+            {
+                connections.erase(connections.begin()+i);
+            }
         }
         //cout << "processing nodes..." << endl;
-        BOOST_FOREACH(NodePtr node, nodes)
-            node->process();
+        for(unsigned int i = 0; i < nodes.size(); i++)
+        {
+            if(nodes[i]->bIsInvalid)
+            {
+                nodes.erase(nodes.begin()+i);
+            }
+        }
         //cout << "...finished!" << endl;
         if(bLoad)
         {
-            load();
-            bLoad = false;
+            //remove connections immediately...
+            connections.clear();
+            //...and set nodes only to invalid
+            BOOST_FOREACH(NodePtr node, nodes)
+                node->setInvalid();
+            if(nodes.size() == 0 && connections.size() == 0)
+            {
+                load();
+                bLoad = false;
+            }
+        } else {
+            BOOST_FOREACH(ConnectionPtr connection, connections)
+                connection->process();
+            BOOST_FOREACH(NodePtr node, nodes)
+                node->process();
         }
 }
 //--------------------------------------------------------------
@@ -81,9 +102,17 @@ void Core::save()
         for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
         {
             saveXml.addTag("PIN");
-            saveXml.addAttribute("PIN", "VALUE", boost::get<double>(nodes[i]->output[i]->value), j);
+            saveXml.addAttribute("PIN", "VALUE", boost::get<double>(nodes[i]->output[j]->value), j);
         }
         saveXml.popTag();
+    }
+    for(unsigned int i = 0; i < connections.size(); i++)
+    {
+        saveXml.addTag("CONNECTION");
+        saveXml.addAttribute("CONNECTION", "OUT_NODE_ID", connections[i]->outNodeID, i);
+        saveXml.addAttribute("CONNECTION", "OUT_PIN_ID", connections[i]->outPinID, i);
+        saveXml.addAttribute("CONNECTION", "IN_NODE_ID", connections[i]->inNodeID, i);
+        saveXml.addAttribute("CONNECTION", "IN_PIN_ID", connections[i]->inPinID, i);
     }
     saveXml.saveFile("default.xml");
 }
@@ -91,8 +120,6 @@ void Core::save()
 void Core::load()
 {
     cout << "really loading!" << endl;
-    nodes.erase(nodes.begin(),nodes.end());
-    connections.erase(connections.begin(), connections.end());
     loadXml.clear();
     loadXml.loadFile("default.xml");
     for(int i = 0; i < loadXml.getNumTags("NODE"); i++)
@@ -109,6 +136,21 @@ void Core::load()
         }
         loadXml.popTag();
         nodes.push_back(temp);
+    }
+    for(int i = 0; i < loadXml.getNumTags("CONNECTION"); i++)
+    {
+        int outNodeID = ofToInt(loadXml.getAttribute("CONNECTION","OUT_NODE_ID", "", i).c_str());
+        int outPinID = ofToInt(loadXml.getAttribute("CONNECTION","OUT_PIN_ID", "", i).c_str());
+        int inNodeID = ofToInt(loadXml.getAttribute("CONNECTION","IN_NODE_ID", "", i).c_str());
+        int inPinID = ofToInt(loadXml.getAttribute("CONNECTION","IN_PIN_ID", "", i).c_str());
+        /*
+        cout << outNodeID << endl;
+        cout << outPinID << endl;
+        cout << inNodeID << endl;
+        cout << inPinID << endl;
+        */
+        ConnectionPtr val(new Connection(nodes[outNodeID]->output[outPinID], outNodeID, outPinID, nodes[inNodeID]->input[inPinID], inNodeID, inPinID));
+        connections.push_back(val);
     }
 }
 //--------------------------------------------------------------
@@ -204,19 +246,18 @@ void Core::mousePressed(int x, int y, int button)
         {
             if(nodes[i]->inside(x,y))
             {
-                //delete the node
-                nodes.erase(nodes.begin()+i);
+                //set node to invalid
+                nodes[i]->setInvalid();
                 break;
             }
         }
-        //delete all connections to this node
-        connections.erase( remove_if(connections.begin(), connections.end(),connectionIsInvalid) , connections.end() );
         for(unsigned int i = 0; i < connections.size(); i++)
         {
             if(connections[i]->mouseIsOn())
             {
-                //delete the connection
-                connections.erase(connections.begin()+i);
+                //set connection to invalid
+                int x = 1;
+                connections[i]->setInvalid(x);
                 break;
             }
         }
@@ -227,6 +268,11 @@ void Core::mouseReleased(int x, int y, int button)
 {
     Pin* in=0;
     Pin* out=0;
+    int outNodeID;
+    int outPinID;
+    int inNodeID;
+    int inPinID;
+
     for(unsigned int i = 0; i < nodes.size(); i++)
     {
         for(unsigned int j = 0; j < nodes[i]->input.size(); j++)
@@ -236,6 +282,8 @@ void Core::mouseReleased(int x, int y, int button)
                 if(nodes[i]->input[j]->isFree())
                 {
                     cout << "input active: " << i << " " << j << endl;
+                    inNodeID = i;
+                    inPinID = j;
                     in = nodes[i]->input[j];
                 }
                 else
@@ -249,6 +297,8 @@ void Core::mouseReleased(int x, int y, int button)
             if(nodes[i]->output[j]->bIsActive)
             {
                 cout << "output active: " << i << " " << j << endl;
+                outNodeID = i;
+                outPinID = j;
                 out = nodes[i]->output[j];
             }
         }
@@ -256,7 +306,7 @@ void Core::mouseReleased(int x, int y, int button)
     if(in != NULL && out != NULL)
     {
         cout << "make connection" << endl;
-        ConnectionPtr val(new Connection(out, in));
+        ConnectionPtr val(new Connection(out, outNodeID, outPinID, in, inNodeID, inPinID));
         connections.push_back(val);
     }
 }
