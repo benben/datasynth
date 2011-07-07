@@ -12,7 +12,7 @@ void Core::setup()
 {
     cout << "setup started" << endl;
     ofBackground(80);
-    ofSetFrameRate(60);
+    ofSetFrameRate(30);
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
     ofAddListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
@@ -197,41 +197,6 @@ void Core::keyReleased(int key)
 //--------------------------------------------------------------
 void Core::mouseMoved(int x, int y )
 {
-    bool temp = false;
-    //TODO: do this only if the mouse is pressed
-    //check if mouse is over an node
-    for(unsigned int i = 0; i < nodes.size(); i++)
-    {
-        if(nodes[i]->inside(x,y))
-        {
-            temp = true;
-            break;
-        }
-        else
-        {
-            temp = false;
-        }
-    }
-    for(unsigned int i = 0; i < connections.size(); i++)
-    {
-        if(connections[i]->mouseIsOn())
-        {
-            temp = true;
-            break;
-        }
-        else
-        {
-            temp = false;
-        }
-    }
-    if(temp)
-    {
-        Menu::Get()->bMouseIsOnNode = true;
-    }
-    else
-    {
-        Menu::Get()->bMouseIsOnNode = false;
-    }
 }
 //--------------------------------------------------------------
 void Core::mouseDragged(int x, int y, int button)
@@ -240,28 +205,38 @@ void Core::mouseDragged(int x, int y, int button)
 //--------------------------------------------------------------
 void Core::mousePressed(int x, int y, int button)
 {
-    if(button == 2)
+    bool temp = false;
+
+    for(unsigned int i = 0; i < nodes.size(); i++)
     {
-        for(unsigned int i = 0; i < nodes.size(); i++)
+        if(nodes[i]->inside(x,y))
         {
-            if(nodes[i]->inside(x,y))
+
+            if(button == 2)
             {
                 //set node to invalid
                 nodes[i]->setInvalid();
-                break;
             }
+            temp = true;
+            break;
         }
-        for(unsigned int i = 0; i < connections.size(); i++)
+    }
+    for(unsigned int i = 0; i < connections.size(); i++)
+    {
+        if(connections[i]->mouseIsOn())
         {
-            if(connections[i]->mouseIsOn())
+            if(button == 2)
             {
                 //set connection to invalid
                 int x = 1;
                 connections[i]->setInvalid(x);
-                break;
             }
+            temp = true;
+            break;
         }
     }
+
+    Menu::Get()->bMouseIsOnNode = temp;
 }
 //--------------------------------------------------------------
 void Core::mouseReleased(int x, int y, int button)
