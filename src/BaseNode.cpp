@@ -10,6 +10,7 @@ BaseNode::BaseNode()
     mouseX = 0;
     mouseY = 0;
     bIsInvalid = false;
+    bIsActive = false;
 }
 
 BaseNode::~BaseNode()
@@ -62,11 +63,15 @@ void BaseNode::mouseMoved(ofMouseEventArgs & args)
 
 void BaseNode::mousePressed(ofMouseEventArgs & args)
 {
+    if(inside(mouseX, mouseY))
+    {
+        bIsActive = true;
+    }
 }
 
 void BaseNode::mouseDragged(ofMouseEventArgs & args)
 {
-    if(inside(mouseX, mouseY))
+    if(inside(mouseX, mouseY) && bIsActive)
     {
         x = args.x - (mouseX-x);
         y = args.y - (mouseY-y);
@@ -77,6 +82,7 @@ void BaseNode::mouseDragged(ofMouseEventArgs & args)
 
 void BaseNode::mouseReleased(ofMouseEventArgs & args)
 {
+    bIsActive = false;
 }
 
 void BaseNode::setInvalid()

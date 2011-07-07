@@ -6,7 +6,7 @@
 class Slider
 {
     public:
-        Slider(float* _x, float* _y, string _name, double* _val);
+        Slider(float* _x, float* _y, string _name, double* _val, bool* _bIsNodeActive);
         ~Slider();
         void draw(ofEventArgs & args);
         void setValue(float mx, float my, bool bCheck);
@@ -21,6 +21,9 @@ class Slider
         float min, max;
         string name;
         ofRectangle b;
+
+        bool bIsActive;
+        bool* bIsNodeActive;
 
     protected:
     private:

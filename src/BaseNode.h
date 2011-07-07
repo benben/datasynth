@@ -34,6 +34,7 @@ class BaseNode : public ofRectangle
         virtual void mouseDragged(ofMouseEventArgs & args);
         virtual void mouseReleased(ofMouseEventArgs & args);
         float mouseX, mouseY;
+        bool bIsActive;
     protected:
     private:
 };

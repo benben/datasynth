@@ -1,9 +1,10 @@
 #include "Slider.h"
 
-Slider::Slider(float* _x, float* _y, string _name, double* _val)
+Slider::Slider(float* _x, float* _y, string _name, double* _val, bool* _bIsNodeActive)
 {
     ofRegisterMouseEvents(this);
     ofAddListener(ofEvents.draw, this, &Slider::draw);
+    bIsNodeActive = _bIsNodeActive;
     val = _val;
     name = _name;
     min = 0;
@@ -68,15 +69,23 @@ void Slider::mouseMoved(ofMouseEventArgs & args)
 
 void Slider::mousePressed(ofMouseEventArgs & args)
 {
-   setValue(args.x, args.y, true);
+    if(b.inside(args.x,args.y))
+    {
+        setValue(args.x, args.y, true);
+        bIsActive = true;
+        *bIsNodeActive = false;
+    }
 }
 
 void Slider::mouseDragged(ofMouseEventArgs & args)
 {
-    setValue(args.x, args.y, false);
+    if(b.inside(args.x,args.y) && bIsActive)
+    {
+        setValue(args.x, args.y, false);
+    }
 }
 
 void Slider::mouseReleased(ofMouseEventArgs & args)
 {
-    //bGuiActive = false;
+   bIsActive = false;
 }
