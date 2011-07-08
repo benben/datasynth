@@ -1,4 +1,6 @@
 <OBJECTS>
+  <OBJECT NAME="Text File" TYPE="TextFile">
+  </OBJECT>
   <OBJECT NAME="Constant" TYPE="Constant">
   </OBJECT>
   <OBJECT NAME="OutBox" TYPE="OutBox">

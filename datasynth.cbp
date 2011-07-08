@@ -6,7 +6,7 @@
 		<Option makefile_is_custom="1" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="addons/;src/;build config/;src/nodes/;" />
+		<Option virtualFolders="addons/;src/;build config/;src/nodes/;xml/;" />
 		<MakeCommands>
 			<Build command="$make -j2 -f $makefile $target" />
 			<CompileFile command="$make -j2 -f $makefile $file" />
@@ -35,6 +35,12 @@
 				<Option projectLinkerOptionsRelation="2" />
 			</Target>
 		</Build>
+		<Unit filename="bin/data/menu.xml">
+			<Option virtualFolder="xml/" />
+		</Unit>
+		<Unit filename="bin/data/objects.xml">
+			<Option virtualFolder="xml/" />
+		</Unit>
 		<Unit filename="config.make">
 			<Option virtualFolder="build config" />
 		</Unit>
@@ -105,6 +111,12 @@
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
 		<Unit filename="src/nodes/OutBox.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/TextFile.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/TextFile.h">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
 		<Extensions>

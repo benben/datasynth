@@ -31,6 +31,7 @@ struct Factory {
         f["Constant"] = construct<NodePtr>(new_<ds::Constant>(arg1, arg2, arg3));
         f["Multiply"] = construct<NodePtr>(new_<ds::Multiply>(arg1, arg2, arg3));
         f["OutBox"] = construct<NodePtr>(new_<ds::OutBox>(arg1, arg2, arg3));
+        f["TextFile"] = construct<NodePtr>(new_<ds::TextFile>(arg1, arg2, arg3));
         // ...
     }
 
