@@ -1,6 +1,6 @@
 #include "Slider.h"
 
-Slider::Slider(float* _x, float* _y, string _name, double* _val, bool* _bIsNodeActive)
+Slider::Slider(float* _x, float* _y, string _name, float* _val, bool* _bIsNodeActive)
 {
     ofRegisterMouseEvents(this);
     ofAddListener(ofEvents.draw, this, &Slider::draw);
@@ -32,7 +32,7 @@ void Slider::draw(ofEventArgs & args)
     ofSetColor(30, 30, 80);
     ofRect(b);
 
-    double valAsPct = ofMap(*val, min, max, 0, b.width, true );
+    float valAsPct = ofMap(*val, min, max, 0, b.width, true );
     ofEnableAlphaBlending();
     ofSetColor(180, 180, 180);
     ofRect(b.x+1, b.y+1, valAsPct-1, b.height-2);
@@ -48,7 +48,7 @@ void Slider::draw(ofEventArgs & args)
 }
 void Slider::setValue(Type _val)
 {
-    *val = boost::get<double>(_val);
+    *val = boost::get<float>(_val);
 }
 
 void Slider::setValue(float mx, float my, bool bCheck)

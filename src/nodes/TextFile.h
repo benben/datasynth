@@ -8,12 +8,6 @@ typedef boost::tokenizer<boost::escaped_list_separator<char> > CSVLine;
 
 namespace ds {
 
-struct Spread
-{
-    string name;
-    vector<double> data;
-};
-
 class TextFile : public BaseNode
 {
   public:

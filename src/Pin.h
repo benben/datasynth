@@ -4,7 +4,18 @@
 #include "ofMain.h"
 #include "boost/variant.hpp"
 
-typedef boost::variant<int, float, double> Type;
+struct Spread
+{
+    string name;
+    vector<double> data;
+
+    Spread operator<<(Spread const& _s)
+    {
+        return _s;
+    }
+};
+
+typedef boost::variant<float> Type;
 
 namespace ds {
 
