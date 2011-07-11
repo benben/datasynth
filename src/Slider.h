@@ -10,7 +10,7 @@ class Slider
         ~Slider();
         void draw(ofEventArgs & args);
         void setValue(float mx, float my, bool bCheck);
-        void setValue(Type _val);
+        void setValue(Spread _val);
         virtual void mouseMoved(ofMouseEventArgs & args);
         virtual void mousePressed(ofMouseEventArgs & args);
         virtual void mouseDragged(ofMouseEventArgs & args);

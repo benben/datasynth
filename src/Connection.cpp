@@ -41,7 +41,7 @@ Connection::~Connection()
 
 void Connection::process()
 {
-    memcpy(&in->value,&out->value,sizeof(in->value));
+    memcpy(&in->value->data[0],&out->value->data[0],sizeof(in->value->data[0]));
 }
 
 void Connection::draw(ofEventArgs & args)

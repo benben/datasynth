@@ -3,29 +3,25 @@
 
 #include "ofMain.h"
 #include "boost/variant.hpp"
+#include "boost/shared_ptr.hpp"
 
-struct Spread
+struct SpreadStruct
 {
     string name;
-    vector<double> data;
-
-    Spread operator<<(Spread const& _s)
-    {
-        return _s;
-    }
+    vector<float> data;
 };
 
-typedef boost::variant<float> Type;
+typedef boost::shared_ptr<SpreadStruct> Spread;
 
 namespace ds {
 
 class Pin : public ofRectangle
 {
     public:
-        Pin(Type _value, int _maxConnections=0);
+        Pin(Spread _value, int _maxConnections=0);
         virtual ~Pin();
 
-        Type value;
+        Spread value;
 
         int connections;
         int maxConnections;

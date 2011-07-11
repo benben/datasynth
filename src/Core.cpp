@@ -18,7 +18,7 @@ void Core::setup()
     ofAddListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
     bLoad = false;
     cout << "setup finished" << endl;
-    load();
+    //load();
 }
 //--------------------------------------------------------------
 void Core::update()
@@ -103,7 +103,7 @@ void Core::save()
         for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
         {
             saveXml.addTag("PIN");
-            saveXml.addAttribute("PIN", "VALUE", boost::get<float>(nodes[i]->output[j]->value), j);
+            saveXml.addAttribute("PIN", "VALUE", nodes[i]->output[j]->value->data[0], j);
         }
         saveXml.popTag();
     }
@@ -132,7 +132,7 @@ void Core::load()
         loadXml.pushTag("NODE", i);
         for(int j = 0; j < loadXml.getNumTags("PIN"); j++)
         {
-            temp->output[j]->value = ofToFloat(loadXml.getAttribute("PIN","VALUE", "", j).c_str());
+            temp->output[j]->value->data[0] = ofToFloat(loadXml.getAttribute("PIN","VALUE", "", j).c_str());
             temp->init();
         }
         loadXml.popTag();

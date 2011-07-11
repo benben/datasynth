@@ -18,9 +18,10 @@ TextFile::TextFile(float _x, float _y, string _name)
     CSVLine line(str);
     for(CSVLine::iterator l=line.begin(); l!=line.end();++l){
         cout << *l << " | ";
-        Spread temp;
-        temp.name = *l;
+        Spread temp(new SpreadStruct);
+        temp->name = *l;
         spreads.push_back(temp);
+        output.push_back(new Pin(temp));
     }
     cout << endl;
     int i;
@@ -33,7 +34,7 @@ TextFile::TextFile(float _x, float _y, string _name)
             string t = *l;
             t.resize( std::remove_if(t.begin(), t.end(), filter) - t.begin() );
             cout << ofToFloat(t) << " | ";
-            spreads[i].data.push_back(ofToFloat(t));
+            spreads[i]->data.push_back(ofToFloat(t));
             i++;
         }
         cout << endl;
@@ -41,8 +42,8 @@ TextFile::TextFile(float _x, float _y, string _name)
     cout << "######################" << endl;
     BOOST_FOREACH(Spread s, spreads)
     {
-        cout << s.name << endl;
-        BOOST_FOREACH(double d, s.data)
+        cout << s->name << endl;
+        BOOST_FOREACH(double d, s->data)
             cout << d << endl;
         cout << endl;
     }

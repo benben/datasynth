@@ -2,7 +2,7 @@
 
 using namespace ds;
 
-Pin::Pin(Type _value, int _maxConnections)
+Pin::Pin(Spread _value, int _maxConnections)
 {
     ofRegisterMouseEvents(this);
     connections = 0;
