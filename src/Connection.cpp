@@ -12,8 +12,6 @@ Connection::Connection(Pin * _out, int _outNodeID, int _outPinID, Pin * _in, int
     inPinID = _inPinID;
     in->addConnection();
     out->addConnection();
-    ofAddListener(in->deleteEvent, this, &Connection::setInvalid);
-    ofAddListener(out->deleteEvent, this, &Connection::setInvalid);
     ofAddListener(ofEvents.draw, this, &Connection::draw);
     ofRegisterMouseEvents(this);
     bIsInvalid = false;
@@ -21,33 +19,34 @@ Connection::Connection(Pin * _out, int _outNodeID, int _outPinID, Pin * _in, int
     mouseY = 0;
 }
 
-void Connection::setInvalid(int & args)
-{
-    cout << "setting bIsInvalid to true..." << endl;
-    bIsInvalid = true;
-}
-
 Connection::~Connection()
 {
     cout << "removing connection" << endl;
     in->removeConnection();
     out->removeConnection();
-    //TODO: Since events are not fixed, ignore this
-    //ofRemoveListener(in->deleteEvent, this, &Connection::setInvalid);
-    //ofRemoveListener(out->deleteEvent, this, &Connection::setInvalid);
     ofRemoveListener(ofEvents.draw, this, &Connection::draw);
     ofUnregisterMouseEvents(this);
 }
 
 void Connection::process()
 {
-    memcpy(&in->value->data[0],&out->value->data[0],sizeof(in->value->data[0]));
+    if(in->bIsInvalid || out->bIsInvalid)
+    {
+        bIsInvalid = true;
+    }
+    else
+    {
+        memcpy(&in->value->data[0],&out->value->data[0],sizeof(in->value->data[0]));
+    }
 }
 
 void Connection::draw(ofEventArgs & args)
 {
-    ofSetColor(255,255,255,255);
-    ofLine(out->x+7, out->y+7, in->x+7, in->y+7);
+    if(!bIsInvalid)
+    {
+        ofSetColor(255,255,255,255);
+        ofLine(out->x+7, out->y+7, in->x+7, in->y+7);
+    }
 }
 void Connection::mouseMoved(ofMouseEventArgs & args)
 {

@@ -15,7 +15,6 @@ class Connection
         int outNodeID, outPinID, inNodeID, inPinID;
         void process();
         void draw(ofEventArgs & args);
-        void setInvalid(int & args);
 
         float mouseX, mouseY;
 

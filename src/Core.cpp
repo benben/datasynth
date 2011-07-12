@@ -229,8 +229,7 @@ void Core::mousePressed(int x, int y, int button)
             if(button == 2)
             {
                 //set connection to invalid
-                int x = 1;
-                connections[i]->setInvalid(x);
+                connections[i]->bIsInvalid = true;
             }
             temp = true;
             break;

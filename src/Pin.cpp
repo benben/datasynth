@@ -12,6 +12,7 @@ Pin::Pin(Spread _value, int _maxConnections)
     mouseY = 0;
     width = 15;
     height = 15;
+    bIsInvalid = false;
 }
 
 Pin::~Pin()
@@ -23,9 +24,7 @@ void Pin::setInvalid()
 {
     cout << "setting pin invalid..." << endl;
     ofUnregisterMouseEvents(this);
-    //notify event to connection
-    int x = 10;
-    ofNotifyEvent(deleteEvent,x,this);
+    bIsInvalid = true;
 }
 
 bool Pin::isFree()

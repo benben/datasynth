@@ -27,11 +27,12 @@ class Pin : public ofRectangle
         int maxConnections;
         bool isFree();
         void setInvalid();
+        bool bIsInvalid;
 
         ofEvent<int> deleteEvent;
 
         float mouseX, mouseY;
-        bool bMouseStartsOn, bMouseIsOn, bMouseEndsOn, bIsActive;
+        bool bIsActive;
         void draw(float x, float y);
         void addConnection();
         void removeConnection();
