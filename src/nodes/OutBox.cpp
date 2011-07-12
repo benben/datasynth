@@ -15,6 +15,7 @@ OutBox::OutBox(float _x, float _y, string _name)
 
 OutBox::~OutBox()
 {
+    input.clear();
 }
 
 void OutBox::process()
@@ -26,5 +27,9 @@ void OutBox::draw(ofEventArgs & args)
 {
     //leave this if you wanna draw the basic shapes
     basedraw();
-    ofDrawBitmapString(ofToString(input[0]->value->data[0]),x+80, y+20);
+    height = 30 + (input[0]->value->data.size()-1)*11;
+    for(unsigned int i = 0; i < input[0]->value->data.size(); i++)
+    {
+        ofDrawBitmapString(ofToString(input[0]->value->data[i]),x+80, y+20+(i*11));
+    }
 }
