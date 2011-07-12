@@ -18,7 +18,7 @@ namespace ds {
 class Pin : public ofRectangle
 {
     public:
-        Pin(Spread _value, int _maxConnections=0);
+        Pin(Spread _value, ofColor _color, int _maxConnections=0);
         virtual ~Pin();
 
         Spread value;
@@ -29,7 +29,7 @@ class Pin : public ofRectangle
         void setInvalid();
         bool bIsInvalid;
 
-        ofEvent<int> deleteEvent;
+        ofColor color;
 
         float mouseX, mouseY;
         bool bIsActive;

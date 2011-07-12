@@ -29,6 +29,8 @@ class BaseNode : public ofRectangle
         virtual void basedraw();
         virtual void draw(ofEventArgs & args);
 
+        ofColor color;
+
         virtual void mouseMoved(ofMouseEventArgs & args);
         virtual void mousePressed(ofMouseEventArgs & args);
         virtual void mouseDragged(ofMouseEventArgs & args);

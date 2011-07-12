@@ -12,6 +12,9 @@ TextFile::TextFile(float _x, float _y, string _name)
     x = _x;
     y = _y;
     name = _name;
+    color.r = 0;
+    color.g = 186;
+    color.b = 255;
     inputFile.open("screenformats.csv");
     buffer = inputFile.readToBuffer();
     str = buffer.getNextLine();
@@ -39,7 +42,7 @@ TextFile::TextFile(float _x, float _y, string _name)
         //cout << endl;
     }
     BOOST_FOREACH(Spread s, spreads)
-        output.push_back(new Pin(s));
+        output.push_back(new Pin(s, color));
     /*
     cout << "######################" << endl;
     BOOST_FOREACH(Spread s, spreads)

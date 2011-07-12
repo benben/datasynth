@@ -6,7 +6,7 @@ Constant::Constant(float _x, float _y, string _name)
     Spread temp(new SpreadStruct);
     temp->name = "none";
     temp->data.push_back(0.0);
-    output.push_back(new Pin(temp));
+    output.push_back(new Pin(temp, color));
     x = _x;
     y = _y;
     name = _name;

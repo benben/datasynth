@@ -11,6 +11,9 @@ BaseNode::BaseNode()
     mouseY = 0;
     bIsInvalid = false;
     bIsActive = false;
+    color.r = 255;
+    color.g = 180;
+    color.b = 0;
 }
 
 BaseNode::~BaseNode()
@@ -30,11 +33,11 @@ void BaseNode::basedraw()
 {
     if(inside(mouseX, mouseY))
     {
-        ofSetColor(255,240,0,255);
+        ofSetColor(color.r,color.g+40,color.b);
     }
     else
     {
-        ofSetColor(255,180,0,255);
+        ofSetColor(color.r,color.g,color.b,255);
     }
     ofRect(x,y,width,height);
     ofSetColor(0,0,0,255);

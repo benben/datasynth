@@ -2,12 +2,13 @@
 
 using namespace ds;
 
-Pin::Pin(Spread _value, int _maxConnections)
+Pin::Pin(Spread _value, ofColor _color, int _maxConnections)
 {
     ofRegisterMouseEvents(this);
     connections = 0;
     maxConnections = _maxConnections;
     value = _value;
+    color = _color;
     mouseX = 0;
     mouseY = 0;
     width = 15;
@@ -62,11 +63,11 @@ void Pin::draw(float _x, float _y)
     y = _y;
     if(inside(mouseX, mouseY))
     {
-        ofSetColor(255,240,0,255);
+        ofSetColor(color.r,color.g+40,color.b,255);
     }
     else
     {
-        ofSetColor(255,180,0,255);
+        ofSetColor(color.r,color.g,color.b,255);
     }
     ofRect(x, y, width, height);
 }
