@@ -36,7 +36,7 @@ void Connection::process()
     }
     else
     {
-        memcpy(&in->value->data,&out->value->data,sizeof(in->value->data));
+        in->setValue(out->value);
     }
 }
 

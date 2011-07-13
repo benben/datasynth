@@ -52,11 +52,13 @@ TextFile::TextFile(float _x, float _y, string _name)
             cout << d << endl;
         cout << endl;
     }*/
-        inputFile.close();
+    inputFile.close();
 }
 
 TextFile::~TextFile()
 {
+    spreads.clear();
+    buffer.clear();
 }
 
 void TextFile::process()

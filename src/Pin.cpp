@@ -22,6 +22,11 @@ Pin::~Pin()
     value->data.clear();
 }
 
+void Pin::setValue(Spread _value)
+{
+    value = _value;
+}
+
 void Pin::setInvalid()
 {
     cout << "setting pin invalid..." << endl;

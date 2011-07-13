@@ -1,4 +1,5 @@
 *~
+bin/data/default.xml
 bin/datasynth*
 bin/libs/
 include/

@@ -31,6 +31,8 @@ class Pin : public ofRectangle
 
         ofColor color;
 
+        void setValue(Spread _value);
+
         float mouseX, mouseY;
         bool bIsActive;
         void draw(float x, float y);
