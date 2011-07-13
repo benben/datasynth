@@ -12,7 +12,7 @@ void Core::setup()
 {
     cout << "setup started" << endl;
     ofBackground(80);
-    ofSetFrameRate(30);
+    //ofSetFrameRate(30);
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
     ofAddListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
@@ -99,13 +99,13 @@ void Core::save()
         saveXml.addAttribute("NODE", "TYPE", nodes[i]->type, i);
         saveXml.addAttribute("NODE", "X", nodes[i]->x, i);
         saveXml.addAttribute("NODE", "Y", nodes[i]->y, i);
-        saveXml.pushTag("NODE", i);
+        /*saveXml.pushTag("NODE", i);
         for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
         {
             saveXml.addTag("PIN");
             saveXml.addAttribute("PIN", "VALUE", nodes[i]->output[j]->value->data[0], j);
         }
-        saveXml.popTag();
+        saveXml.popTag();*/
     }
     for(unsigned int i = 0; i < connections.size(); i++)
     {
@@ -121,7 +121,6 @@ void Core::save()
 void Core::load()
 {
     cout << "really loading!" << endl;
-    loadXml.clear();
     loadXml.loadFile("default.xml");
     for(int i = 0; i < loadXml.getNumTags("NODE"); i++)
     {
@@ -129,13 +128,14 @@ void Core::load()
         temp->type = loadXml.getAttribute("NODE","TYPE", "", i).c_str();
         temp->width = 150;
         temp->height = 30;
-        loadXml.pushTag("NODE", i);
+        /*loadXml.pushTag("NODE", i);
         for(int j = 0; j < loadXml.getNumTags("PIN"); j++)
         {
             temp->output[j]->value->data[0] = ofToFloat(loadXml.getAttribute("PIN","VALUE", "", j).c_str());
             temp->init();
         }
-        loadXml.popTag();
+        loadXml.popTag();*/
+        temp->init();
         nodes.push_back(temp);
     }
     for(int i = 0; i < loadXml.getNumTags("CONNECTION"); i++)
@@ -153,6 +153,7 @@ void Core::load()
         ConnectionPtr val(new Connection(nodes[outNodeID]->output[outPinID], outNodeID, outPinID, nodes[inNodeID]->input[inPinID], inNodeID, inPinID));
         connections.push_back(val);
     }
+    loadXml.clear();
 }
 //--------------------------------------------------------------
 void Core::handleMenuEvent(menuEventType & args)
