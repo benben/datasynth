@@ -19,6 +19,7 @@ Pin::Pin(Spread _value, ofColor _color, int _maxConnections)
 Pin::~Pin()
 {
     cout << "Pin killed!" << endl;
+    value->data.clear();
 }
 
 void Pin::setInvalid()

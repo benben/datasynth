@@ -72,7 +72,6 @@ void Core::update()
             if(nodes.size() == 0 && connections.size() == 0)
             {
                 load();
-                bLoad = false;
             }
         } else {
             BOOST_FOREACH(ConnectionPtr connection, connections)
@@ -154,6 +153,7 @@ void Core::load()
         connections.push_back(val);
     }
     loadXml.clear();
+    bLoad = false;
 }
 //--------------------------------------------------------------
 void Core::handleMenuEvent(menuEventType & args)

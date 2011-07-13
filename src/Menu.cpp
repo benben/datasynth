@@ -127,6 +127,14 @@ void Menu::mouseMoved(ofMouseEventArgs & args)
 
 void Menu::mousePressed(ofMouseEventArgs & args)
 {
+}
+
+void Menu::mouseDragged(ofMouseEventArgs & args)
+{
+}
+
+void Menu::mouseReleased(ofMouseEventArgs & args)
+{
     //cout << "pressed " << args.button << " bMouseIsOnNode: " << bMouseIsOnNode << endl;
     if(!bMouseIsOnNode)
     {
@@ -173,12 +181,4 @@ void Menu::mousePressed(ofMouseEventArgs & args)
             }
         }
     }
-}
-
-void Menu::mouseDragged(ofMouseEventArgs & args)
-{
-}
-
-void Menu::mouseReleased(ofMouseEventArgs & args)
-{
 }

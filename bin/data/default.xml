@@ -1,2 +1,3 @@
-<NODE NAME="Text File" TYPE="TextFile" X="414.000000" Y="149.000000"></NODE>
-<NODE NAME="Multiply" TYPE="Multiply" X="582.000000" Y="338.000000"></NODE>
+<NODE NAME="Text File" TYPE="TextFile" X="410.000000" Y="145.000000"></NODE>
+<NODE NAME="Constant" TYPE="Constant" X="601.000000" Y="216.000000"></NODE>
+<NODE NAME="Multiply" TYPE="Multiply" X="349.000000" Y="318.000000"></NODE>

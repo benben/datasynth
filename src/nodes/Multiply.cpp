@@ -16,7 +16,7 @@ Multiply::Multiply(float _x, float _y, string _name)
     input.push_back(new Pin(temp2, color));
     Spread temp3(new SpreadStruct);
     temp3->name = "none";
-    //temp3->data.push_back(0.0);
+    temp3->data.push_back(0.0);
     output.push_back(new Pin(temp3, color));
 }
 
