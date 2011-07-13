@@ -11,6 +11,7 @@ using namespace ds;
 void Core::setup()
 {
     cout << "setup started" << endl;
+    ofxFensterManager::get()->getPrimaryWindow()->addListener(this);
     ofBackground(80);
     //ofSetFrameRate(30);
     XMLObjects.loadFile("objects.xml");
@@ -185,11 +186,11 @@ void Core::handleMenuEvent(menuEventType & args)
     }
 }
 //--------------------------------------------------------------
-void Core::keyPressed(int key)
+void Core::keyPressed(int key, ofxFenster* win)
 {
 }
 //--------------------------------------------------------------
-void Core::keyReleased(int key)
+void Core::keyReleased(int key, ofxFenster* win)
 {
     if (key == ' ')
     {
@@ -197,7 +198,7 @@ void Core::keyReleased(int key)
     }
 }
 //--------------------------------------------------------------
-void Core::mouseMoved(int x, int y )
+void Core::mouseMoved(int x, int y, ofxFenster* win)
 {
 }
 //--------------------------------------------------------------
