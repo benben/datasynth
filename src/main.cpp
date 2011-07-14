@@ -7,8 +7,8 @@ using namespace ds;
 
 //========================================================================
 int main( ){
-    //ofSetWindowPosition(200,100);
 	ofSetupOpenGL(ofxFensterManager::get(), 600 ,576, OF_WINDOW);			// <-------- setup the GL context
+
 	// this kicks off the running of my app
 	// can be OF_WINDOW or OF_FULLSCREEN
 	// pass in width and height too:

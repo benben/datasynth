@@ -10,7 +10,7 @@ Render::Render(float _x, float _y, string _name)
     color.r = 0;
     color.g = 235;
     color.b = 60;
-    win = ofxFensterManager::get()->createFenster(600, 400, OF_WINDOW);
+    win = ofxFensterManager::get()->createFenster(600, 0 ,600, 400, OF_WINDOW);
 	renderWin = new RenderWindow();
 	renderWin->setup();
     win->addListener(renderWin);
