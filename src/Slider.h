@@ -8,7 +8,7 @@ class Slider
     public:
         Slider(float* _x, float* _y, string _name, float* _val, bool* _bIsNodeActive);
         ~Slider();
-        void draw(ofEventArgs & args);
+        void draw();
         void setValue(float mx, float my, bool bCheck);
         void setValue(Spread _val);
         virtual void mouseMoved(ofMouseEventArgs & args);

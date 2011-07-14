@@ -20,7 +20,7 @@ void EmptyNode::process()
     //cout << "output pin: " << output[0] << endl;
 }
 
-void EmptyNode::draw(ofEventArgs & args)
+void EmptyNode::draw()
 {
     //leave this if you wanna draw the basic shapes
     basedraw();

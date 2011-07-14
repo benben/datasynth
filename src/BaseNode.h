@@ -28,7 +28,7 @@ class BaseNode : public ofRectangle
         virtual void init();
         virtual void process();
         virtual void basedraw();
-        virtual void draw(ofEventArgs & args);
+        virtual void draw();
 
         ofColor color;
 

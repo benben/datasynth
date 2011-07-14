@@ -11,7 +11,7 @@ class EmptyNode : public BaseNode
     EmptyNode(float _x, float _y, string _name);
     ~EmptyNode();
     void process();
-    void draw(ofEventArgs & args);
+    void draw();
   protected:
   private:
 };

@@ -67,7 +67,7 @@ void TextFile::process()
     //cout << "output pin: " << output[0]->value << endl;
 }
 
-void TextFile::draw(ofEventArgs & args)
+void TextFile::draw()
 {
     //leave this if you wanna draw the basic shapes
     basedraw();

@@ -3,12 +3,11 @@
 Slider::Slider(float* _x, float* _y, string _name, float* _val, bool* _bIsNodeActive)
 {
     ofRegisterMouseEvents(this);
-    ofAddListener(ofxFensterManager::get()->getPrimaryWindow()->events.draw, this, &Slider::draw);
     bIsNodeActive = _bIsNodeActive;
     val = _val;
     name = _name;
     min = 0;
-    max = 255;
+    max = 3;
     x = _x;
     y = _y;
     b.x = *x;
@@ -20,10 +19,9 @@ Slider::Slider(float* _x, float* _y, string _name, float* _val, bool* _bIsNodeAc
 Slider::~Slider()
 {
     ofUnregisterMouseEvents(this);
-    ofRemoveListener(ofxFensterManager::get()->getPrimaryWindow()->events.draw, this, &Slider::draw);
 }
 
-void Slider::draw(ofEventArgs & args)
+void Slider::draw()
 {
     b.x = *x;
     b.y = *y;
@@ -43,7 +41,7 @@ void Slider::draw(ofEventArgs & args)
 
     ofDrawBitmapString(name, b.x + 4, stringY);
     string valStr;
-    valStr = ofToString(*val, 2);
+    valStr = ofToString(*val, 3);
     ofDrawBitmapString(valStr , (b.x + b.width) - 3 - valStr.length() * 8, stringY );
 }
 void Slider::setValue(Spread _val)

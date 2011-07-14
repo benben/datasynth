@@ -18,7 +18,7 @@ class TextFile : public BaseNode
     ofBuffer buffer;
     string str;
     void process();
-    void draw(ofEventArgs & args);
+    void draw();
 
     vector<Spread> spreads;
   protected:

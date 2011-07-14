@@ -21,7 +21,8 @@ class Render : public BaseNode
     ~Render();
 
     void process();
-    void draw(ofEventArgs & args);
+    void draw();
+    int getWindowID();
 
     ofxFenster* win;
     RenderWindow* renderWin;

@@ -14,7 +14,6 @@ Render::Render(float _x, float _y, string _name)
 	renderWin = new RenderWindow();
 	renderWin->setup();
     win->addListener(renderWin);
-
 }
 
 Render::~Render()
@@ -27,7 +26,7 @@ void Render::process()
     //cout << "process from Render()\n";
 }
 
-void Render::draw(ofEventArgs & args)
+void Render::draw()
 {
     //leave this if you wanna draw the basic shapes
     basedraw();

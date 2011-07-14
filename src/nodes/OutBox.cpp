@@ -26,7 +26,7 @@ void OutBox::process()
     //cout << "process from OutBox()\n";
 }
 
-void OutBox::draw(ofEventArgs & args)
+void OutBox::draw()
 {
     //leave this if you wanna draw the basic shapes
     basedraw();

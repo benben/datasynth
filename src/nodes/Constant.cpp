@@ -30,8 +30,9 @@ void Constant::process()
     //cout << "output pin: " << output[0]->value.data[0] << endl;
 }
 
-void Constant::draw(ofEventArgs & args)
+void Constant::draw()
 {
     //leave this if you wanna draw the basic shapes
     basedraw();
+    slider->draw();
 }

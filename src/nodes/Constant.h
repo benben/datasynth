@@ -17,7 +17,7 @@ class Constant : public BaseNode
     SliderPtr slider;
     void init();
     void process();
-    void draw(ofEventArgs & args);
+    void draw();
   protected:
   private:
 };

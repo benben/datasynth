@@ -4,7 +4,6 @@ using namespace ds;
 
 BaseNode::BaseNode()
 {
-    ofAddListener(ofxFensterManager::get()->getPrimaryWindow()->events.draw, this, &BaseNode::draw);
     ofRegisterMouseEvents(this);
     type = "";
     mouseX = 0;
@@ -53,7 +52,7 @@ void BaseNode::basedraw()
     ofSetColor(0,0,0,255);
 }
 
-void BaseNode::draw(ofEventArgs & args)
+void BaseNode::draw()
 {
     basedraw();
 }
@@ -100,7 +99,6 @@ void BaseNode::setInvalid()
 void BaseNode::basedelete()
 {
     ofUnregisterMouseEvents(this);
-    ofRemoveListener(ofxFensterManager::get()->getPrimaryWindow()->events.draw, this, &BaseNode::draw);
     cout << "calling basedelete!" << endl;
     BOOST_FOREACH(Pin* pin, input)
         delete pin;

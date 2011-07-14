@@ -86,6 +86,9 @@ void Core::draw()
 {
     ofSetColor(255,255,255,255);
     ofDrawBitmapString(ofToString(ofGetFrameRate()), 20, 20);
+
+    BOOST_FOREACH(NodePtr node, nodes)
+        node->draw();
 }
 //--------------------------------------------------------------
 void Core::save()

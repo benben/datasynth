@@ -11,7 +11,7 @@ class OutBox : public BaseNode
     OutBox(float _x, float _y, string _name);
     ~OutBox();
     void process();
-    void draw(ofEventArgs & args);
+    void draw();
   protected:
   private:
 };

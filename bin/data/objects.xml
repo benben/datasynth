@@ -9,4 +9,6 @@
   </OBJECT>
   <OBJECT NAME="Render" TYPE="Render">
   </OBJECT>
+  <OBJECT NAME="Point" TYPE="Point">
+  </OBJECT>
 </OBJECTS>
