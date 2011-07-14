@@ -131,6 +131,7 @@ void Core::load()
         temp->type = loadXml.getAttribute("NODE","TYPE", "", i).c_str();
         temp->width = 150;
         temp->height = 30;
+        //TODO *********** setValue of Controls?!
         /*loadXml.pushTag("NODE", i);
         for(int j = 0; j < loadXml.getNumTags("PIN"); j++)
         {
@@ -218,7 +219,7 @@ void Core::mousePressed(int x, int y, int button)
         if(nodes[i]->inside(x,y))
         {
 
-            if(button == 2)
+            if(button == 2 && nodes[i]->bIsActive)
             {
                 //set node to invalid
                 nodes[i]->setInvalid();

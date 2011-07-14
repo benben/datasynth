@@ -15,17 +15,33 @@ TextFile::TextFile(float _x, float _y, string _name)
     color.r = 0;
     color.g = 186;
     color.b = 255;
-    inputFile.open("screenformats.csv");
+    FileChooserPtr f(new FileChooser(&x, &y, name, &bIsActive));
+    filechooser = f;
+    ofAddListener(filechooser->fileEvent, this, &TextFile::parseFile);
+}
+
+TextFile::~TextFile()
+{
+    ofRemoveListener(filechooser->fileEvent, this, &TextFile::parseFile);
+    spreads.clear();
+    buffer.clear();
+}
+
+void TextFile::parseFile(string & args)
+{
+    cout << "parsing " << args << "..." << endl;
+    BOOST_FOREACH(Pin* p, output)
+        p->value->data.clear();
+    spreads.clear();
+    inputFile.open(args);
     buffer = inputFile.readToBuffer();
     str = buffer.getNextLine();
     CSVLine line(str);
     for(CSVLine::iterator l=line.begin(); l!=line.end();++l){
-        //cout << *l << " | ";
         Spread temp(new SpreadStruct);
         temp->name = *l;
         spreads.push_back(temp);
     }
-    cout << endl;
     int i;
     while(!buffer.isLastLine())
     {
@@ -34,15 +50,34 @@ TextFile::TextFile(float _x, float _y, string _name)
         i = 0;
         for(CSVLine::iterator l=line.begin(); l!=line.end();++l){
             string t = *l;
-            t.resize( std::remove_if(t.begin(), t.end(), filter) - t.begin() );
+            t.resize(remove_if(t.begin(), t.end(), filter) - t.begin() );
             //cout << ofToFloat(t) << " | ";
             spreads[i]->data.push_back(ofToFloat(t));
             i++;
         }
         //cout << endl;
     }
-    BOOST_FOREACH(Spread s, spreads)
-        output.push_back(new Pin(s, color));
+    //if spreads.size is less than out.size, then delete some outputs!
+    for(unsigned int i = 0; i < output.size(); i++)
+    {
+        if(i >= spreads.size()-1)
+        {
+            output.erase(output.begin()+i);
+        }
+    }
+    //if there are already outputs, just update them, if not, make new ones
+    int outputsize = output.size();
+    for(unsigned int i = 0; i < spreads.size(); i++)
+    {
+        if(i >= outputsize)
+        {
+            output.push_back(new Pin(spreads[i], color));
+        }
+        else
+        {
+            output[i]->value = spreads[i];
+        }
+    }
     /*
     cout << "######################" << endl;
     BOOST_FOREACH(Spread s, spreads)
@@ -53,11 +88,6 @@ TextFile::TextFile(float _x, float _y, string _name)
         cout << endl;
     }*/
     inputFile.close();
-}
-
-TextFile::~TextFile()
-{
-    spreads.clear();
     buffer.clear();
 }
 
@@ -69,6 +99,9 @@ void TextFile::process()
 
 void TextFile::draw()
 {
+    //ugly!
+    width = 200;
     //leave this if you wanna draw the basic shapes
     basedraw();
+    filechooser->draw();
 }

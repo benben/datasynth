@@ -6,7 +6,7 @@
 		<Option makefile_is_custom="1" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="addons/;src/;build config/;src/nodes/;xml/;addons/ofxFenster/;" />
+		<Option virtualFolders="src/;build config/;src/nodes/;xml/;src/controls/;" />
 		<MakeCommands>
 			<Build command="$make -j2 -f $makefile $target" />
 			<CompileFile command="$make -j2 -f $makefile $file" />
@@ -80,11 +80,17 @@
 		<Unit filename="src/Singleton.h">
 			<Option virtualFolder="src/" />
 		</Unit>
-		<Unit filename="src/Slider.cpp">
-			<Option virtualFolder="src/" />
+		<Unit filename="src/controls/FileChooser.cpp">
+			<Option virtualFolder="src/controls/" />
 		</Unit>
-		<Unit filename="src/Slider.h">
-			<Option virtualFolder="src/" />
+		<Unit filename="src/controls/FileChooser.h">
+			<Option virtualFolder="src/controls/" />
+		</Unit>
+		<Unit filename="src/controls/Slider.cpp">
+			<Option virtualFolder="src/controls/" />
+		</Unit>
+		<Unit filename="src/controls/Slider.h">
+			<Option virtualFolder="src/controls/" />
 		</Unit>
 		<Unit filename="src/main.cpp">
 			<Option virtualFolder="src/" />
@@ -130,18 +136,6 @@
 		</Unit>
 		<Unit filename="src/nodes/TextFile.h">
 			<Option virtualFolder="src/nodes/" />
-		</Unit>
-		<Unit filename="../openFrameworks/addons/ofxFenster/src/ofxFenster.cpp">
-			<Option virtualFolder="addons/ofxFenster/" />
-		</Unit>
-		<Unit filename="../openFrameworks/addons/ofxFenster/src/ofxFenster.h">
-			<Option virtualFolder="addons/ofxFenster/" />
-		</Unit>
-		<Unit filename="../openFrameworks/addons/ofxFenster/src/ofxFensterManager.cpp">
-			<Option virtualFolder="addons/ofxFenster/" />
-		</Unit>
-		<Unit filename="../openFrameworks/addons/ofxFenster/src/ofxFensterManager.h">
-			<Option virtualFolder="addons/ofxFenster/" />
 		</Unit>
 		<Extensions>
 			<code_completion />

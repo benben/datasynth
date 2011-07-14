@@ -2,7 +2,7 @@
 #define CONSTANT_H
 
 #include "src/BaseNode.h"
-#include "src/Slider.h"
+#include "src/controls/Slider.h"
 #include "boost/shared_ptr.hpp"
 
 typedef boost::shared_ptr<Slider> SliderPtr;
