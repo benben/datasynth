@@ -1,0 +1,52 @@
+#include "Point.h"
+using namespace ds;
+
+Point::Point(float _x, float _y, string _name)
+{
+    x = _x;
+    y = _y;
+    name = _name;
+    Spread x(new SpreadStruct);
+    x->name = "X";
+    input.push_back(new Pin(x, color, 1));
+    Spread y(new SpreadStruct);
+    y->name = "Y";
+    input.push_back(new Pin(y, color, 1));
+    winId = 1;
+    ofAddListener(ofxFensterManager::get()->getWindowById(winId)->events.draw, this, &Point::drawPoints);
+}
+
+Point::~Point()
+{
+    ofRemoveListener(ofxFensterManager::get()->getWindowById(winId)->events.draw, this, &Point::drawPoints);
+}
+
+void Point::process()
+{
+}
+
+void Point::draw()
+{
+    basedraw();
+}
+
+void Point::drawPoints(ofEventArgs & args)
+{
+    int size0 = input[0]->value->data.size();
+    int size1 = input[1]->value->data.size();
+    if(size0 > 0 && size1 > 0)
+    {
+        int max = 0;
+        if(size0 >= size1)
+            max = size0;
+        else
+            max = size1;
+        int it = 0;
+        while(it < max)
+        {
+            ofSetColor(255,255,255,255);
+            ofRect(input[0]->value->data[it % size0],input[1]->value->data[it % size1],5,5);
+            it++;
+        }
+    }
+}
