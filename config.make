@@ -10,7 +10,7 @@ OF_ROOT = ../openFrameworks
 # for example search paths like:
 # USER_CFLAGS = -I src/objects
 
-USER_CFLAGS = -I/home/ben/Downloads/boost_1_46_1/
+USER_CFLAGS = -I../boost/
 
 
 # USER_LDFLAGS allows to pass custom flags to the linker
