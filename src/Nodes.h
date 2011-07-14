@@ -2,3 +2,4 @@
 #include "src/nodes/Multiply.h"
 #include "src/nodes/OutBox.h"
 #include "src/nodes/TextFile.h"
+#include "src/nodes/Render.h"

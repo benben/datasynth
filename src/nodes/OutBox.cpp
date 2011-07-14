@@ -7,6 +7,9 @@ OutBox::OutBox(float _x, float _y, string _name)
     x = _x;
     y = _y;
     name = _name;
+    color.r = 230;
+    color.g = 230;
+    color.b = 230;
     Spread temp(new SpreadStruct);
     temp->name = "none";
     temp->data.push_back(0.0);

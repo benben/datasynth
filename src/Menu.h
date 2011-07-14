@@ -2,6 +2,7 @@
 #define MENU_H
 
 #include "ofxXmlSettings.h"
+#include "ofxFensterManager.h"
 #include "ofMain.h"
 #include "ofEvents.h"
 #include "src/Singleton.h"

@@ -2,6 +2,7 @@
 #define CONNECTION_H
 
 #include "src/Pin.h"
+#include "ofxFensterManager.h"
 
 namespace ds {
 

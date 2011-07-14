@@ -1,6 +1,7 @@
 #ifndef BASENODE_H
 #define BASENODE_H
 
+#include "ofxFensterManager.h"
 #include "src/Pin.h"
 #include <boost/foreach.hpp>
 

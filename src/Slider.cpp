@@ -3,7 +3,7 @@
 Slider::Slider(float* _x, float* _y, string _name, float* _val, bool* _bIsNodeActive)
 {
     ofRegisterMouseEvents(this);
-    ofAddListener(ofEvents.draw, this, &Slider::draw);
+    ofAddListener(ofxFensterManager::get()->getPrimaryWindow()->events.draw, this, &Slider::draw);
     bIsNodeActive = _bIsNodeActive;
     val = _val;
     name = _name;
@@ -20,7 +20,7 @@ Slider::Slider(float* _x, float* _y, string _name, float* _val, bool* _bIsNodeAc
 Slider::~Slider()
 {
     ofUnregisterMouseEvents(this);
-    ofRemoveListener(ofEvents.draw, this, &Slider::draw);
+    ofRemoveListener(ofxFensterManager::get()->getPrimaryWindow()->events.draw, this, &Slider::draw);
 }
 
 void Slider::draw(ofEventArgs & args)

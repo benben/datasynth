@@ -68,14 +68,14 @@ Menu::Menu()
         entries.push_back(temp);
     }
     ofRegisterMouseEvents(this);
-    ofAddListener(ofEvents.draw, this, &Menu::draw);
+    ofAddListener(ofxFensterManager::get()->getPrimaryWindow()->events.draw, this, &Menu::draw);
     bMouseIsOnNode = false;
 }
 
 Menu::~Menu()
 {
     ofUnregisterMouseEvents(this);
-    ofRemoveListener(ofEvents.draw, this, &Menu::draw);
+    ofRemoveListener(ofxFensterManager::get()->getPrimaryWindow()->events.draw, this, &Menu::draw);
 }
 
 void Menu::draw(ofEventArgs & args)

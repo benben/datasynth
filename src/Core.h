@@ -33,6 +33,7 @@ struct Factory {
         f["Multiply"] = construct<NodePtr>(new_<ds::Multiply>(arg1, arg2, arg3));
         f["OutBox"] = construct<NodePtr>(new_<ds::OutBox>(arg1, arg2, arg3));
         f["TextFile"] = construct<NodePtr>(new_<ds::TextFile>(arg1, arg2, arg3));
+        f["Render"] = construct<NodePtr>(new_<ds::Render>(arg1, arg2, arg3));
         // ...
     }
 
