@@ -38,6 +38,9 @@ class BaseNode : public ofRectangle
         virtual void mouseReleased(ofMouseEventArgs & args);
         float mouseX, mouseY;
         bool bIsActive;
+        bool bValueIsSaveable;
+
+        virtual string getValueAsString();
     protected:
     private:
 };

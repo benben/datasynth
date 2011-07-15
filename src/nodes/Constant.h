@@ -18,6 +18,10 @@ class Constant : public BaseNode
     void init();
     void process();
     void draw();
+
+    float value;
+
+    string getValueAsString();
   protected:
   private:
 };

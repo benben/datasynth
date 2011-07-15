@@ -13,6 +13,7 @@ BaseNode::BaseNode()
     color.r = 255;
     color.g = 180;
     color.b = 0;
+    bValueIsSaveable = false;
 }
 
 BaseNode::~BaseNode()
@@ -55,6 +56,11 @@ void BaseNode::basedraw()
 void BaseNode::draw()
 {
     basedraw();
+}
+
+string BaseNode::getValueAsString()
+{
+    return "";
 }
 
 void BaseNode::mouseMoved(ofMouseEventArgs & args)

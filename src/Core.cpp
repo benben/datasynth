@@ -102,13 +102,14 @@ void Core::save()
         saveXml.addAttribute("NODE", "TYPE", nodes[i]->type, i);
         saveXml.addAttribute("NODE", "X", nodes[i]->x, i);
         saveXml.addAttribute("NODE", "Y", nodes[i]->y, i);
-        /*saveXml.pushTag("NODE", i);
-        for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
+        if(nodes[i]->bValueIsSaveable)
         {
-            saveXml.addTag("PIN");
-            saveXml.addAttribute("PIN", "VALUE", nodes[i]->output[j]->value->data[0], j);
+            cout << "node is saveable" << endl;
+            saveXml.pushTag("NODE", i);
+            saveXml.addTag("VALUE");
+            saveXml.setValue("VALUE", nodes[i]->getValueAsString(), 0);
+            saveXml.popTag();
         }
-        saveXml.popTag();*/
     }
     for(unsigned int i = 0; i < connections.size(); i++)
     {
@@ -132,13 +133,13 @@ void Core::load()
         temp->width = 150;
         temp->height = 30;
         //TODO *********** setValue of Controls?!
-        /*loadXml.pushTag("NODE", i);
+        loadXml.pushTag("NODE", i);
         for(int j = 0; j < loadXml.getNumTags("PIN"); j++)
         {
             temp->output[j]->value->data[0] = ofToFloat(loadXml.getAttribute("PIN","VALUE", "", j).c_str());
             temp->init();
         }
-        loadXml.popTag();*/
+        loadXml.popTag();
         temp->init();
         nodes.push_back(temp);
     }

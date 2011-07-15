@@ -44,9 +44,9 @@ void Slider::draw()
     valStr = ofToString(*val, 3);
     ofDrawBitmapString(valStr , (b.x + b.width) - 3 - valStr.length() * 8, stringY );
 }
-void Slider::setValue(Spread _val)
+void Slider::setValue(float _val)
 {
-    *val = _val->data[0];
+    *val = _val;
 }
 
 void Slider::setValue(float mx, float my, bool bCheck)
