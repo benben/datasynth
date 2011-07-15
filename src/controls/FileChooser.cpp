@@ -117,26 +117,25 @@ void FileChooser::mousePressed(ofMouseEventArgs & args)
     }
     else
     {
-        bShow = false;
-    }
-
-    if(args.button == 0)
-    {
-        for(unsigned int i = 0; i < entries.size(); i++)
+        if(args.button == 0 && bShow)
         {
-            if(entries[i].box.inside(args.x,args.y))
+            for(unsigned int i = 0; i < entries.size(); i++)
             {
-                cout << "clicked on " << entries[i].name << " type: " << entries[i].type << endl;
-                if(entries[i].type == acceptedFileExtension)
+                if(entries[i].box.inside(args.x,args.y))
                 {
-                    setValue(entries[i].path);
-                    ofNotifyEvent(fileEvent,entries[i].path,this);
-                    bFileIsSet = true;
+                    cout << "clicked on " << entries[i].name << " type: " << entries[i].type << endl;
+                    if(entries[i].type == acceptedFileExtension)
+                    {
+                        setValue(entries[i].path);
+                        ofNotifyEvent(fileEvent,entries[i].path,this);
+                        bFileIsSet = true;
+                    }
+                    bShow = false;
+                    break;
                 }
-                bShow = false;
-                break;
             }
         }
+        bShow = false;
     }
 }
 

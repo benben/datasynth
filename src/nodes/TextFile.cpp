@@ -57,12 +57,15 @@ void TextFile::parseFile(string & args)
         }
         //cout << endl;
     }
-    //if spreads.size is less than out.size, then delete some outputs!
-    for(unsigned int i = 0; i < output.size(); i++)
+    //if spreads.size is less than out.size, then delete some outputs beginning from the end of the output vector!
+    int outsize = output.size();
+    for(unsigned int i = 0; i < outsize; i++)
     {
-        if(i >= spreads.size()-1)
+        if(i >= spreads.size())
         {
-            output.erase(output.begin()+i);
+            output[outsize-i]->setInvalid();
+            //cout << "killing output " << outsize-i << endl;
+            output.erase(output.begin()+(outsize-i));
         }
     }
     //if there are already outputs, just update them, if not, make new ones
