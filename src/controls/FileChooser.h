@@ -18,7 +18,7 @@ struct fileentry
 class FileChooser
 {
     public:
-        FileChooser(float* _x, float* _y, string _name,  bool* _bIsNodeActive);
+        FileChooser(float* _x, float* _y, string _name, string* _value,  bool* _bIsNodeActive);
         ~FileChooser();
         void draw();
         void setValue(string _val);
@@ -27,7 +27,8 @@ class FileChooser
         virtual void mouseDragged(ofMouseEventArgs & args);
         virtual void mouseReleased(ofMouseEventArgs & args);
 
-        string name, value;
+        string name;
+        string* value;
         float* x, * y;
         ofRectangle b;
 

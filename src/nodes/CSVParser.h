@@ -15,6 +15,7 @@ class CSVParser : public BaseNode
   public:
     CSVParser(float _x, float _y, string _name);
     ~CSVParser();
+    void init();
 
     ofFile inputFile;
     ofBuffer buffer;
@@ -26,6 +27,10 @@ class CSVParser : public BaseNode
     vector<Spread> spreads;
 
     FileChooserPtr filechooser;
+
+    string value;
+    string getValueAsString();
+    void setValueFromString(string _val);
   protected:
   private:
 };

@@ -8,14 +8,15 @@ bool filter(char c)
 
 CSVParser::CSVParser(float _x, float _y, string _name)
 {
-    //output.push_back(new Pin(0.0));
+    value = "";
+    bValueIsSaveable = true;
     x = _x;
     y = _y;
     name = _name;
     color.r = 0;
     color.g = 186;
     color.b = 255;
-    FileChooserPtr f(new FileChooser(&x, &y, name, &bIsActive));
+    FileChooserPtr f(new FileChooser(&x, &y, name, &value, &bIsActive));
     filechooser = f;
     ofAddListener(filechooser->fileEvent, this, &CSVParser::parseFile);
 }
@@ -25,6 +26,23 @@ CSVParser::~CSVParser()
     ofRemoveListener(filechooser->fileEvent, this, &CSVParser::parseFile);
     spreads.clear();
     buffer.clear();
+}
+
+string CSVParser::getValueAsString()
+{
+    return ofToString(value);
+}
+
+void CSVParser::setValueFromString(string _val)
+{
+    value = _val;
+}
+
+void CSVParser::init()
+{
+    filechooser->setValue(value);
+    filechooser->bFileIsSet=true;
+    parseFile(value);
 }
 
 void CSVParser::parseFile(string & args)

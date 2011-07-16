@@ -36,7 +36,6 @@ void Constant::setValueFromString(string _val)
     value = ofToFloat(_val);
 }
 
-
 void Constant::process()
 {
     output[0]->value->data[0] = value;

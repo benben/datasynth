@@ -2,11 +2,12 @@
 
 using namespace ds;
 
-FileChooser::FileChooser(float* _x, float* _y, string _name, bool* _bIsNodeActive)
+FileChooser::FileChooser(float* _x, float* _y, string _name, string* _value, bool* _bIsNodeActive)
 {
     ofRegisterMouseEvents(this);
     bIsNodeActive = _bIsNodeActive;
     name = _name;
+    value = _value;
     x = _x;
     y = _y;
     b.x = *x;
@@ -61,7 +62,7 @@ void FileChooser::draw()
     ofRect(b);
     if(bFileIsSet)
     {
-        ofDrawBitmapString(value,b.x+3,b.y+12);
+        ofDrawBitmapString(*value,b.x+3,b.y+12);
     }
     else
     {
@@ -96,7 +97,7 @@ void FileChooser::draw()
 
 void FileChooser::setValue(string _val)
 {
-    value = _val;
+    *value = _val;
 }
 
 void FileChooser::mouseMoved(ofMouseEventArgs & args)
