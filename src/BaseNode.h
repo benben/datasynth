@@ -41,6 +41,7 @@ class BaseNode : public ofRectangle
         bool bValueIsSaveable;
 
         virtual string getValueAsString();
+        virtual void setValueFromString(string _val);
     protected:
     private:
 };

@@ -28,9 +28,14 @@ void Constant::init()
 
 string Constant::getValueAsString()
 {
-    cout << ofToString(value) << endl;
     return ofToString(value);
 }
+
+void Constant::setValueFromString(string _val)
+{
+    value = ofToFloat(_val);
+}
+
 
 void Constant::process()
 {

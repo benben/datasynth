@@ -22,6 +22,7 @@ class Constant : public BaseNode
     float value;
 
     string getValueAsString();
+    void setValueFromString(string _val);
   protected:
   private:
 };

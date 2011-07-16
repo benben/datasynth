@@ -63,6 +63,10 @@ string BaseNode::getValueAsString()
     return "";
 }
 
+void BaseNode::setValueFromString(string _val)
+{
+}
+
 void BaseNode::mouseMoved(ofMouseEventArgs & args)
 {
     mouseX = args.x;

@@ -134,13 +134,12 @@ void Core::load()
         temp->height = 30;
         //TODO *********** setValue of Controls?!
         loadXml.pushTag("NODE", i);
-        for(int j = 0; j < loadXml.getNumTags("PIN"); j++)
+        if(loadXml.getNumTags("VALUE") > 0)
         {
-            temp->output[j]->value->data[0] = ofToFloat(loadXml.getAttribute("PIN","VALUE", "", j).c_str());
-            temp->init();
+            temp->setValueFromString(ofToString(loadXml.getValue("VALUE", "", 0).c_str()));
         }
-        loadXml.popTag();
         temp->init();
+        loadXml.popTag();
         nodes.push_back(temp);
     }
     for(int i = 0; i < loadXml.getNumTags("CONNECTION"); i++)
