@@ -12,7 +12,6 @@ Connection::Connection(Pin * _out, int _outNodeID, int _outPinID, Pin * _in, int
     inPinID = _inPinID;
     in->addConnection();
     out->addConnection();
-    ofAddListener(ofxFensterManager::get()->getPrimaryWindow()->events.draw, this, &Connection::draw);
     ofRegisterMouseEvents(this);
     bIsInvalid = false;
     mouseX = 0;
@@ -24,7 +23,6 @@ Connection::~Connection()
     cout << "removing connection" << endl;
     in->removeConnection();
     out->removeConnection();
-    ofRemoveListener(ofxFensterManager::get()->getPrimaryWindow()->events.draw, this, &Connection::draw);
     ofUnregisterMouseEvents(this);
 }
 
@@ -40,7 +38,7 @@ void Connection::process()
     }
 }
 
-void Connection::draw(ofEventArgs & args)
+void Connection::draw()
 {
     if(!bIsInvalid)
     {

@@ -15,7 +15,7 @@ class Connection
         Pin * out;
         int outNodeID, outPinID, inNodeID, inPinID;
         void process();
-        void draw(ofEventArgs & args);
+        void draw();
 
         float mouseX, mouseY;
 

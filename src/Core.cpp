@@ -89,6 +89,8 @@ void Core::draw()
 
     BOOST_FOREACH(NodePtr node, nodes)
         node->draw();
+    BOOST_FOREACH(ConnectionPtr connection, connections)
+        connection->draw();
 }
 //--------------------------------------------------------------
 void Core::save()
