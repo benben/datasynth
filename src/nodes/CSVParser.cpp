@@ -40,9 +40,12 @@ void CSVParser::setValueFromString(string _val)
 
 void CSVParser::init()
 {
-    filechooser->setValue(value);
-    filechooser->bFileIsSet=true;
-    parseFile(value);
+    if(value != "")
+    {
+        filechooser->setValue(value);
+        filechooser->bFileIsSet = true;
+        parseFile(value);
+    }
 }
 
 void CSVParser::parseFile(string & args)

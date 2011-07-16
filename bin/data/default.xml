@@ -1,10 +1,1 @@
-<NODE NAME="CSV Parser" TYPE="CSVParser" X="18.000000" Y="48.000000">
-    <VALUE>data/screenformats.csv</VALUE>
-</NODE>
-<NODE NAME="Constant" TYPE="Constant" X="232.000000" Y="48.000000">
-    <VALUE>0.99</VALUE>
-</NODE>
-<NODE NAME="OutBox" TYPE="OutBox" X="464.000000" Y="61.000000"></NODE>
-<NODE NAME="Multiply" TYPE="Multiply" X="18.000000" Y="135.000000"></NODE>
-<NODE NAME="Render" TYPE="Render" X="407.000000" Y="134.000000"></NODE>
-<NODE NAME="Point" TYPE="Point" X="218.000000" Y="135.000000"></NODE>
+<NODE NAME="CSV Parser" TYPE="CSVParser" X="144.000000" Y="135.000000"></NODE>

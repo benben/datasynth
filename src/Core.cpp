@@ -107,7 +107,7 @@ void Core::save()
         saveXml.addAttribute("NODE", "TYPE", nodes[i]->type, i);
         saveXml.addAttribute("NODE", "X", nodes[i]->x, i);
         saveXml.addAttribute("NODE", "Y", nodes[i]->y, i);
-        if(nodes[i]->bValueIsSaveable)
+        if(nodes[i]->bValueIsSaveable && nodes[i]->getValueAsString() != "")
         {
             cout << "node is saveable" << endl;
             saveXml.pushTag("NODE", i);
