@@ -6,6 +6,8 @@ BaseNode::BaseNode()
 {
     ofRegisterMouseEvents(this);
     type = "";
+    width = 150;
+    height = 30;
     mouseX = 0;
     mouseY = 0;
     bIsInvalid = false;

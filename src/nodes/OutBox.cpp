@@ -7,6 +7,7 @@ OutBox::OutBox(float _x, float _y, string _name)
     x = _x;
     y = _y;
     name = _name;
+    width = 70;
     color.r = 230;
     color.g = 230;
     color.b = 230;
@@ -27,9 +28,6 @@ void OutBox::process()
 
 void OutBox::draw()
 {
-    //ugly
-    width = 70;
-
     height = 30 + (input[0]->value->data.size()-1)*11;
     if(input[0]->value->data.size() > 0)
     {

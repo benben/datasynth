@@ -135,8 +135,6 @@ void Core::load()
     {
         NodePtr temp = factory(loadXml.getAttribute("NODE","TYPE", "", i).c_str(), ofToFloat(loadXml.getAttribute("NODE","X", "", i).c_str()), ofToFloat(loadXml.getAttribute("NODE","Y", "", i).c_str()), loadXml.getAttribute("NODE","NAME", "", i).c_str());
         temp->type = loadXml.getAttribute("NODE","TYPE", "", i).c_str();
-        temp->width = 150;
-        temp->height = 30;
         //TODO *********** setValue of Controls?!
         loadXml.pushTag("NODE", i);
         if(loadXml.getNumTags("VALUE") > 0)
@@ -175,8 +173,6 @@ void Core::handleMenuEvent(menuEventType & args)
         //create nodes here
         NodePtr temp = factory(args.valueType, Menu::Get()->x, Menu::Get()->y, args.value);
         temp->type = args.valueType;
-        temp->width = 150;
-        temp->height = 30;
         nodes.push_back(temp);
     }
     else if(args.handler == "Save")

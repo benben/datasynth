@@ -13,6 +13,7 @@ CSVParser::CSVParser(float _x, float _y, string _name)
     x = _x;
     y = _y;
     name = _name;
+    width = 200;
     color.r = 0;
     color.g = 186;
     color.b = 255;
@@ -123,9 +124,6 @@ void CSVParser::process()
 
 void CSVParser::draw()
 {
-    //ugly!
-    width = 200;
-
     ofSetColor(0,0,0,255);
     ofDrawBitmapString(name, x+2, y+12);
     filechooser->draw();

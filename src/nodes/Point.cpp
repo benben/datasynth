@@ -6,6 +6,7 @@ Point::Point(float _x, float _y, string _name)
     x = _x;
     y = _y;
     name = _name;
+    width = 100;
     Spread x(new SpreadStruct);
     x->name = "X";
     input.push_back(new Pin(x, color, 1));
