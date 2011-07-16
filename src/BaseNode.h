@@ -7,7 +7,7 @@
 
 namespace ds {
 
-class BaseNode : public ofRectangle
+class BaseNode : virtual public ofRectangle
 {
     public:
         BaseNode(const BaseNode&); //prevent copying

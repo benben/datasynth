@@ -40,8 +40,6 @@ void BaseNode::basedraw()
         ofSetColor(color.r,color.g,color.b,255);
     }
     ofRect(x,y,width,height);
-    ofSetColor(0,0,0,255);
-    ofDrawBitmapString(name, x+2, y+12);
     for(unsigned int i = 0; i < input.size(); i++)
     {
         input[i]->draw(x+(i*16), y-16);
@@ -56,6 +54,8 @@ void BaseNode::basedraw()
 void BaseNode::draw()
 {
     basedraw();
+    ofSetColor(0,0,0,255);
+    ofDrawBitmapString(name, x+2, y+12);
 }
 
 string BaseNode::getValueAsString()
