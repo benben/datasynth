@@ -1,5 +1,5 @@
-#ifndef TEXTFILE_H
-#define TEXTFILE_H
+#ifndef CSVPARSER_H
+#define CSVPARSER_H
 
 #include "src/BaseNode.h"
 #include "src/controls/FileChooser.h"
@@ -10,11 +10,11 @@ typedef boost::tokenizer<boost::escaped_list_separator<char> > CSVLine;
 
 namespace ds {
 
-class TextFile : public BaseNode
+class CSVParser : public BaseNode
 {
   public:
-    TextFile(float _x, float _y, string _name);
-    ~TextFile();
+    CSVParser(float _x, float _y, string _name);
+    ~CSVParser();
 
     ofFile inputFile;
     ofBuffer buffer;
@@ -31,4 +31,4 @@ class TextFile : public BaseNode
 };
 
 }
-#endif // TEXTFILE_H
+#endif // CSVPARSER_H

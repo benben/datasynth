@@ -1,4 +1,4 @@
-#include "TextFile.h"
+#include "CSVParser.h"
 using namespace ds;
 
 bool filter(char c)
@@ -6,7 +6,7 @@ bool filter(char c)
 	return c==',';
 }
 
-TextFile::TextFile(float _x, float _y, string _name)
+CSVParser::CSVParser(float _x, float _y, string _name)
 {
     //output.push_back(new Pin(0.0));
     x = _x;
@@ -17,17 +17,17 @@ TextFile::TextFile(float _x, float _y, string _name)
     color.b = 255;
     FileChooserPtr f(new FileChooser(&x, &y, name, &bIsActive));
     filechooser = f;
-    ofAddListener(filechooser->fileEvent, this, &TextFile::parseFile);
+    ofAddListener(filechooser->fileEvent, this, &CSVParser::parseFile);
 }
 
-TextFile::~TextFile()
+CSVParser::~CSVParser()
 {
-    ofRemoveListener(filechooser->fileEvent, this, &TextFile::parseFile);
+    ofRemoveListener(filechooser->fileEvent, this, &CSVParser::parseFile);
     spreads.clear();
     buffer.clear();
 }
 
-void TextFile::parseFile(string & args)
+void CSVParser::parseFile(string & args)
 {
     cout << "parsing " << args << "..." << endl;
     BOOST_FOREACH(Pin* p, output)
@@ -94,13 +94,13 @@ void TextFile::parseFile(string & args)
     buffer.clear();
 }
 
-void TextFile::process()
+void CSVParser::process()
 {
-    //cout << "process from TextFile()\n";
+    //cout << "process from CSVParser()\n";
     //cout << "output pin: " << output[0]->value << endl;
 }
 
-void TextFile::draw()
+void CSVParser::draw()
 {
     //ugly!
     width = 200;

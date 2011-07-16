@@ -1,5 +1,5 @@
 <OBJECTS>
-  <OBJECT NAME="Text File" TYPE="TextFile">
+  <OBJECT NAME="CSV Parser" TYPE="CSVParser">
   </OBJECT>
   <OBJECT NAME="Constant" TYPE="Constant">
   </OBJECT>
