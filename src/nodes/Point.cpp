@@ -25,11 +25,6 @@ void Point::process()
 {
 }
 
-void Point::draw()
-{
-    basedraw();
-}
-
 void Point::drawPoints(ofEventArgs & args)
 {
     int size0 = input[0]->value->data.size();

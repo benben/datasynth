@@ -26,9 +26,3 @@ void Render::process()
 {
     //cout << "process from Render()\n";
 }
-
-void Render::draw()
-{
-    //leave this if you wanna draw the basic shapes
-    basedraw();
-}

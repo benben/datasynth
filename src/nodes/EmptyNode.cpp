@@ -19,9 +19,3 @@ void EmptyNode::process()
     cout << "process from EmptyNode()\n";
     //cout << "output pin: " << output[0] << endl;
 }
-
-void EmptyNode::draw()
-{
-    //leave this if you wanna draw the basic shapes
-    basedraw();
-}

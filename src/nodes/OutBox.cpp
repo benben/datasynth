@@ -27,9 +27,9 @@ void OutBox::process()
 
 void OutBox::draw()
 {
-    //leave this if you wanna draw the basic shapes
-    basedraw();
+    //ugly
     width = 70;
+
     height = 30 + (input[0]->value->data.size()-1)*11;
     if(input[0]->value->data.size() > 0)
     {

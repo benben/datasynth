@@ -11,7 +11,6 @@ class Point : public BaseNode
     Point(float _x, float _y, string _name);
     ~Point();
     void process();
-    void draw();
     void drawPoints(ofEventArgs & args);
 
     int winId;

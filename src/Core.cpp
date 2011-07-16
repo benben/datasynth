@@ -88,7 +88,10 @@ void Core::draw()
     ofDrawBitmapString(ofToString(ofGetFrameRate()), 20, 20);
 
     BOOST_FOREACH(NodePtr node, nodes)
+    {
+        node->basedraw();
         node->draw();
+    }
     BOOST_FOREACH(ConnectionPtr connection, connections)
         connection->draw();
 }

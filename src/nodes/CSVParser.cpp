@@ -122,9 +122,8 @@ void CSVParser::draw()
 {
     //ugly!
     width = 200;
+
     ofSetColor(0,0,0,255);
     ofDrawBitmapString(name, x+2, y+12);
-    //leave this if you wanna draw the basic shapes
-    basedraw();
     filechooser->draw();
 }
