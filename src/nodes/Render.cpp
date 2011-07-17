@@ -20,5 +20,4 @@ Render::~Render()
 {
     ofxFensterManager::get()->deleteFenster(win);
     delete renderWin;
-    //TODO: delete win and renderWin also
 }

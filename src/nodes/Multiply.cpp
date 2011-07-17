@@ -42,7 +42,7 @@ void Multiply::process()
         while(it < max)
         {
             //cout << it << endl;
-            output[0]->value->data.push_back(input[0]->value->data[it % size0] * input[1]->value->data[it % size1]);
+            output[0]->value->data.push_back(boost::get<float>(input[0]->value->data[it % size0]) * boost::get<float>(input[1]->value->data[it % size1]));
             it++;
         }
     }

@@ -5,10 +5,12 @@
 #include "boost/variant.hpp"
 #include "boost/shared_ptr.hpp"
 
+typedef boost::variant<float, string> Type;
+
 struct SpreadStruct
 {
     string name;
-    vector<float> data;
+    vector<Type> data;
 };
 
 typedef boost::shared_ptr<SpreadStruct> Spread;
