@@ -19,10 +19,6 @@ Render::Render(float _x, float _y, string _name)
 Render::~Render()
 {
     ofxFensterManager::get()->deleteFenster(win);
+    delete renderWin;
     //TODO: delete win and renderWin also
-}
-
-void Render::process()
-{
-    //cout << "process from Render()\n";
 }

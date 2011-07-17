@@ -19,50 +19,10 @@ void Core::setup()
     ofAddListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
     bLoad = false;
     cout << "setup finished" << endl;
-    //load();
 }
 //--------------------------------------------------------------
 void Core::update()
 {
-        /*int n = 0;
-        int ip = 0;
-        int op = 0;
-        int c = 0;
-        for(unsigned int i = 0; i < nodes.size(); i++)
-        {
-            n++;
-            for(unsigned int j = 0; j < nodes[i]->input.size(); j++)
-            {
-                ip++;
-            }
-            for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
-            {
-                op++;
-            }
-
-        }
-        for(unsigned int i = 0; i < connections.size(); i++)
-        {
-            c++;
-        }
-        cout << "n: " << n << " ip: " << ip << " op: " << op << " c: " << c << endl;*/
-        //cout << "processing connections..." << endl;
-        for(unsigned int i = 0; i < connections.size(); i++)
-        {
-            if(connections[i]->bIsInvalid)
-            {
-                connections.erase(connections.begin()+i);
-            }
-        }
-        //cout << "processing nodes..." << endl;
-        for(unsigned int i = 0; i < nodes.size(); i++)
-        {
-            if(nodes[i]->bIsInvalid)
-            {
-                nodes.erase(nodes.begin()+i);
-            }
-        }
-        //cout << "...finished!" << endl;
         if(bLoad)
         {
             //remove connections immediately...
@@ -80,6 +40,23 @@ void Core::update()
             BOOST_FOREACH(NodePtr node, nodes)
                 node->process();
         }
+        //cout << "processing connections..." << endl;
+        for(unsigned int i = 0; i < connections.size(); i++)
+        {
+            if(connections[i]->bIsInvalid)
+            {
+                connections.erase(connections.begin()+i);
+            }
+        }
+        //cout << "processing nodes..." << endl;
+        for(unsigned int i = 0; i < nodes.size(); i++)
+        {
+            if(nodes[i]->bIsInvalid)
+            {
+                nodes.erase(nodes.begin()+i);
+            }
+        }
+        //cout << "...finished!" << endl;
 }
 //--------------------------------------------------------------
 void Core::draw()
@@ -89,11 +66,17 @@ void Core::draw()
 
     BOOST_FOREACH(NodePtr node, nodes)
     {
-        node->basedraw();
-        node->draw();
+        if(!node->bIsInvalid)
+        {
+            node->basedraw();
+            node->draw();
+        }
     }
     BOOST_FOREACH(ConnectionPtr connection, connections)
-        connection->draw();
+        if(!connection->bIsInvalid)
+        {
+            connection->draw();
+        }
 }
 //--------------------------------------------------------------
 void Core::save()

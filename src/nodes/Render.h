@@ -20,9 +20,6 @@ class Render : public BaseNode
     Render(float _x, float _y, string _name);
     ~Render();
 
-    void process();
-    int getWindowID();
-
     ofxFenster* win;
     RenderWindow* renderWin;
   protected:
