@@ -4,6 +4,7 @@
 #include "src/BaseNode.h"
 #include "src/controls/FileChooser.h"
 #include <boost/tokenizer.hpp>
+#include <boost/lexical_cast.hpp>
 
 typedef boost::shared_ptr<ds::FileChooser> FileChooserPtr;
 typedef boost::tokenizer<boost::escaped_list_separator<char> > CSVLine;

@@ -73,8 +73,23 @@ void CSVParser::parseFile(string & args)
         for(CSVLine::iterator l=line.begin(); l!=line.end();++l){
             string t = *l;
             t.resize(remove_if(t.begin(), t.end(), filter) - t.begin() );
-            //cout << ofToFloat(t) << " | ";
-            spreads[i]->data.push_back(ofToFloat(t));
+            if(t != "")
+            {
+                try
+                {
+                    //add a float
+                    spreads[i]->data.push_back(boost::lexical_cast<float>(t));
+                }
+                catch(boost::bad_lexical_cast &)
+                {
+                    //add a string
+                    spreads[i]->data.push_back(t);
+                }
+            }
+            else
+            {
+                spreads[i]->data.push_back("");
+            }
             i++;
         }
         //cout << endl;
