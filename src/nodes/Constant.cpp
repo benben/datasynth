@@ -11,9 +11,12 @@ Constant::Constant(float _x, float _y, string _name)
     x = _x;
     y = _y;
     name = _name;
+    TextInputPtr t(new TextInput(&x, &y, name, &value, &bIsActive));
+    textinput = t;
     SliderPtr s(new Slider(&x, &y, name, &value, &bIsActive));
     slider = s;
     bValueIsSaveable = true;
+    height = 40;
 }
 
 Constant::~Constant()
@@ -45,5 +48,6 @@ void Constant::process()
 
 void Constant::draw()
 {
+    textinput->draw();
     slider->draw();
 }

@@ -92,6 +92,12 @@
 		<Unit filename="src/controls/Slider.h">
 			<Option virtualFolder="src/controls/" />
 		</Unit>
+		<Unit filename="src/controls/TextInput.cpp">
+			<Option virtualFolder="src/controls/" />
+		</Unit>
+		<Unit filename="src/controls/TextInput.h">
+			<Option virtualFolder="src/controls/" />
+		</Unit>
 		<Unit filename="src/main.cpp">
 			<Option virtualFolder="src/" />
 		</Unit>

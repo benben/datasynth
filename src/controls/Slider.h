@@ -3,6 +3,10 @@
 
 #include "src/BaseNode.h"
 
+namespace ds
+
+{
+
 class Slider
 {
     public:
@@ -28,5 +32,7 @@ class Slider
     protected:
     private:
 };
+
+}
 
 #endif // SLIDER_H

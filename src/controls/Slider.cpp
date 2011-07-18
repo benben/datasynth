@@ -1,5 +1,8 @@
 #include "Slider.h"
 
+//some code stolen from here: https://github.com/openframeworks/openFrameworks/blob/master/apps/devApps/guiExample/src/ofSlider.h
+using namespace ds;
+
 Slider::Slider(float* _x, float* _y, string _name, float* _val, bool* _bIsNodeActive)
 {
     ofRegisterMouseEvents(this);
@@ -11,9 +14,9 @@ Slider::Slider(float* _x, float* _y, string _name, float* _val, bool* _bIsNodeAc
     x = _x;
     y = _y;
     b.x = *x;
-    b.y = *y;
-    b.width = 200;
-    b.height = 20;
+    b.y = *y + 30;
+    b.width = 150;
+    b.height = 10;
 }
 
 Slider::~Slider()
@@ -24,25 +27,17 @@ Slider::~Slider()
 void Slider::draw()
 {
     b.x = *x;
-    b.y = *y;
+    b.y = *y + 30;
 
-    ofFill();
-    ofSetColor(30, 30, 80);
+    ofNoFill();
+    ofSetColor(0, 0, 0);
     ofRect(b);
+    ofFill();
 
     float valAsPct = ofMap(*val, min, max, 0, b.width, true );
     ofEnableAlphaBlending();
-    ofSetColor(180, 180, 180);
-    ofRect(b.x+1, b.y+1, valAsPct-1, b.height-2);
-
-    ofSetColor(230, 230, 230, 255);
-
-    float stringY = b.y + 14;
-
-    ofDrawBitmapString(name, b.x + 4, stringY);
-    string valStr;
-    valStr = ofToString(*val, 3);
-    ofDrawBitmapString(valStr , (b.x + b.width) - 3 - valStr.length() * 8, stringY );
+    ofSetColor(0, 0, 0);
+    ofRect(b.x, b.y, valAsPct, b.height);
 }
 void Slider::setValue(float _val)
 {

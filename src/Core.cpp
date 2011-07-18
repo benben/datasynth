@@ -19,6 +19,7 @@ void Core::setup()
     ofAddListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
     bLoad = false;
     cout << "setup finished" << endl;
+    load();
 }
 //--------------------------------------------------------------
 void Core::update()
