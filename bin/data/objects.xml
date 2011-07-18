@@ -5,7 +5,13 @@
   </OBJECT>
   <OBJECT NAME="OutBox" TYPE="OutBox">
   </OBJECT>
-  <OBJECT NAME="Multiply" TYPE="Multiply">
+  <OBJECT NAME="+ (Add)" TYPE="Add">
+  </OBJECT>
+  <OBJECT NAME="- (Substract)" TYPE="Substract">
+  </OBJECT>
+  <OBJECT NAME="* (Multiply)" TYPE="Multiply">
+  </OBJECT>
+  <OBJECT NAME="/ (Divide)" TYPE="Divide">
   </OBJECT>
   <OBJECT NAME="Render" TYPE="Render">
   </OBJECT>

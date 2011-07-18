@@ -1,11 +1,11 @@
-#include "Multiply.h"
+#include "Add.h"
 using namespace ds;
 
-Multiply::Multiply(float _x, float _y, string _name)
+Add::Add(float _x, float _y, string _name)
 {
     x = _x;
     y = _y;
-    name = "*";
+    name = "+";
     color.r = 255;
     color.g = 43;
     color.b = 243;
@@ -24,13 +24,13 @@ Multiply::Multiply(float _x, float _y, string _name)
     output.push_back(new Pin(temp3, color));
 }
 
-Multiply::~Multiply()
+Add::~Add()
 {
 }
 
-void Multiply::process()
+void Add::process()
 {
-    //cout << "process from Multiply()\n";
+    //cout << "process from Add()\n";
     int size0 = input[0]->value->data.size();
     int size1 = input[1]->value->data.size();
     if(size0 > 0 && size1 > 0)
@@ -46,7 +46,7 @@ void Multiply::process()
         while(it < max)
         {
             //cout << it << endl;
-            output[0]->value->data.push_back(boost::get<float>(input[0]->value->data[it % size0]) * boost::get<float>(input[1]->value->data[it % size1]));
+            output[0]->value->data.push_back(boost::get<float>(input[0]->value->data[it % size0]) + boost::get<float>(input[1]->value->data[it % size1]));
             it++;
         }
     }

@@ -96,7 +96,7 @@ void CSVParser::parseFile(string & args)
     }
     //if spreads.size is less than out.size, then delete some outputs beginning from the end of the output vector!
     int outsize = output.size();
-    for(unsigned int i = 0; i < outsize; i++)
+    for(int i = 0; i < outsize; i++)
     {
         if(i >= spreads.size())
         {
@@ -106,7 +106,7 @@ void CSVParser::parseFile(string & args)
         }
     }
     //if there are already outputs, just update them, if not, make new ones
-    int outputsize = output.size();
+    unsigned int outputsize = output.size();
     for(unsigned int i = 0; i < spreads.size(); i++)
     {
         if(i >= outputsize)

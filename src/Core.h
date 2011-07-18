@@ -29,12 +29,15 @@ struct Factory {
         using boost::phoenix::new_;
         using boost::phoenix::construct;
         using namespace boost::phoenix::arg_names;
-        f["Constant"] = construct<NodePtr>(new_<ds::Constant>(arg1, arg2, arg3));
-        f["Multiply"] = construct<NodePtr>(new_<ds::Multiply>(arg1, arg2, arg3));
-        f["OutBox"] = construct<NodePtr>(new_<ds::OutBox>(arg1, arg2, arg3));
-        f["CSVParser"] = construct<NodePtr>(new_<ds::CSVParser>(arg1, arg2, arg3));
-        f["Render"] = construct<NodePtr>(new_<ds::Render>(arg1, arg2, arg3));
-        f["Point"] = construct<NodePtr>(new_<ds::Point>(arg1, arg2, arg3));
+        f["Constant"]   = construct<NodePtr>(new_<ds::Constant>(arg1, arg2, arg3));
+        f["Add"]        = construct<NodePtr>(new_<ds::Add>(arg1, arg2, arg3));
+        f["Substract"]  = construct<NodePtr>(new_<ds::Substract>(arg1, arg2, arg3));
+        f["Multiply"]   = construct<NodePtr>(new_<ds::Multiply>(arg1, arg2, arg3));
+        f["Divide"]     = construct<NodePtr>(new_<ds::Divide>(arg1, arg2, arg3));
+        f["OutBox"]     = construct<NodePtr>(new_<ds::OutBox>(arg1, arg2, arg3));
+        f["CSVParser"]  = construct<NodePtr>(new_<ds::CSVParser>(arg1, arg2, arg3));
+        f["Render"]     = construct<NodePtr>(new_<ds::Render>(arg1, arg2, arg3));
+        f["Point"]      = construct<NodePtr>(new_<ds::Point>(arg1, arg2, arg3));
         // ...
     }
 
