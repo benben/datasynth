@@ -7,3 +7,4 @@
 #include "src/nodes/CSVParser.h"
 #include "src/nodes/Render.h"
 #include "src/nodes/Point.h"
+#include "src/nodes/Line.h"

@@ -20,6 +20,7 @@ Point::Point(float _x, float _y, string _name)
 Point::~Point()
 {
     ofRemoveListener(ofxFensterManager::get()->getWindowById(winId)->events.draw, this, &Point::drawPoints);
+    input.clear();
 }
 
 void Point::process()

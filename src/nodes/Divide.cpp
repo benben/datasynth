@@ -26,6 +26,8 @@ Divide::Divide(float _x, float _y, string _name)
 
 Divide::~Divide()
 {
+    input.clear();
+    output.clear();
 }
 
 void Divide::process()

@@ -26,6 +26,8 @@ Add::Add(float _x, float _y, string _name)
 
 Add::~Add()
 {
+    input.clear();
+    output.clear();
 }
 
 void Add::process()

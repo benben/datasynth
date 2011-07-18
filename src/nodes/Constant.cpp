@@ -21,6 +21,7 @@ Constant::Constant(float _x, float _y, string _name)
 
 Constant::~Constant()
 {
+    output.clear();
 }
 
 void Constant::init()

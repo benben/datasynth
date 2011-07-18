@@ -17,4 +17,6 @@
   </OBJECT>
   <OBJECT NAME="Point" TYPE="Point">
   </OBJECT>
+  <OBJECT NAME="Line" TYPE="Line">
+  </OBJECT>
 </OBJECTS>

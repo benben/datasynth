@@ -26,6 +26,8 @@ Substract::Substract(float _x, float _y, string _name)
 
 Substract::~Substract()
 {
+    input.clear();
+    output.clear();
 }
 
 void Substract::process()

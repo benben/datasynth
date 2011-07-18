@@ -27,6 +27,7 @@ CSVParser::~CSVParser()
     ofRemoveListener(filechooser->fileEvent, this, &CSVParser::parseFile);
     spreads.clear();
     buffer.clear();
+    output.clear();
 }
 
 string CSVParser::getValueAsString()

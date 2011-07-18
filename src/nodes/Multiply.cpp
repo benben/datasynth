@@ -26,6 +26,8 @@ Multiply::Multiply(float _x, float _y, string _name)
 
 Multiply::~Multiply()
 {
+    input.clear();
+    output.clear();
 }
 
 void Multiply::process()
