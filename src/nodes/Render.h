@@ -10,6 +10,7 @@ public:
 	void setup(){
 	}
 	void draw(){
+	    ofBackground(80);
 	}
 };
 

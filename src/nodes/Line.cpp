@@ -56,7 +56,6 @@ void Line::drawLines(ofEventArgs & args)
     }
     if(max > 0 && min > 0)
     {
-        cout << "line drawing...." << endl;
         int it = 0;
         while(it < max)
         {

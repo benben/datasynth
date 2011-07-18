@@ -62,6 +62,7 @@ void Core::update()
 //--------------------------------------------------------------
 void Core::draw()
 {
+    ofBackground(0);
     ofSetColor(255,255,255,255);
     ofDrawBitmapString(ofToString(ofGetFrameRate()), 20, 20);
 

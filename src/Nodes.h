@@ -8,3 +8,4 @@
 #include "src/nodes/Render.h"
 #include "src/nodes/Point.h"
 #include "src/nodes/Line.h"
+#include "src/nodes/HSBColor.h"

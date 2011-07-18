@@ -131,6 +131,12 @@
 		<Unit filename="src/nodes/EmptyNode.h">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
+		<Unit filename="src/nodes/HSBColor.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/HSBColor.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
 		<Unit filename="src/nodes/Line.cpp">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>

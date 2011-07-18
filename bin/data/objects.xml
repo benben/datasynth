@@ -1,6 +1,8 @@
 <OBJECTS>
   <OBJECT NAME="CSV Parser" TYPE="CSVParser">
   </OBJECT>
+  <OBJECT NAME="Color (HSB)" TYPE="HSBColor">
+  </OBJECT>
   <OBJECT NAME="Constant" TYPE="Constant">
   </OBJECT>
   <OBJECT NAME="OutBox" TYPE="OutBox">

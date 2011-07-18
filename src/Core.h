@@ -39,6 +39,7 @@ struct Factory {
         f["Render"]     = construct<NodePtr>(new_<ds::Render>(arg1, arg2, arg3));
         f["Point"]      = construct<NodePtr>(new_<ds::Point>(arg1, arg2, arg3));
         f["Line"]       = construct<NodePtr>(new_<ds::Line>(arg1, arg2, arg3));
+        f["HSBColor"]   = construct<NodePtr>(new_<ds::HSBColor>(arg1, arg2, arg3));
         // ...
     }
 

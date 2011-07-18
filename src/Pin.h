@@ -5,7 +5,7 @@
 #include "boost/variant.hpp"
 #include "boost/shared_ptr.hpp"
 
-typedef boost::variant<float, string> Type;
+typedef boost::variant<float, string, ofColor> Type;
 
 struct SpreadStruct
 {
