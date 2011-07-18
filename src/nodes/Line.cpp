@@ -6,7 +6,7 @@ Line::Line(float _x, float _y, string _name)
     x = _x;
     y = _y;
     name = _name;
-    width = 100;
+    width = 79;
     Spread x1(new SpreadStruct);
     x1->name = "X1";
     input.push_back(new Pin(x1, color, 1));
@@ -19,7 +19,7 @@ Line::Line(float _x, float _y, string _name)
     Spread y2(new SpreadStruct);
     y2->name = "Y2";
     input.push_back(new Pin(y2, color, 1));
-    //Color Input (Spread of 3)
+    //Color Input
     Spread c(new SpreadStruct);
     c->name = "Color";
     input.push_back(new Pin(c, color, 1));
@@ -59,7 +59,14 @@ void Line::drawLines(ofEventArgs & args)
         int it = 0;
         while(it < max)
         {
-            ofSetColor(255,255,255,255);
+            if(input[4]->value->data.size() > 0)
+            {
+                ofSetColor(boost::get<ofColor>(input[4]->value->data[it % input[4]->value->data.size()]));
+            }
+            else
+            {
+                ofSetColor(255,255,255,255);
+            }
             float x1 = (int)boost::get<float>(input[0]->value->data[it % input[0]->value->data.size()]);
             float y1 = (int)boost::get<float>(input[1]->value->data[it % input[1]->value->data.size()]);
             float x2 = (int)boost::get<float>(input[2]->value->data[it % input[2]->value->data.size()]);

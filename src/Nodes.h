@@ -9,3 +9,6 @@
 #include "src/nodes/Point.h"
 #include "src/nodes/Line.h"
 #include "src/nodes/HSBColor.h"
+#include "src/nodes/Min.h"
+#include "src/nodes/Max.h"
+#include "src/nodes/Map.h"

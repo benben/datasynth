@@ -40,6 +40,9 @@ struct Factory {
         f["Point"]      = construct<NodePtr>(new_<ds::Point>(arg1, arg2, arg3));
         f["Line"]       = construct<NodePtr>(new_<ds::Line>(arg1, arg2, arg3));
         f["HSBColor"]   = construct<NodePtr>(new_<ds::HSBColor>(arg1, arg2, arg3));
+        f["Min"]        = construct<NodePtr>(new_<ds::Min>(arg1, arg2, arg3));
+        f["Max"]        = construct<NodePtr>(new_<ds::Max>(arg1, arg2, arg3));
+        f["Map"]        = construct<NodePtr>(new_<ds::Map>(arg1, arg2, arg3));
         // ...
     }
 

@@ -5,6 +5,12 @@
   </OBJECT>
   <OBJECT NAME="Constant" TYPE="Constant">
   </OBJECT>
+  <OBJECT NAME="Min" TYPE="Min">
+  </OBJECT>
+  <OBJECT NAME="Max" TYPE="Max">
+  </OBJECT>
+  <OBJECT NAME="Map" TYPE="Map">
+  </OBJECT>
   <OBJECT NAME="OutBox" TYPE="OutBox">
   </OBJECT>
   <OBJECT NAME="+ (Add)" TYPE="Add">
