@@ -13,9 +13,9 @@ Slider::Slider(float* _x, float* _y, string _name, float* _val, bool* _bIsNodeAc
     max = 3;
     x = _x;
     y = _y;
-    b.x = *x;
-    b.y = *y + 30;
-    b.width = 150;
+    b.x = *x + 2;
+    b.y = *y + 28;
+    b.width = 147;
     b.height = 10;
 }
 
@@ -26,8 +26,16 @@ Slider::~Slider()
 
 void Slider::draw()
 {
-    b.x = *x;
-    b.y = *y + 30;
+    if(*val >= max)
+    {
+        max = *val + (*val / 2);
+    }
+    if(*val <= min)
+    {
+        min = *val - (*val / 2);
+    }
+    b.x = *x + 2;
+    b.y = *y + 28;
 
     ofNoFill();
     ofSetColor(0, 0, 0);

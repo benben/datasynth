@@ -26,7 +26,7 @@ TextInput::~TextInput()
 void TextInput::draw()
 {
     b.x = *x + 2;
-    b.y = *y + 13;
+    b.y = *y + 11;
 
     ofNoFill();
     ofSetColor(0,0,0,255);
@@ -97,14 +97,12 @@ void TextInput::mousePressed(ofMouseEventArgs & args)
             *bIsNodeActive = false;
             bIsActive = true;
             input = ofToString(*value);
-            cout << "textinput is active" << endl;
         }
     }
     else
     {
         *bIsNodeActive = true;
         bIsActive = false;
-        cout << "textinput is INactive" << endl;
     }
 }
 
