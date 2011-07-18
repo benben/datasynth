@@ -41,7 +41,10 @@ void Point::drawPoints(ofEventArgs & args)
         while(it < max)
         {
             ofSetColor(255,255,255,255);
-            ofRect(boost::get<float>(input[0]->value->data[it % size0]),boost::get<float>(input[1]->value->data[it % size1]),5,5);
+            float x = (int)boost::get<float>(input[0]->value->data[it % size0]);
+            float y = (int)boost::get<float>(input[1]->value->data[it % size1]);
+            ofLine(x-3,y,x+2,y);
+            ofLine(x,y-2,x,y+3);
             it++;
         }
     }

@@ -10,7 +10,6 @@ public:
 	void setup(){
 	}
 	void draw(){
-		ofDrawBitmapString("hello world!",20,20);
 	}
 };
 
