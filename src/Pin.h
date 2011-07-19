@@ -36,7 +36,6 @@ class Pin : public ofRectangle
         void setValue(Spread _value);
 
         float mouseX, mouseY;
-        bool bIsActive;
         void draw(float x, float y);
         void addConnection();
         void removeConnection();

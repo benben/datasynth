@@ -86,28 +86,10 @@ void Pin::mouseMoved(ofMouseEventArgs & args)
 
 void Pin::mousePressed(ofMouseEventArgs & args)
 {
-    if(inside(args.x, args.y))
-    {
-        bIsActive = true;
-    }
-    else
-    {
-        bIsActive = false;
-    }
 }
 
 void Pin::mouseDragged(ofMouseEventArgs & args)
 {
-    if(!bIsActive) {
-    if(inside(args.x, args.y))
-    {
-        bIsActive = true;
-    }
-    else
-    {
-        bIsActive = false;
-    }
-    }
 }
 
 void Pin::mouseReleased(ofMouseEventArgs & args)

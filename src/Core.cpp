@@ -18,46 +18,48 @@ void Core::setup()
     XMLObjects.pushTag("OBJECTS", 0);
     ofAddListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
     bLoad = false;
+    pinOut = NULL;
+    pinIn = NULL;
     cout << "setup finished" << endl;
     load();
 }
 //--------------------------------------------------------------
 void Core::update()
 {
-        if(bLoad)
+    if(bLoad)
+    {
+        //remove connections immediately...
+        connections.clear();
+        //...and set nodes only to invalid
+        BOOST_FOREACH(NodePtr node, nodes)
+            node->setInvalid();
+        if(nodes.size() == 0 && connections.size() == 0)
         {
-            //remove connections immediately...
-            connections.clear();
-            //...and set nodes only to invalid
-            BOOST_FOREACH(NodePtr node, nodes)
-                node->setInvalid();
-            if(nodes.size() == 0 && connections.size() == 0)
-            {
-                load();
-            }
-        } else {
-            BOOST_FOREACH(ConnectionPtr connection, connections)
-                connection->process();
-            BOOST_FOREACH(NodePtr node, nodes)
-                node->process();
+            load();
         }
-        //cout << "processing connections..." << endl;
-        for(unsigned int i = 0; i < connections.size(); i++)
+    } else {
+        BOOST_FOREACH(ConnectionPtr connection, connections)
+            connection->process();
+        BOOST_FOREACH(NodePtr node, nodes)
+            node->process();
+    }
+    //cout << "processing connections..." << endl;
+    for(unsigned int i = 0; i < connections.size(); i++)
+    {
+        if(connections[i]->bIsInvalid)
         {
-            if(connections[i]->bIsInvalid)
-            {
-                connections.erase(connections.begin()+i);
-            }
+            connections.erase(connections.begin()+i);
         }
-        //cout << "processing nodes..." << endl;
-        for(unsigned int i = 0; i < nodes.size(); i++)
+    }
+    //cout << "processing nodes..." << endl;
+    for(unsigned int i = 0; i < nodes.size(); i++)
+    {
+        if(nodes[i]->bIsInvalid)
         {
-            if(nodes[i]->bIsInvalid)
-            {
-                nodes.erase(nodes.begin()+i);
-            }
+            nodes.erase(nodes.begin()+i);
         }
-        //cout << "...finished!" << endl;
+    }
+    //cout << "...finished!" << endl;
 }
 //--------------------------------------------------------------
 void Core::draw()
@@ -79,6 +81,16 @@ void Core::draw()
         {
             connection->draw();
         }
+    if(pinIn != NULL)
+    {
+        ofSetColor(255,255,255,255);
+        ofLine(pinIn->x+7,pinIn->y+7,mouseX,mouseY);
+    }
+    else if(pinOut != NULL)
+    {
+        ofSetColor(255,255,255,255);
+        ofLine(pinOut->x+7,pinOut->y+7,mouseX,mouseY);
+    }
     Menu::Get()->draw();
 }
 //--------------------------------------------------------------
@@ -205,7 +217,6 @@ void Core::mousePressed(int x, int y, int button)
     {
         if(nodes[i]->inside(x,y))
         {
-
             if(button == 2 && nodes[i]->bIsActive)
             {
                 //set node to invalid
@@ -234,48 +245,50 @@ void Core::mousePressed(int x, int y, int button)
 //--------------------------------------------------------------
 void Core::mouseReleased(int x, int y, int button)
 {
-    Pin* in=0;
-    Pin* out=0;
     int outNodeID;
     int outPinID;
     int inNodeID;
     int inPinID;
-
+    bool del = true;
     for(unsigned int i = 0; i < nodes.size(); i++)
     {
         for(unsigned int j = 0; j < nodes[i]->input.size(); j++)
         {
-            if(nodes[i]->input[j]->bIsActive)
+            if(nodes[i]->input[j]->inside(x,y) && nodes[i]->input[j]->isFree())
             {
-                if(nodes[i]->input[j]->isFree())
-                {
-                    cout << "input active: " << i << " " << j << endl;
-                    inNodeID = i;
-                    inPinID = j;
-                    in = nodes[i]->input[j];
-                }
-                else
-                {
-                    cout << "too many connections on input pin: " << i << " " << j << endl;
-                }
+                pinIn = nodes[i]->input[j];
+                inNodeID = i;
+                inPinID = j;
+                del = false;
+                break;
             }
         }
         for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
         {
-            if(nodes[i]->output[j]->bIsActive)
+            if(nodes[i]->output[j]->inside(x,y) && nodes[i]->output[j]->isFree())
             {
-                cout << "output active: " << i << " " << j << endl;
+                pinOut = nodes[i]->output[j];
                 outNodeID = i;
                 outPinID = j;
-                out = nodes[i]->output[j];
+                del = false;
+                break;
             }
         }
     }
-    if(in != NULL && out != NULL)
+
+    if(pinOut != NULL && pinIn != NULL)
     {
         cout << "make connection" << endl;
-        ConnectionPtr val(new Connection(out, outNodeID, outPinID, in, inNodeID, inPinID));
+        ConnectionPtr val(new Connection(pinOut, outNodeID, outPinID, pinIn, inNodeID, inPinID));
         connections.push_back(val);
+        pinOut = NULL;
+        pinIn = NULL;
+    }
+    //clicked but not on any pin
+    if(del)
+    {
+        pinOut = NULL;
+        pinIn = NULL;
     }
 }
 //--------------------------------------------------------------

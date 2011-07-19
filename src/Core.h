@@ -39,6 +39,8 @@ class Core : public ofxFensterListener{
         vector <NodePtr> nodes;
         vector <ConnectionPtr> connections;
         ofxXmlSettings XMLObjects;
+
+        Pin * pinOut, * pinIn;
 };
 
 }
