@@ -62,6 +62,9 @@
 		<Unit filename="src/Core.h">
 			<Option virtualFolder="src/" />
 		</Unit>
+		<Unit filename="src/Factory.h">
+			<Option virtualFolder="src/" />
+		</Unit>
 		<Unit filename="src/Menu.cpp">
 			<Option virtualFolder="src/" />
 		</Unit>
@@ -159,6 +162,12 @@
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
 		<Unit filename="src/nodes/Min.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/Modulo.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/Modulo.h">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
 		<Unit filename="src/nodes/Multiply.cpp">

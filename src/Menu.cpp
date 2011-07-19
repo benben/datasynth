@@ -68,17 +68,17 @@ Menu::Menu()
         entries.push_back(temp);
     }
     ofRegisterMouseEvents(this);
-    ofAddListener(ofxFensterManager::get()->getPrimaryWindow()->events.draw, this, &Menu::draw);
     bMouseIsOnNode = false;
 }
 
 Menu::~Menu()
 {
     ofUnregisterMouseEvents(this);
-    ofRemoveListener(ofxFensterManager::get()->getPrimaryWindow()->events.draw, this, &Menu::draw);
+    XML.clear();
+    XMLObjects.clear();
 }
 
-void Menu::draw(ofEventArgs & args)
+void Menu::draw()
 {
     int k = 0;
     for(unsigned int i = 0; i < entries.size(); i++)
@@ -137,22 +137,26 @@ void Menu::mouseDragged(ofMouseEventArgs & args)
 void Menu::mouseReleased(ofMouseEventArgs & args)
 {
     //cout << "released (" << args.button << "," << x << "," << y << ")" << " bMouseIsOnNode: " << bMouseIsOnNode << endl;
-    if(!bMouseIsOnNode)
+    if(args.button == 0)
     {
-        if(args.button == 0)
+        for(unsigned int i = 0; i < entries.size(); i++)
         {
-            for(unsigned int i = 0; i < entries.size(); i++)
+            if(entries[i].box.inside(mouseX, mouseY) && entries[i].bIsVisible)
             {
-                if(entries[i].box.inside(mouseX, mouseY) && entries[i].bIsVisible)
+                menuEventType temp;
+                temp.handler = entries[i].handler;
+                temp.value = entries[i].name;
+                temp.valueType = entries[i].type;
+                ofNotifyEvent(menuEvent,temp,this);
+                for(unsigned int i = 0; i < entries.size(); i++)
                 {
-                    menuEventType temp;
-                    temp.handler = entries[i].handler;
-                    temp.value = entries[i].name;
-                    temp.valueType = entries[i].type;
-                    ofNotifyEvent(menuEvent,temp,this);
+                    entries[i].bIsVisible = false;
                 }
             }
         }
+    }
+    if(!bMouseIsOnNode)
+    {
         //toggle
         if(args.button == 2)
         {

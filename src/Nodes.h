@@ -12,3 +12,4 @@
 #include "src/nodes/Min.h"
 #include "src/nodes/Max.h"
 #include "src/nodes/Map.h"
+#include "src/nodes/Modulo.h"

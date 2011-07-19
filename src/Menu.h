@@ -33,7 +33,7 @@ class Menu : public TSingleton<Menu>
     public:
         Menu();
         virtual ~Menu();
-        void draw(ofEventArgs & args);
+        void draw();
         virtual void mouseMoved(ofMouseEventArgs & args);
         virtual void mousePressed(ofMouseEventArgs & args);
         virtual void mouseDragged(ofMouseEventArgs & args);

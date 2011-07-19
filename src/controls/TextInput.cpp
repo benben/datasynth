@@ -101,15 +101,16 @@ void TextInput::mousePressed(ofMouseEventArgs & args)
     }
     else
     {
-        *bIsNodeActive = true;
         bIsActive = false;
     }
 }
 
 void TextInput::mouseDragged(ofMouseEventArgs & args)
 {
+    bIsActive = false;
 }
 
 void TextInput::mouseReleased(ofMouseEventArgs & args)
 {
+    bIsActive = false;
 }

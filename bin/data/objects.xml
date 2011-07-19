@@ -21,6 +21,8 @@
   </OBJECT>
   <OBJECT NAME="/ (Divide)" TYPE="Divide">
   </OBJECT>
+  <OBJECT NAME="% (Modulo)" TYPE="Modulo">
+  </OBJECT>
   <OBJECT NAME="Render" TYPE="Render">
   </OBJECT>
   <OBJECT NAME="Point" TYPE="Point">

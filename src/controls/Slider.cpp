@@ -76,6 +76,10 @@ void Slider::mousePressed(ofMouseEventArgs & args)
         bIsActive = true;
         *bIsNodeActive = false;
     }
+    else
+    {
+        bIsActive = false;
+    }
 }
 
 void Slider::mouseDragged(ofMouseEventArgs & args)

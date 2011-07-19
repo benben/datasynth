@@ -79,6 +79,7 @@ void Core::draw()
         {
             connection->draw();
         }
+    Menu::Get()->draw();
 }
 //--------------------------------------------------------------
 void Core::save()
