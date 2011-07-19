@@ -107,10 +107,8 @@ void TextInput::mousePressed(ofMouseEventArgs & args)
 
 void TextInput::mouseDragged(ofMouseEventArgs & args)
 {
-    bIsActive = false;
 }
 
 void TextInput::mouseReleased(ofMouseEventArgs & args)
 {
-    bIsActive = false;
 }

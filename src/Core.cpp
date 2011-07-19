@@ -12,8 +12,9 @@ void Core::setup()
 {
     cout << "setup started" << endl;
     ofxFensterManager::get()->getPrimaryWindow()->addListener(this);
-    ofBackground(80);
-    //ofSetFrameRate(30);
+    ofxFensterManager::get()->getPrimaryWindow()->setWindowTitle("datasynth");
+    ofxFensterManager::get()->getPrimaryWindow()->setBackgroundColor(80);
+    ofSetFrameRate(25);
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
     ofAddListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
@@ -64,7 +65,6 @@ void Core::update()
 //--------------------------------------------------------------
 void Core::draw()
 {
-    ofBackground(0);
     ofSetColor(255,255,255,255);
     ofDrawBitmapString(ofToString(ofGetFrameRate()), 20, 20);
 

@@ -37,9 +37,9 @@ void OutBox::draw()
             {
                 ofColor c = boost::get<ofColor>(input[0]->value->data[i]);
                 ofSetColor(c.r,c.g,c.b,255);
-                ofRect(x+3,y+3+(i*11),150,11);
+                ofRect(x,y+(i*11),150,11);
                 ofSetColor(c.invert());
-                ofDrawBitmapString(ofToString(c.getHue())+","+ofToString(c.getSaturation())+","+ofToString(c.getBrightness()),x+3, y+13+(i*11));
+                ofDrawBitmapString(ofToString(c.getHue())+","+ofToString(c.getSaturation())+","+ofToString(c.getBrightness()),x, y+10+(i*11));
             }
             catch(const boost::bad_get &v)
             {
