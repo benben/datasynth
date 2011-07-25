@@ -3,7 +3,6 @@ using namespace ds;
 
 Connection::Connection(Pin * _out, int _outNodeID, int _outPinID, Pin * _in, int _inNodeID, int _inPinID)
 {
-    cout << "creating connection..." << endl;
     out = _out;
     outNodeID = _outNodeID;
     outPinID = _outPinID;

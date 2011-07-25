@@ -41,6 +41,7 @@ class Core : public ofxFensterListener{
         ofxXmlSettings XMLObjects;
 
         Pin * pinOut, * pinIn;
+        int outNodeID, outPinID, inNodeID, inPinID;
 };
 
 }

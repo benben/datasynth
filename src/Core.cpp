@@ -155,6 +155,7 @@ void Core::load()
         cout << inNodeID << endl;
         cout << inPinID << endl;
         */
+        cout << "creating connection between Node: " <<  outNodeID << " Pin: " << outPinID << " and Node " << inNodeID << " Pin: " << inPinID << endl;
         ConnectionPtr val(new Connection(nodes[outNodeID]->output[outPinID], outNodeID, outPinID, nodes[inNodeID]->input[inPinID], inNodeID, inPinID));
         connections.push_back(val);
     }
@@ -245,40 +246,42 @@ void Core::mousePressed(int x, int y, int button)
 //--------------------------------------------------------------
 void Core::mouseReleased(int x, int y, int button)
 {
-    int outNodeID;
-    int outPinID;
-    int inNodeID;
-    int inPinID;
     bool del = true;
     for(unsigned int i = 0; i < nodes.size(); i++)
     {
-        for(unsigned int j = 0; j < nodes[i]->input.size(); j++)
+        if(!pinIn)
         {
-            if(nodes[i]->input[j]->inside(x,y) && nodes[i]->input[j]->isFree())
+            for(unsigned int j = 0; j < nodes[i]->input.size(); j++)
             {
-                pinIn = nodes[i]->input[j];
-                inNodeID = i;
-                inPinID = j;
-                del = false;
-                break;
+                if(nodes[i]->input[j]->inside(x,y) && nodes[i]->input[j]->isFree())
+                {
+                    pinIn = nodes[i]->input[j];
+                    inNodeID = i;
+                    inPinID = j;
+                    del = false;
+                    break;
+                }
             }
         }
-        for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
+        if(!pinOut)
         {
-            if(nodes[i]->output[j]->inside(x,y) && nodes[i]->output[j]->isFree())
+            for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
             {
-                pinOut = nodes[i]->output[j];
-                outNodeID = i;
-                outPinID = j;
-                del = false;
-                break;
+                if(nodes[i]->output[j]->inside(x,y) && nodes[i]->output[j]->isFree())
+                {
+                    pinOut = nodes[i]->output[j];
+                    outNodeID = i;
+                    outPinID = j;
+                    del = false;
+                    break;
+                }
             }
         }
     }
 
     if(pinOut != NULL && pinIn != NULL)
     {
-        cout << "make connection" << endl;
+        cout << "creating connection between Node: " <<  outNodeID << " Pin: " << outPinID << " and Node " << inNodeID << " Pin: " << inPinID << endl;
         ConnectionPtr val(new Connection(pinOut, outNodeID, outPinID, pinIn, inNodeID, inPinID));
         connections.push_back(val);
         pinOut = NULL;
