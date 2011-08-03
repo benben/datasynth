@@ -41,6 +41,7 @@ struct Factory {
         f["Max"]        = construct<NodePtr>(new_<ds::Max>(arg1, arg2, arg3));
         f["Map"]        = construct<NodePtr>(new_<ds::Map>(arg1, arg2, arg3));
         f["Modulo"]     = construct<NodePtr>(new_<ds::Modulo>(arg1, arg2, arg3));
+        f["Pixel"]      = construct<NodePtr>(new_<ds::Pixel>(arg1, arg2, arg3));
         // ...
     }
 

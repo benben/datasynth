@@ -58,7 +58,7 @@ void HSBColor::process()
             float s = boost::get<float>(input[1]->value->data[it % input[1]->value->data.size()]);
             float b = boost::get<float>(input[2]->value->data[it % input[2]->value->data.size()]);
 
-            ofColor c;
+            ofFloatColor c;
             c.setHsb(h,s,b);
             output[0]->value->data.push_back(c);
             it++;

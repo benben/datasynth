@@ -29,4 +29,6 @@
   </OBJECT>
   <OBJECT NAME="Line" TYPE="Line">
   </OBJECT>
+  <OBJECT NAME="Pixel" TYPE="Pixel">
+  </OBJECT>
 </OBJECTS>

@@ -101,6 +101,7 @@ void Core::save()
     {
         cout << "saving node..." << endl;
         saveXml.addTag("NODE");
+        saveXml.addAttribute("NODE", "ID", (int)i, i);
         saveXml.addAttribute("NODE", "NAME", nodes[i]->name, i);
         saveXml.addAttribute("NODE", "TYPE", nodes[i]->type, i);
         saveXml.addAttribute("NODE", "X", nodes[i]->x, i);

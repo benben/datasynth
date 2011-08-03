@@ -13,7 +13,7 @@ Point::Point(float _x, float _y, string _name)
     Spread y(new SpreadStruct);
     y->name = "Y";
     input.push_back(new Pin(y, color, 1));
-    winId = 1;
+    winId = ofxFensterManager::get()->getLastCreatedWindow()->id;
     ofAddListener(ofxFensterManager::get()->getWindowById(winId)->events.draw, this, &Point::drawPoints);
 }
 

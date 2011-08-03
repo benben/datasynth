@@ -33,7 +33,14 @@ void Connection::process()
     }
     else
     {
-        in->setValue(out->value);
+        try
+        {
+            in->setValue(out->value);
+        }
+        catch(...)
+        {
+            bIsInvalid = true;
+        }
     }
 }
 

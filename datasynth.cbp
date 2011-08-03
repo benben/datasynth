@@ -182,6 +182,12 @@
 		<Unit filename="src/nodes/OutBox.h">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
+		<Unit filename="src/nodes/Pixel.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/Pixel.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
 		<Unit filename="src/nodes/Point.cpp">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>

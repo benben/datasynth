@@ -13,3 +13,4 @@
 #include "src/nodes/Max.h"
 #include "src/nodes/Map.h"
 #include "src/nodes/Modulo.h"
+#include "src/nodes/Pixel.h"

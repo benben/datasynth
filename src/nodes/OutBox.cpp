@@ -31,11 +31,20 @@ void OutBox::draw()
     height = 30 + (input[0]->value->data.size()-1)*11;
     if(input[0]->value->data.size() > 0)
     {
-        for(unsigned int i = 0; i < input[0]->value->data.size(); i++)
+        int t = 0;
+        if(input[0]->value->data.size() > 100)
+        {
+            t = 100;
+        }
+        else
+        {
+            t = input[0]->value->data.size();
+        }
+        for(unsigned int i = 0; i < t; i++)
         {
             try
             {
-                ofColor c = boost::get<ofColor>(input[0]->value->data[i]);
+                ofFloatColor c = boost::get<ofFloatColor>(input[0]->value->data[i]);
                 ofSetColor(c.r,c.g,c.b,255);
                 ofRect(x,y+(i*11),150,11);
                 ofSetColor(c.invert());
