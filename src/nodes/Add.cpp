@@ -23,6 +23,7 @@ Add::Add(int _ID, float _x, float _y, string _name)
     temp3->name = "none";
     temp3->data.push_back(0.0);
     output.push_back(new Pin(temp3, color));
+    bProcessed = false;
 }
 
 Add::~Add()
@@ -33,26 +34,33 @@ Add::~Add()
 
 void Add::process()
 {
-    //cout << "process from Add()\n";
-    int size0 = input[0]->value->data.size();
-    int size1 = input[1]->value->data.size();
-    if(size0 > 0 && size1 > 0)
+    if(!bProcessed)
     {
-        int max = 0;
-        if(size0 >= size1)
-            max = size0;
-        else
-            max = size1;
-        int it = 0;
-        //TODO could be problematic?!
-        output[0]->value->data.clear();
-        while(it < max)
+        cout << "process from Add()\n";
+        int size0 = input[0]->value->data.size();
+        int size1 = input[1]->value->data.size();
+        if(size0 > 0 && size1 > 0)
         {
-            //cout << it << endl;
-            output[0]->value->data.push_back(boost::get<float>(input[0]->value->data[it % size0]) + boost::get<float>(input[1]->value->data[it % size1]));
-            it++;
+            int max = 0;
+            if(size0 >= size1)
+                max = size0;
+            else
+                max = size1;
+            int it = 0;
+            //TODO could be problematic?!
+            output[0]->value->data.clear();
+            Spread temp(new SpreadStruct);
+            temp->name = "none";
+            while(it < max)
+            {
+                //cout << it << endl;
+                temp->data.push_back(boost::get<float>(input[0]->value->data[it % size0]) + boost::get<float>(input[1]->value->data[it % size1]));
+                it++;
+            }
+            output[0]->setValue(temp);
         }
+        //output[0]->value->data[0] = input[0]->value->data[0] * input[1]->value->data[0];
+        //cout << "output pin: " << output[0]->value << endl;
+        bProcessed = true;
     }
-    //output[0]->value->data[0] = input[0]->value->data[0] * input[1]->value->data[0];
-    //cout << "output pin: " << output[0]->value << endl;
 }

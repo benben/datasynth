@@ -14,10 +14,11 @@ Constant::Constant(int _ID, float _x, float _y, string _name)
     name = _name;
     TextInputPtr t(new TextInput(&x, &y, name, &value, &bIsActive));
     textinput = t;
-    SliderPtr s(new Slider(&x, &y, name, &value, &bIsActive));
+    SliderPtr s(new Slider(&x, &y, name, &value, &bProcessed, &bIsActive));
     slider = s;
     bValueIsSaveable = true;
     height = 40;
+    bProcessed = false;
 }
 
 Constant::~Constant()
@@ -43,8 +44,16 @@ void Constant::setValueFromString(string _val)
 
 void Constant::process()
 {
-    output[0]->value->data[0] = value;
-    //cout << "process from Constant()\n";
+    if(!bProcessed)
+    {
+        cout << "process from Constant()\n";
+        //output[0]->value->data[0] = value;
+        Spread temp(new SpreadStruct);
+        temp->name = "none";
+        temp->data.push_back(value);
+        output[0]->setValue(temp);
+        bProcessed = true;
+    }
     //cout << "output pin: " << output[0]->value.data[0] << endl;
 }
 

@@ -20,8 +20,8 @@ void Core::setup()
     XMLObjects.pushTag("OBJECTS", 0);
     ofAddListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
     bLoad = false;
-    pinOut = NULL;
-    pinIn = NULL;
+    isInSet = false;
+    isOutSet = false;
     cout << "setup finished" << endl;
     load();
 }
@@ -40,8 +40,6 @@ void Core::update()
             load();
         }
     } else {
-        BOOST_FOREACH(ConnectionPtr connection, connections)
-            connection->process();
         BOOST_FOREACH(NodePtr node, nodes)
             node->process();
     }
@@ -82,15 +80,15 @@ void Core::draw()
         {
             connection->draw();
         }
-    if(pinIn != NULL)
+    if(isInSet)
     {
         ofSetColor(255,255,255,255);
-        ofLine(pinIn->x+7,pinIn->y+7,mouseX,mouseY);
+        ofLine(in->input[inPinID]->x+7,in->input[inPinID]->y+7,mouseX,mouseY);
     }
-    else if(pinOut != NULL)
+    else if(isOutSet)
     {
         ofSetColor(255,255,255,255);
-        ofLine(pinOut->x+7,pinOut->y+7,mouseX,mouseY);
+        ofLine(out->output[outPinID]->x+7,out->output[outPinID]->y+7,mouseX,mouseY);
     }
     Menu::Get()->draw();
 }
@@ -119,9 +117,9 @@ void Core::save()
     for(unsigned int i = 0; i < connections.size(); i++)
     {
         saveXml.addTag("CONNECTION");
-        saveXml.addAttribute("CONNECTION", "OUT_NODE_ID", connections[i]->outNodeID, i);
+        saveXml.addAttribute("CONNECTION", "OUT_NODE_ID", connections[i]->outNode->ID, i);
         saveXml.addAttribute("CONNECTION", "OUT_PIN_ID", connections[i]->outPinID, i);
-        saveXml.addAttribute("CONNECTION", "IN_NODE_ID", connections[i]->inNodeID, i);
+        saveXml.addAttribute("CONNECTION", "IN_NODE_ID", connections[i]->inNode->ID, i);
         saveXml.addAttribute("CONNECTION", "IN_PIN_ID", connections[i]->inPinID, i);
     }
     saveXml.saveFile("default.xml");
@@ -160,7 +158,7 @@ void Core::load()
         cout << inPinID << endl;
         */
         cout << "creating connection between Node: " <<  outNodeID << " Pin: " << outPinID << " and Node " << inNodeID << " Pin: " << inPinID << endl;
-        ConnectionPtr val(new Connection(getNodeByID(outNodeID)->output[outPinID], outNodeID, outPinID, getNodeByID(inNodeID)->input[inPinID], inNodeID, inPinID));
+        ConnectionPtr val(new Connection(getNodeByID(outNodeID), outPinID, getNodeByID(inNodeID), inPinID));
         connections.push_back(val);
     }
     loadXml.clear();
@@ -276,29 +274,29 @@ void Core::mouseReleased(int x, int y, int button)
     bool del = true;
     for(unsigned int i = 0; i < nodes.size(); i++)
     {
-        if(!pinIn)
+        if(!isInSet)
         {
             for(unsigned int j = 0; j < nodes[i]->input.size(); j++)
             {
                 if(nodes[i]->input[j]->inside(x,y) && nodes[i]->input[j]->isFree())
                 {
-                    pinIn = nodes[i]->input[j];
-                    inNodeID = nodes[i]->ID;
+                    in = nodes[i];
                     inPinID = j;
+                    isInSet = true;
                     del = false;
                     break;
                 }
             }
         }
-        if(!pinOut)
+        if(!isOutSet)
         {
             for(unsigned int j = 0; j < nodes[i]->output.size(); j++)
             {
                 if(nodes[i]->output[j]->inside(x,y) && nodes[i]->output[j]->isFree())
                 {
-                    pinOut = nodes[i]->output[j];
-                    outNodeID = nodes[i]->ID;
+                    out = nodes[i];
                     outPinID = j;
+                    isOutSet = true;
                     del = false;
                     break;
                 }
@@ -306,19 +304,19 @@ void Core::mouseReleased(int x, int y, int button)
         }
     }
 
-    if(pinOut != NULL && pinIn != NULL)
+    if(isInSet && isOutSet)
     {
-        cout << "creating connection between Node: " <<  outNodeID << " Pin: " << outPinID << " and Node " << inNodeID << " Pin: " << inPinID << endl;
-        ConnectionPtr val(new Connection(pinOut, outNodeID, outPinID, pinIn, inNodeID, inPinID));
+        cout << "creating connection between Node: " <<  out->ID << " Pin: " << outPinID << " and Node " << in->ID << " Pin: " << inPinID << endl;
+        ConnectionPtr val(new Connection(out, outPinID, in, inPinID));
         connections.push_back(val);
-        pinOut = NULL;
-        pinIn = NULL;
+        isInSet = false;
+        isOutSet = false;
     }
     //clicked but not on any pin
     if(del)
     {
-        pinOut = NULL;
-        pinIn = NULL;
+        isInSet = false;
+        isOutSet = false;
     }
 }
 //--------------------------------------------------------------

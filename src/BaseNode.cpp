@@ -16,6 +16,7 @@ BaseNode::BaseNode()
     color.g = 180;
     color.b = 0;
     bValueIsSaveable = false;
+    bProcessed = false;
 }
 
 BaseNode::~BaseNode()

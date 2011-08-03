@@ -3,10 +3,11 @@
 //some code stolen from here: https://github.com/openframeworks/openFrameworks/blob/master/apps/devApps/guiExample/src/ofSlider.h
 using namespace ds;
 
-Slider::Slider(float* _x, float* _y, string _name, float* _val, bool* _bIsNodeActive)
+Slider::Slider(float* _x, float* _y, string _name, float* _val, bool* _bProcessed, bool* _bIsNodeActive)
 {
     ofRegisterMouseEvents(this);
     bIsNodeActive = _bIsNodeActive;
+    bProcessed = _bProcessed;
     val = _val;
     name = _name;
     min = 0;
@@ -50,6 +51,7 @@ void Slider::draw()
 void Slider::setValue(float _val)
 {
     *val = _val;
+    *bProcessed = false;
 }
 
 void Slider::setValue(float mx, float my, bool bCheck)
@@ -57,6 +59,7 @@ void Slider::setValue(float mx, float my, bool bCheck)
     if(b.inside(mx, my) )
     {
         *val = ofMap(mx, b.x, b.x + b.width, min, max, true);
+        *bProcessed = false;
     }
     else
     {

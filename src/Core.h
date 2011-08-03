@@ -41,8 +41,9 @@ class Core : public ofxFensterListener{
         vector <ConnectionPtr> connections;
         ofxXmlSettings XMLObjects;
 
-        Pin * pinOut, * pinIn;
+        NodePtr out, in;
         int outNodeID, outPinID, inNodeID, inPinID;
+        bool isInSet, isOutSet;
 
         bool checkID(int _ID);
         NodePtr getNodeByID(int _ID);

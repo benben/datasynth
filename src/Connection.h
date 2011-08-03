@@ -2,19 +2,22 @@
 #define CONNECTION_H
 
 #include "src/Pin.h"
+#include "src/BaseNode.h"
 #include "ofxFensterManager.h"
+
+typedef boost::shared_ptr<ds::BaseNode> NodePtr;
 
 namespace ds {
 
 class Connection
 {
     public:
-        Connection(Pin * _out, int _outNodeID, int _outPinID, Pin * _in, int _inNodeID, int _inPinID);
+        Connection(NodePtr _outNode, int _outPinID, NodePtr _inNodeID, int _inPinID);
         ~Connection();
-        Pin * in;
-        Pin * out;
-        int outNodeID, outPinID, inNodeID, inPinID;
-        void process();
+        NodePtr inNode;
+        NodePtr outNode;
+        int outPinID, inPinID;
+        void process(int & args);
         void draw();
 
         float mouseX, mouseY;

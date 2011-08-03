@@ -10,7 +10,7 @@ namespace ds
 class Slider
 {
     public:
-        Slider(float* _x, float* _y, string _name, float* _val, bool* _bIsNodeActive);
+        Slider(float* _x, float* _y, string _name, float* _val, bool* _bProcessed, bool* _bIsNodeActive);
         ~Slider();
         void draw();
         void setValue(float mx, float my, bool bCheck);
@@ -28,6 +28,7 @@ class Slider
 
         bool bIsActive;
         bool* bIsNodeActive;
+        bool* bProcessed;
 
     protected:
     private:

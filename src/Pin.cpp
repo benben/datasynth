@@ -25,6 +25,8 @@ Pin::~Pin()
 void Pin::setValue(Spread _value)
 {
     value = _value;
+    int x = 10;
+    ofNotifyEvent(updateEvent,x,this);
 }
 
 void Pin::setInvalid()

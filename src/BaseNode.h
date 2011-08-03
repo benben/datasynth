@@ -43,6 +43,8 @@ class BaseNode : virtual public ofRectangle
 
         virtual string getValueAsString();
         virtual void setValueFromString(string _val);
+
+        bool bProcessed;
     protected:
     private:
 };

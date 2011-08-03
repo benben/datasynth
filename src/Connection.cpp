@@ -1,17 +1,16 @@
 #include "Connection.h"
 using namespace ds;
 
-Connection::Connection(Pin * _out, int _outNodeID, int _outPinID, Pin * _in, int _inNodeID, int _inPinID)
+Connection::Connection(NodePtr _outNode, int _outPinID, NodePtr _inNode, int _inPinID)
 {
-    out = _out;
-    outNodeID = _outNodeID;
+    outNode = _outNode;
     outPinID = _outPinID;
-    in = _in;
-    inNodeID = _inNodeID;
+    inNode = _inNode;
     inPinID = _inPinID;
-    in->addConnection();
-    out->addConnection();
+    inNode->input[inPinID]->addConnection();
+    outNode->output[outPinID]->addConnection();
     ofRegisterMouseEvents(this);
+    ofAddListener(outNode->output[outPinID]->updateEvent, this, &Connection::process);
     bIsInvalid = false;
     mouseX = 0;
     mouseY = 0;
@@ -20,14 +19,15 @@ Connection::Connection(Pin * _out, int _outNodeID, int _outPinID, Pin * _in, int
 Connection::~Connection()
 {
     cout << "removing connection" << endl;
-    in->removeConnection();
-    out->removeConnection();
+    ofRemoveListener(outNode->output[outPinID]->updateEvent, this, &Connection::process);
+    inNode->input[inPinID]->removeConnection();
+    outNode->output[outPinID]->removeConnection();
     ofUnregisterMouseEvents(this);
 }
 
-void Connection::process()
+void Connection::process(int & args)
 {
-    if(in->bIsInvalid || out->bIsInvalid)
+    if(inNode->input[inPinID]->bIsInvalid || outNode->output[outPinID]->bIsInvalid)
     {
         bIsInvalid = true;
     }
@@ -35,7 +35,8 @@ void Connection::process()
     {
         try
         {
-            in->setValue(out->value);
+            inNode->input[inPinID]->setValue(outNode->output[outPinID]->value);
+            inNode->bProcessed = false;
         }
         catch(...)
         {
@@ -49,7 +50,7 @@ void Connection::draw()
     if(!bIsInvalid)
     {
         ofSetColor(255,255,255,255);
-        ofLine(out->x+7, out->y+7, in->x+7, in->y+7);
+        ofLine(outNode->output[outPinID]->x+7, outNode->output[outPinID]->y+7, inNode->input[inPinID]->x+7, inNode->input[inPinID]->y+7);
     }
 }
 void Connection::mouseMoved(ofMouseEventArgs & args)
@@ -76,8 +77,8 @@ bool Connection::mouseIsOn()
     ofVec2f v1;
     ofVec2f v2;
     ofVec2f vMouse;
-    v1.set(out->x+7, out->y+7);
-    v2.set(in->x+7, in->y+7);
+    v1.set(outNode->output[outPinID]->x+7, outNode->output[outPinID]->y+7);
+    v2.set(inNode->input[inPinID]->x+7, inNode->input[inPinID]->y+7);
     vMouse.set(mouseX, mouseY);
     ofVec2f segment = v2 - v1;
     if(segment.length() != 0)

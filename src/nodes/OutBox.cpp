@@ -24,7 +24,6 @@ OutBox::~OutBox()
 
 void OutBox::process()
 {
-    //cout << "process from OutBox()\n";
 }
 
 void OutBox::draw()
