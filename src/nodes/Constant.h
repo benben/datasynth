@@ -14,7 +14,7 @@ namespace ds {
 class Constant : public BaseNode
 {
   public:
-    Constant(float _x, float _y, string _name);
+    Constant(int _ID, float _x, float _y, string _name);
     ~Constant();
     void init();
     void process();

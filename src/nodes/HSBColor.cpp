@@ -1,8 +1,9 @@
 #include "HSBColor.h"
 using namespace ds;
 
-HSBColor::HSBColor(float _x, float _y, string _name)
+HSBColor::HSBColor(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     x = _x;
     y = _y;
     name = "Color";

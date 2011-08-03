@@ -7,7 +7,7 @@ namespace ds {
 class Add : public BaseNode
 {
   public:
-    Add(float _x, float _y, string _name);
+    Add(int _ID, float _x, float _y, string _name);
     ~Add();
     void process();
   protected:

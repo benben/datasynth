@@ -7,7 +7,7 @@ namespace ds {
 class Min : public BaseNode
 {
   public:
-    Min(float _x, float _y, string _name);
+    Min(int _ID, float _x, float _y, string _name);
     ~Min();
     void process();
   protected:

@@ -7,7 +7,7 @@ namespace ds {
 class Multiply : public BaseNode
 {
   public:
-    Multiply(float _x, float _y, string _name);
+    Multiply(int _ID, float _x, float _y, string _name);
     ~Multiply();
     void process();
   protected:

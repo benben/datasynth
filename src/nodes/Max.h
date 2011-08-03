@@ -7,7 +7,7 @@ namespace ds {
 class Max : public BaseNode
 {
   public:
-    Max(float _x, float _y, string _name);
+    Max(int _ID, float _x, float _y, string _name);
     ~Max();
     void process();
   protected:

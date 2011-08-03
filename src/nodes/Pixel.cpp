@@ -1,8 +1,9 @@
 #include "Pixel.h"
 using namespace ds;
 
-Pixel::Pixel(float _x, float _y, string _name)
+Pixel::Pixel(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     x = _x;
     y = _y;
     name = _name;

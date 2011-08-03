@@ -19,6 +19,7 @@ class BaseNode : virtual public ofRectangle
 
         string name;
         string type;
+        int ID;
 
         bool bIsInvalid;
         void setInvalid();

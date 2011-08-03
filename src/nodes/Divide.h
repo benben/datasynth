@@ -7,7 +7,7 @@ namespace ds {
 class Divide : public BaseNode
 {
   public:
-    Divide(float _x, float _y, string _name);
+    Divide(int _ID, float _x, float _y, string _name);
     ~Divide();
     void process();
   protected:

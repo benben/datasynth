@@ -1,8 +1,9 @@
 #include "Max.h"
 using namespace ds;
 
-Max::Max(float _x, float _y, string _name)
+Max::Max(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     x = _x;
     y = _y;
     name = "Max";

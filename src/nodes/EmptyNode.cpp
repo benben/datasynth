@@ -1,8 +1,9 @@
 #include "EmptyNode.h"
 using namespace ds;
 
-EmptyNode::EmptyNode(float _x, float _y, string _name)
+EmptyNode::EmptyNode(int _ID, float _x, float _y, string _name)
 {
+    ID =_ID;
     x = _x;
     y = _y;
     name = _name;

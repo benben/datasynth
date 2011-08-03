@@ -1,8 +1,9 @@
 #include "OutBox.h"
 using namespace ds;
 
-OutBox::OutBox(float _x, float _y, string _name)
+OutBox::OutBox(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     //set inputs and outputs to initial values here
     x = _x;
     y = _y;

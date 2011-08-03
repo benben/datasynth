@@ -1,8 +1,9 @@
 #include "Constant.h"
 using namespace ds;
 
-Constant::Constant(float _x, float _y, string _name)
+Constant::Constant(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     value = 0.0;
     Spread temp(new SpreadStruct);
     temp->name = "none";

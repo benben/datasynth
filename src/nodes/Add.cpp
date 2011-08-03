@@ -1,8 +1,9 @@
 #include "Add.h"
 using namespace ds;
 
-Add::Add(float _x, float _y, string _name)
+Add::Add(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     x = _x;
     y = _y;
     name = "+";

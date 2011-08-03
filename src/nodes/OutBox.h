@@ -8,7 +8,7 @@ namespace ds {
 class OutBox : public BaseNode
 {
   public:
-    OutBox(float _x, float _y, string _name);
+    OutBox(int _ID, float _x, float _y, string _name);
     ~OutBox();
     void process();
     void draw();

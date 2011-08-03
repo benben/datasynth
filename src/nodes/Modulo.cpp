@@ -1,8 +1,9 @@
 #include "Modulo.h"
 using namespace ds;
 
-Modulo::Modulo(float _x, float _y, string _name)
+Modulo::Modulo(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     x = _x;
     y = _y;
     name = "%";

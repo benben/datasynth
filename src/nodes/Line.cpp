@@ -1,8 +1,9 @@
 #include "Line.h"
 using namespace ds;
 
-Line::Line(float _x, float _y, string _name)
+Line::Line(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     x = _x;
     y = _y;
     name = _name;

@@ -15,6 +15,7 @@ void Core::setup()
     ofxFensterManager::get()->getPrimaryWindow()->setWindowTitle("datasynth");
     ofxFensterManager::get()->getPrimaryWindow()->setBackgroundColor(80);
     ofSetFrameRate(25);
+    ID = 0;
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
     ofAddListener(Menu::Get()->menuEvent, this, &Core::handleMenuEvent);
@@ -101,7 +102,7 @@ void Core::save()
     {
         cout << "saving node..." << endl;
         saveXml.addTag("NODE");
-        saveXml.addAttribute("NODE", "ID", (int)i, i);
+        saveXml.addAttribute("NODE", "ID", nodes[i]->ID, i);
         saveXml.addAttribute("NODE", "NAME", nodes[i]->name, i);
         saveXml.addAttribute("NODE", "TYPE", nodes[i]->type, i);
         saveXml.addAttribute("NODE", "X", nodes[i]->x, i);
@@ -130,9 +131,11 @@ void Core::load()
 {
     cout << "really loading!" << endl;
     loadXml.loadFile("default.xml");
+    ID = 0;
     for(int i = 0; i < loadXml.getNumTags("NODE"); i++)
     {
-        NodePtr temp = factory(loadXml.getAttribute("NODE","TYPE", "", i).c_str(), ofToFloat(loadXml.getAttribute("NODE","X", "", i).c_str()), ofToFloat(loadXml.getAttribute("NODE","Y", "", i).c_str()), loadXml.getAttribute("NODE","NAME", "", i).c_str());
+        ID = ofToInt(loadXml.getAttribute("NODE","ID", "", i).c_str()) + 1;
+        NodePtr temp = factory(ofToInt(loadXml.getAttribute("NODE","ID", "", i).c_str()),loadXml.getAttribute("NODE","TYPE", "", i).c_str(), ofToFloat(loadXml.getAttribute("NODE","X", "", i).c_str()), ofToFloat(loadXml.getAttribute("NODE","Y", "", i).c_str()), loadXml.getAttribute("NODE","NAME", "", i).c_str());
         temp->type = loadXml.getAttribute("NODE","TYPE", "", i).c_str();
         //TODO *********** setValue of Controls?!
         loadXml.pushTag("NODE", i);
@@ -157,11 +160,34 @@ void Core::load()
         cout << inPinID << endl;
         */
         cout << "creating connection between Node: " <<  outNodeID << " Pin: " << outPinID << " and Node " << inNodeID << " Pin: " << inPinID << endl;
-        ConnectionPtr val(new Connection(nodes[outNodeID]->output[outPinID], outNodeID, outPinID, nodes[inNodeID]->input[inPinID], inNodeID, inPinID));
+        ConnectionPtr val(new Connection(getNodeByID(outNodeID)->output[outPinID], outNodeID, outPinID, getNodeByID(inNodeID)->input[inPinID], inNodeID, inPinID));
         connections.push_back(val);
     }
     loadXml.clear();
     bLoad = false;
+}
+//--------------------------------------------------------------
+NodePtr Core::getNodeByID(int _ID)
+{
+    for(unsigned int i = 0; i < nodes.size(); i++)
+    {
+        if(nodes[i]->ID == _ID)
+        {
+            return nodes[i];
+        }
+    }
+}
+//--------------------------------------------------------------
+bool Core::checkID(int _ID)
+{
+    for(unsigned int i = 0; i < nodes.size(); i++)
+    {
+        if(nodes[i]->ID == _ID)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 //--------------------------------------------------------------
 void Core::handleMenuEvent(menuEventType & args)
@@ -171,7 +197,7 @@ void Core::handleMenuEvent(menuEventType & args)
     {
         cout << "creating a node '"<< args.value << "' of type " << args.valueType << endl;
         //create nodes here
-        NodePtr temp = factory(args.valueType, Menu::Get()->x, Menu::Get()->y, args.value);
+        NodePtr temp = factory(ID++, args.valueType, Menu::Get()->x, Menu::Get()->y, args.value);
         temp->type = args.valueType;
         nodes.push_back(temp);
     }
@@ -257,7 +283,7 @@ void Core::mouseReleased(int x, int y, int button)
                 if(nodes[i]->input[j]->inside(x,y) && nodes[i]->input[j]->isFree())
                 {
                     pinIn = nodes[i]->input[j];
-                    inNodeID = i;
+                    inNodeID = nodes[i]->ID;
                     inPinID = j;
                     del = false;
                     break;
@@ -271,7 +297,7 @@ void Core::mouseReleased(int x, int y, int button)
                 if(nodes[i]->output[j]->inside(x,y) && nodes[i]->output[j]->isFree())
                 {
                     pinOut = nodes[i]->output[j];
-                    outNodeID = i;
+                    outNodeID = nodes[i]->ID;
                     outPinID = j;
                     del = false;
                     break;

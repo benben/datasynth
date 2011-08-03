@@ -36,12 +36,16 @@ class Core : public ofxFensterListener{
 
         Factory factory;
 
+        int ID;
         vector <NodePtr> nodes;
         vector <ConnectionPtr> connections;
         ofxXmlSettings XMLObjects;
 
         Pin * pinOut, * pinIn;
         int outNodeID, outPinID, inNodeID, inPinID;
+
+        bool checkID(int _ID);
+        NodePtr getNodeByID(int _ID);
 };
 
 }

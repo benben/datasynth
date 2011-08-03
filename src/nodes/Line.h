@@ -8,7 +8,7 @@ namespace ds {
 class Line : public BaseNode
 {
   public:
-    Line(float _x, float _y, string _name);
+    Line(int _ID, float _x, float _y, string _name);
     ~Line();
     void process();
     void drawLines(ofEventArgs & args);

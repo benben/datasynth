@@ -8,7 +8,7 @@ namespace ds {
 class Pixel : public BaseNode
 {
   public:
-    Pixel(float _x, float _y, string _name);
+    Pixel(int _ID, float _x, float _y, string _name);
     ~Pixel();
     void process();
     void drawMe(ofEventArgs & args);

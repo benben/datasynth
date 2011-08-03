@@ -1,8 +1,9 @@
 #include "Multiply.h"
 using namespace ds;
 
-Multiply::Multiply(float _x, float _y, string _name)
+Multiply::Multiply(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     x = _x;
     y = _y;
     name = "*";

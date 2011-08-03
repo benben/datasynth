@@ -1,8 +1,9 @@
 #include "Point.h"
 using namespace ds;
 
-Point::Point(float _x, float _y, string _name)
+Point::Point(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     x = _x;
     y = _y;
     name = _name;

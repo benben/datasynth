@@ -8,7 +8,7 @@ namespace ds {
 class Point : public BaseNode
 {
   public:
-    Point(float _x, float _y, string _name);
+    Point(int _ID, float _x, float _y, string _name);
     ~Point();
     void process();
     void drawPoints(ofEventArgs & args);

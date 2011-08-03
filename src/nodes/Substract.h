@@ -7,7 +7,7 @@ namespace ds {
 class Substract : public BaseNode
 {
   public:
-    Substract(float _x, float _y, string _name);
+    Substract(int _ID, float _x, float _y, string _name);
     ~Substract();
     void process();
   protected:

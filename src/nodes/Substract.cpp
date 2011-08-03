@@ -1,8 +1,9 @@
 #include "Substract.h"
 using namespace ds;
 
-Substract::Substract(float _x, float _y, string _name)
+Substract::Substract(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     x = _x;
     y = _y;
     name = "-";

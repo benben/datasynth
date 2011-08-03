@@ -7,7 +7,7 @@ namespace ds {
 class Map : public BaseNode
 {
   public:
-    Map(float _x, float _y, string _name);
+    Map(int _ID, float _x, float _y, string _name);
     ~Map();
     void process();
   protected:

@@ -1,8 +1,9 @@
 #include "Divide.h"
 using namespace ds;
 
-Divide::Divide(float _x, float _y, string _name)
+Divide::Divide(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     x = _x;
     y = _y;
     name = "/";

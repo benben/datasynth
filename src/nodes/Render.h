@@ -17,7 +17,7 @@ public:
 class Render : public BaseNode
 {
   public:
-    Render(float _x, float _y, string _name);
+    Render(int _ID, float _x, float _y, string _name);
     ~Render();
 
     ofxFenster* win;

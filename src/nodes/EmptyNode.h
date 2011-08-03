@@ -8,7 +8,7 @@ namespace ds {
 class EmptyNode : public BaseNode
 {
   public:
-    EmptyNode(float _x, float _y, string _name);
+    EmptyNode(int _ID, float _x, float _y, string _name);
     ~EmptyNode();
     void process();
   protected:

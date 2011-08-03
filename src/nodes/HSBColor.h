@@ -7,7 +7,7 @@ namespace ds {
 class HSBColor : public BaseNode
 {
   public:
-    HSBColor(float _x, float _y, string _name);
+    HSBColor(int _ID, float _x, float _y, string _name);
     ~HSBColor();
     void process();
   protected:

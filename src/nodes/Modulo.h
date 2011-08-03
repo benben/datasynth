@@ -7,7 +7,7 @@ namespace ds {
 class Modulo : public BaseNode
 {
   public:
-    Modulo(float _x, float _y, string _name);
+    Modulo(int _ID, float _x, float _y, string _name);
     ~Modulo();
     void process();
   protected:

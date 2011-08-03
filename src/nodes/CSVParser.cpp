@@ -6,8 +6,9 @@ bool filter(char c)
 	return c==',';
 }
 
-CSVParser::CSVParser(float _x, float _y, string _name)
+CSVParser::CSVParser(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     value = "";
     bValueIsSaveable = true;
     x = _x;

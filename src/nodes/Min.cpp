@@ -1,8 +1,9 @@
 #include "Min.h"
 using namespace ds;
 
-Min::Min(float _x, float _y, string _name)
+Min::Min(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     x = _x;
     y = _y;
     name = "Min";

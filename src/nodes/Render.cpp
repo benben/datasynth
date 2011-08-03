@@ -2,8 +2,9 @@
 
 using namespace ds;
 
-Render::Render(float _x, float _y, string _name)
+Render::Render(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     x = _x;
     y = _y;
     name = _name;

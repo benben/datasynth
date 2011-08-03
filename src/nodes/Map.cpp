@@ -1,8 +1,9 @@
 #include "Map.h"
 using namespace ds;
 
-Map::Map(float _x, float _y, string _name)
+Map::Map(int _ID, float _x, float _y, string _name)
 {
+    ID = _ID;
     x = _x;
     y = _y;
     name = "Map";
