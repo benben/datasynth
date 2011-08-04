@@ -33,33 +33,38 @@ Modulo::~Modulo()
 
 void Modulo::process()
 {
-    //cout << "process from Modulo()\n";
-    int size0 = input[0]->value->data.size();
-    int size1 = input[1]->value->data.size();
-    if(size0 > 0 && size1 > 0)
+    if(!bProcessed)
     {
-        int max = 0;
-        if(size0 >= size1)
-            max = size0;
-        else
-            max = size1;
-        int it = 0;
-        //TODO could be problematic?!
-        output[0]->value->data.clear();
-        while(it < max)
+        //cout << "process from Modulo()\n";
+        int size0 = input[0]->value->data.size();
+        int size1 = input[1]->value->data.size();
+        if(size0 > 0 && size1 > 0)
         {
-            //cout << it << endl;
-            if((int)boost::get<float>(input[1]->value->data[it % size1]) != 0)
-            {
-                output[0]->value->data.push_back((int)boost::get<float>(input[0]->value->data[it % size0]) % (int)boost::get<float>(input[1]->value->data[it % size1]));
-            }
+            int max = 0;
+            if(size0 >= size1)
+                max = size0;
             else
+                max = size1;
+            int it = 0;
+            Spread temp(new SpreadStruct);
+            temp->name = "none";
+            while(it < max)
             {
-                output[0]->value->data.push_back(boost::get<float>(input[0]->value->data[it % size0]));
+                //cout << it << endl;
+                if((int)boost::get<float>(input[1]->value->data[it % size1]) != 0)
+                {
+                    temp->data.push_back((int)boost::get<float>(input[0]->value->data[it % size0]) % (int)boost::get<float>(input[1]->value->data[it % size1]));
+                }
+                else
+                {
+                    temp->data.push_back(boost::get<float>(input[0]->value->data[it % size0]));
+                }
+                it++;
             }
-            it++;
+            output[0]->setValue(temp);
         }
+        //output[0]->value->data[0] = input[0]->value->data[0] * input[1]->value->data[0];
+        //cout << "output pin: " << output[0]->value << endl;
+        bProcessed = true;
     }
-    //output[0]->value->data[0] = input[0]->value->data[0] * input[1]->value->data[0];
-    //cout << "output pin: " << output[0]->value << endl;
 }

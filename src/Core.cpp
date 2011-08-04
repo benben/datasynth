@@ -141,8 +141,8 @@ void Core::load()
         {
             temp->setValueFromString(ofToString(loadXml.getValue("VALUE", "", 0).c_str()));
         }
-        temp->init();
         loadXml.popTag();
+        temp->init();
         nodes.push_back(temp);
     }
     for(int i = 0; i < loadXml.getNumTags("CONNECTION"); i++)
@@ -160,6 +160,11 @@ void Core::load()
         cout << "creating connection between Node: " <<  outNodeID << " Pin: " << outPinID << " and Node " << inNodeID << " Pin: " << inPinID << endl;
         ConnectionPtr val(new Connection(getNodeByID(outNodeID), outPinID, getNodeByID(inNodeID), inPinID));
         connections.push_back(val);
+    }
+    //ugly workaround, maybe we can get rid of this later :(
+    for(unsigned int i = 0; i < nodes.size(); i++)
+    {
+        nodes[i]->init();
     }
     loadXml.clear();
     bLoad = false;

@@ -17,6 +17,11 @@ EmptyNode::~EmptyNode()
 
 void EmptyNode::process()
 {
-    cout << "process from EmptyNode()\n";
-    //cout << "output pin: " << output[0] << endl;
+    if(!bProcessed)
+    {
+        cout << "process from EmptyNode()\n";
+        //output[0]->setValue(temp);
+        //cout << "output pin: " << output[0] << endl;
+        bProcessed = true;
+    }
 }

@@ -113,11 +113,13 @@ void CSVParser::parseFile(string & args)
     {
         if(i >= outputsize)
         {
-            output.push_back(new Pin(spreads[i], color));
+            Spread temp(new SpreadStruct);
+            output.push_back(new Pin(temp, color));
+            output[i]->setValue(spreads[i]);
         }
         else
         {
-            output[i]->value = spreads[i];
+            output[i]->setValue(spreads[i]);
         }
     }
     /*

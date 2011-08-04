@@ -45,19 +45,24 @@ Map::~Map()
 
 void Map::process()
 {
-    if(input[0]->value->data.size() > 0 && input[1]->value->data.size() > 0 && input[2]->value->data.size() > 0 && input[3]->value->data.size() > 0 && input[4]->value->data.size() > 0)
+    if(!bProcessed)
     {
-        output[0]->value->data.clear();
-        for(unsigned int i = 0; i < input[0]->value->data.size(); i++)
+        if(input[0]->value->data.size() > 0 && input[1]->value->data.size() > 0 && input[2]->value->data.size() > 0 && input[3]->value->data.size() > 0 && input[4]->value->data.size() > 0)
         {
-            float val = boost::get<float>(input[0]->value->data[i]);
-            float min1 = boost::get<float>(input[1]->value->data[i % input[1]->value->data.size()]);
-            float max1 = boost::get<float>(input[2]->value->data[i % input[2]->value->data.size()]);
-            float min2 = boost::get<float>(input[3]->value->data[i % input[3]->value->data.size()]);
-            float max2 = boost::get<float>(input[4]->value->data[i % input[4]->value->data.size()]);
+            Spread temp(new SpreadStruct);
+            temp->name = "none";
+            for(unsigned int i = 0; i < input[0]->value->data.size(); i++)
+            {
+                float val = boost::get<float>(input[0]->value->data[i]);
+                float min1 = boost::get<float>(input[1]->value->data[i % input[1]->value->data.size()]);
+                float max1 = boost::get<float>(input[2]->value->data[i % input[2]->value->data.size()]);
+                float min2 = boost::get<float>(input[3]->value->data[i % input[3]->value->data.size()]);
+                float max2 = boost::get<float>(input[4]->value->data[i % input[4]->value->data.size()]);
 
-            output[0]->value->data.push_back(ofMap(val,min1,max1,min2,max2,false));
+                temp->data.push_back(ofMap(val,min1,max1,min2,max2,false));
+            }
+            output[0]->setValue(temp);
         }
-
+        bProcessed = true;
     }
 }

@@ -16,6 +16,7 @@ Constant::Constant(int _ID, float _x, float _y, string _name)
     textinput = t;
     SliderPtr s(new Slider(&x, &y, name, &value, &bProcessed, &bIsActive));
     slider = s;
+    slider->setValue(value);
     bValueIsSaveable = true;
     height = 40;
     bProcessed = false;
@@ -29,7 +30,6 @@ Constant::~Constant()
 void Constant::init()
 {
     //cout << "init from constant: " << output[0]->value << endl;
-    slider->setValue(value);
 }
 
 string Constant::getValueAsString()

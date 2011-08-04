@@ -10,6 +10,7 @@ Connection::Connection(NodePtr _outNode, int _outPinID, NodePtr _inNode, int _in
     inNode->input[inPinID]->addConnection();
     outNode->output[outPinID]->addConnection();
     ofRegisterMouseEvents(this);
+    ofAddListener(inNode->input[inPinID]->deleteEvent, this, &Connection::setInvalid);
     ofAddListener(outNode->output[outPinID]->updateEvent, this, &Connection::process);
     bIsInvalid = false;
     mouseX = 0;
@@ -19,10 +20,16 @@ Connection::Connection(NodePtr _outNode, int _outPinID, NodePtr _inNode, int _in
 Connection::~Connection()
 {
     cout << "removing connection" << endl;
+    ofRemoveListener(inNode->input[inPinID]->deleteEvent, this, &Connection::setInvalid);
     ofRemoveListener(outNode->output[outPinID]->updateEvent, this, &Connection::process);
     inNode->input[inPinID]->removeConnection();
     outNode->output[outPinID]->removeConnection();
     ofUnregisterMouseEvents(this);
+}
+
+void Connection::setInvalid(int & args)
+{
+    bIsInvalid = true;
 }
 
 void Connection::process(int & args)

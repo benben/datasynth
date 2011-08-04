@@ -36,7 +36,7 @@ void Add::process()
 {
     if(!bProcessed)
     {
-        cout << "process from Add()\n";
+        //cout << "process from Add()\n";
         int size0 = input[0]->value->data.size();
         int size1 = input[1]->value->data.size();
         if(size0 > 0 && size1 > 0)
@@ -48,7 +48,6 @@ void Add::process()
                 max = size1;
             int it = 0;
             //TODO could be problematic?!
-            output[0]->value->data.clear();
             Spread temp(new SpreadStruct);
             temp->name = "none";
             while(it < max)

@@ -29,17 +29,23 @@ Min::~Min()
 
 void Min::process()
 {
-    if(input[0]->value->data.size() > 0)
+    if(!bProcessed)
     {
-        output[0]->value->data.clear();
-        float min = boost::get<float>(input[0]->value->data[0]);
-        for(unsigned int i = 0; i < input[0]->value->data.size(); i++)
+        if(input[0]->value->data.size() > 0)
         {
-            if(boost::get<float>(input[0]->value->data[i]) < min)
+            Spread temp(new SpreadStruct);
+            temp->name = "none";
+            float min = boost::get<float>(input[0]->value->data[0]);
+            for(unsigned int i = 0; i < input[0]->value->data.size(); i++)
             {
-                min = boost::get<float>(input[0]->value->data[i]);
+                if(boost::get<float>(input[0]->value->data[i]) < min)
+                {
+                    min = boost::get<float>(input[0]->value->data[i]);
+                }
             }
+            temp->data.push_back(min);
+            output[0]->setValue(temp);
         }
-        output[0]->value->data.push_back(min);
+        bProcessed = true;
     }
 }

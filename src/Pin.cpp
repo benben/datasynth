@@ -34,6 +34,9 @@ void Pin::setInvalid()
     cout << "setting pin invalid..." << endl;
     ofUnregisterMouseEvents(this);
     bIsInvalid = true;
+    int x = 10;
+    ofNotifyEvent(updateEvent,x,this);
+    ofNotifyEvent(deleteEvent,x,this);
 }
 
 bool Pin::isFree()

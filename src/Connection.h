@@ -17,6 +17,7 @@ class Connection
         NodePtr inNode;
         NodePtr outNode;
         int outPinID, inPinID;
+        void setInvalid(int & args);
         void process(int & args);
         void draw();
 
