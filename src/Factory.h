@@ -42,6 +42,8 @@ struct Factory {
         f["Map"]        = construct<NodePtr>(new_<ds::Map>(arg1, arg2, arg3, arg4));
         f["Modulo"]     = construct<NodePtr>(new_<ds::Modulo>(arg1, arg2, arg3, arg4));
         f["Pixel"]      = construct<NodePtr>(new_<ds::Pixel>(arg1, arg2, arg3, arg4));
+        f["GreaterThan"]= construct<NodePtr>(new_<ds::GreaterThan>(arg1, arg2, arg3, arg4));
+        f["LessThan"]   = construct<NodePtr>(new_<ds::LessThan>(arg1, arg2, arg3, arg4));
         // ...
     }
 

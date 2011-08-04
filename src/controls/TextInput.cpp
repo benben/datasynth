@@ -2,11 +2,12 @@
 
 using namespace ds;
 
-TextInput::TextInput(float* _x, float* _y, string _name, float* _value, bool* _bIsNodeActive)
+TextInput::TextInput(float* _x, float* _y, string _name, float* _value, bool* _bProcessed, bool* _bIsNodeActive)
 {
     ofRegisterMouseEvents(this);
     ofRegisterKeyEvents(this);
     bIsNodeActive = _bIsNodeActive;
+    bProcessed = _bProcessed;
     name = _name;
     value = _value;
     x = _x;
@@ -45,6 +46,7 @@ void TextInput::draw()
 void TextInput::setValue(string _val)
 {
     *value = boost::lexical_cast<float>(_val);
+    *bProcessed = false;
 }
 
 void TextInput::keyPressed(ofKeyEventArgs & args)

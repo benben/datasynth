@@ -134,10 +134,22 @@
 		<Unit filename="src/nodes/EmptyNode.h">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
+		<Unit filename="src/nodes/GreaterThan.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/GreaterThan.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
 		<Unit filename="src/nodes/HSBColor.cpp">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
 		<Unit filename="src/nodes/HSBColor.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/LessThan.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/LessThan.h">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
 		<Unit filename="src/nodes/Line.cpp">

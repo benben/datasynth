@@ -23,6 +23,10 @@
   </OBJECT>
   <OBJECT NAME="% (Modulo)" TYPE="Modulo">
   </OBJECT>
+  <OBJECT NAME="> (Greater than)" TYPE="GreaterThan">
+  </OBJECT>
+  <OBJECT NAME="< (Less than)" TYPE="LessThan">
+  </OBJECT>
   <OBJECT NAME="Render" TYPE="Render">
   </OBJECT>
   <OBJECT NAME="Point" TYPE="Point">

@@ -16,7 +16,6 @@ class Constant : public BaseNode
   public:
     Constant(int _ID, float _x, float _y, string _name);
     ~Constant();
-    void init();
     void process();
     void draw();
 

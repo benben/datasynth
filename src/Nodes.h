@@ -14,3 +14,5 @@
 #include "src/nodes/Map.h"
 #include "src/nodes/Modulo.h"
 #include "src/nodes/Pixel.h"
+#include "src/nodes/GreaterThan.h"
+#include "src/nodes/LessThan.h"

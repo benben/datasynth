@@ -10,7 +10,7 @@ namespace ds
 class TextInput
 {
     public:
-        TextInput(float* _x, float* _y, string _name, float* _value,  bool* _bIsNodeActive);
+        TextInput(float* _x, float* _y, string _name, float* _value, bool* _bProcessed,  bool* _bIsNodeActive);
         ~TextInput();
         void draw();
         void setValue(string _val);
@@ -29,6 +29,7 @@ class TextInput
 
         bool bIsActive;
         bool* bIsNodeActive;
+        bool* bProcessed;
 
         int mouseX, mouseY;
 

@@ -12,7 +12,7 @@ Constant::Constant(int _ID, float _x, float _y, string _name)
     x = _x;
     y = _y;
     name = _name;
-    TextInputPtr t(new TextInput(&x, &y, name, &value, &bIsActive));
+    TextInputPtr t(new TextInput(&x, &y, name, &value, &bProcessed, &bIsActive));
     textinput = t;
     SliderPtr s(new Slider(&x, &y, name, &value, &bProcessed, &bIsActive));
     slider = s;
@@ -25,11 +25,6 @@ Constant::Constant(int _ID, float _x, float _y, string _name)
 Constant::~Constant()
 {
     output.clear();
-}
-
-void Constant::init()
-{
-    //cout << "init from constant: " << output[0]->value << endl;
 }
 
 string Constant::getValueAsString()
