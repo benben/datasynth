@@ -12,6 +12,8 @@ Connection::Connection(NodePtr _outNode, int _outPinID, NodePtr _inNode, int _in
     ofRegisterMouseEvents(this);
     ofAddListener(inNode->input[inPinID]->deleteEvent, this, &Connection::setInvalid);
     ofAddListener(outNode->output[outPinID]->updateEvent, this, &Connection::process);
+    inNode->bProcessed = false;
+    outNode->bProcessed = false;
     bIsInvalid = false;
     mouseX = 0;
     mouseY = 0;
