@@ -16,3 +16,4 @@
 #include "src/nodes/Pixel.h"
 #include "src/nodes/GreaterThan.h"
 #include "src/nodes/LessThan.h"
+#include "src/nodes/BitmapString.h"

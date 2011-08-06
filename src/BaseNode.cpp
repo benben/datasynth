@@ -70,6 +70,17 @@ void BaseNode::setValueFromString(string _val)
 {
 }
 
+int BaseNode::maxSliceCount()
+{
+    int x = 0;
+    for(unsigned int i = 0; i < input.size(); i++)
+    {
+        if(input[i]->value->data.size() > x)
+            x = input[i]->value->data.size();
+    }
+    return x;
+}
+
 void BaseNode::mouseMoved(ofMouseEventArgs & args)
 {
     mouseX = args.x;

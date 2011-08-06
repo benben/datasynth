@@ -1,237 +1,243 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_project_file>
-  <FileVersion major="1" minor="6"/>
-  <Project>
-    <Option title="datasynth"/>
-    <Option makefile_is_custom="1"/>
-    <Option pch_mode="2"/>
-    <Option compiler="gcc"/>
-    <Option virtualFolders="addons/;src/;build config/;"/>
-    <Build>
-      <Target title="Debug">
-        <Option output="bin/$(PROJECT_NAME)_debug" prefix_auto="1" extension_auto="1"/>
-        <Option working_dir="bin"/>
-        <Option object_output="obj/Debug/"/>
-        <Option external_deps="../../../libs/openFrameworksCompiled/lib/linux64/libopenFrameworksDebug.a;"/>
-        <Option type="1"/>
-        <Option compiler="gcc"/>
-        <Option projectLinkerOptionsRelation="2"/>
-      </Target>
-      <Target title="Release">
-        <Option output="bin/$(PROJECT_NAME)" prefix_auto="1" extension_auto="1"/>
-        <Option working_dir="bin"/>
-        <Option object_output="obj/Release/"/>
-        <Option external_deps="../../../libs/openFrameworksCompiled/lib/linux64/libopenFrameworks.a;"/>
-        <Option type="1"/>
-        <Option compiler="gcc"/>
-        <Option projectLinkerOptionsRelation="2"/>
-      </Target>
-    </Build>
-    <Unit filename="config.make">
-      <Option virtualFolder="build config"/>
-    </Unit>
-    <Unit filename="src/main.cpp">
-      <Option virtualFolder="src/"/>
-    </Unit>
-    <Unit filename="src/testApp.cpp">
-      <Option virtualFolder="src/"/>
-    </Unit>
-    <Unit filename="src/testApp.h">
-      <Option virtualFolder="src/"/>
-    </Unit>
-    <Extensions>
-      <code_completion/>
-      <envvars/>
-      <debugger/>
-    </Extensions>
-    <Unit filename="src/Core.cpp">
-      <Option virtualFolder="src"/>
-    </Unit>
-    <Unit filename="src/BaseNode.cpp">
-      <Option virtualFolder="src"/>
-    </Unit>
-    <Unit filename="src/Nodes.h">
-      <Option virtualFolder="src"/>
-    </Unit>
-    <Unit filename="src/Menu.cpp">
-      <Option virtualFolder="src"/>
-    </Unit>
-    <Unit filename="src/Factory.h">
-      <Option virtualFolder="src"/>
-    </Unit>
-    <Unit filename="src/Pin.h">
-      <Option virtualFolder="src"/>
-    </Unit>
-    <Unit filename="src/Singleton.h">
-      <Option virtualFolder="src"/>
-    </Unit>
-    <Unit filename="src/Connection.h">
-      <Option virtualFolder="src"/>
-    </Unit>
-    <Unit filename="src/Menu.h">
-      <Option virtualFolder="src"/>
-    </Unit>
-    <Unit filename="src/Connection.cpp">
-      <Option virtualFolder="src"/>
-    </Unit>
-    <Unit filename="src/Pin.cpp">
-      <Option virtualFolder="src"/>
-    </Unit>
-    <Unit filename="src/BaseNode.h">
-      <Option virtualFolder="src"/>
-    </Unit>
-    <Unit filename="src/Core.h">
-      <Option virtualFolder="src"/>
-    </Unit>
-    <Unit filename="src/nodes/EmptyNode.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Add.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Multiply.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/OutBox.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Divide.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Min.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Multiply.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Line.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/LessThan.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/HSBColor.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Point.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Line.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Point.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/GreaterThan.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Modulo.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/GreaterThan.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Constant.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/LessThan.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/EmptyNode.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Pixel.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Substract.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Render.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Map.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Pixel.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Min.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Max.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Substract.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Divide.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Modulo.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Max.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Add.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/OutBox.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Render.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/HSBColor.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Constant.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/CSVParser.cpp">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/CSVParser.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/nodes/Map.h">
-      <Option virtualFolder="src/nodes"/>
-    </Unit>
-    <Unit filename="src/controls/TextInput.h">
-      <Option virtualFolder="src/controls"/>
-    </Unit>
-    <Unit filename="src/controls/FileChooser.h">
-      <Option virtualFolder="src/controls"/>
-    </Unit>
-    <Unit filename="src/controls/Slider.h">
-      <Option virtualFolder="src/controls"/>
-    </Unit>
-    <Unit filename="src/controls/TextInput.cpp">
-      <Option virtualFolder="src/controls"/>
-    </Unit>
-    <Unit filename="src/controls/FileChooser.cpp">
-      <Option virtualFolder="src/controls"/>
-    </Unit>
-    <Unit filename="src/controls/Slider.cpp">
-      <Option virtualFolder="src/controls"/>
-    </Unit>
-    <Unit filename="../../../addons/ofxXmlSettings/src/ofxXmlSettings.h">
-      <Option virtualFolder="addons/ofxXmlSettings/src"/>
-    </Unit>
-    <Unit filename="../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp">
-      <Option virtualFolder="addons/ofxXmlSettings/src"/>
-    </Unit>
-    <Unit filename="../../../addons/ofxFenster/src/ofxFensterManager.h">
-      <Option virtualFolder="addons/ofxFenster/src"/>
-    </Unit>
-    <Unit filename="../../../addons/ofxFenster/src/ofxFenster.cpp">
-      <Option virtualFolder="addons/ofxFenster/src"/>
-    </Unit>
-    <Unit filename="../../../addons/ofxFenster/src/ofxFensterManager.cpp">
-      <Option virtualFolder="addons/ofxFenster/src"/>
-    </Unit>
-    <Unit filename="../../../addons/ofxFenster/src/ofxFenster.h">
-      <Option virtualFolder="addons/ofxFenster/src"/>
-    </Unit>
-  </Project>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="datasynth" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="xml/;addons/;src/;build config/;addons/ofxFenster/src/;addons/ofxXmlSettings/src/;src/controls/;src/nodes/;" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/$(PROJECT_NAME)_debug" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/Debug/" />
+				<Option external_deps="../../../libs/openFrameworksCompiled/lib/linux64/libopenFrameworksDebug.a;" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+			</Target>
+			<Target title="Release">
+				<Option output="bin/$(PROJECT_NAME)" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/Release/" />
+				<Option external_deps="../../../libs/openFrameworksCompiled/lib/linux64/libopenFrameworks.a;" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+			</Target>
+		</Build>
+		<Unit filename="../../../addons/ofxFenster/src/ofxFenster.cpp">
+			<Option virtualFolder="addons/ofxFenster/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxFenster/src/ofxFenster.h">
+			<Option virtualFolder="addons/ofxFenster/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxFenster/src/ofxFensterManager.cpp">
+			<Option virtualFolder="addons/ofxFenster/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxFenster/src/ofxFensterManager.h">
+			<Option virtualFolder="addons/ofxFenster/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp">
+			<Option virtualFolder="addons/ofxXmlSettings/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxXmlSettings/src/ofxXmlSettings.h">
+			<Option virtualFolder="addons/ofxXmlSettings/src" />
+		</Unit>
+		<Unit filename="bin/data/menu.xml">
+			<Option virtualFolder="xml/" />
+		</Unit>
+		<Unit filename="bin/data/objects.xml">
+			<Option virtualFolder="xml/" />
+		</Unit>
+		<Unit filename="config.make">
+			<Option virtualFolder="build config" />
+		</Unit>
+		<Unit filename="src/BaseNode.cpp">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src/BaseNode.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src/Connection.cpp">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src/Connection.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src/Core.cpp">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src/Core.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src/Factory.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src/Menu.cpp">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src/Menu.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src/Nodes.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src/Pin.cpp">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src/Pin.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src/Singleton.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src/controls/FileChooser.cpp">
+			<Option virtualFolder="src/controls" />
+		</Unit>
+		<Unit filename="src/controls/FileChooser.h">
+			<Option virtualFolder="src/controls" />
+		</Unit>
+		<Unit filename="src/controls/Slider.cpp">
+			<Option virtualFolder="src/controls" />
+		</Unit>
+		<Unit filename="src/controls/Slider.h">
+			<Option virtualFolder="src/controls" />
+		</Unit>
+		<Unit filename="src/controls/TextInput.cpp">
+			<Option virtualFolder="src/controls" />
+		</Unit>
+		<Unit filename="src/controls/TextInput.h">
+			<Option virtualFolder="src/controls" />
+		</Unit>
+		<Unit filename="src/main.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/nodes/Add.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Add.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/BitmapString.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/BitmapString.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/CSVParser.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/CSVParser.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Constant.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Constant.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Divide.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Divide.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/EmptyNode.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/EmptyNode.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/GreaterThan.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/GreaterThan.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/HSBColor.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/HSBColor.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/LessThan.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/LessThan.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Line.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Line.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Map.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Map.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Max.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Max.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Min.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Min.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Modulo.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Modulo.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Multiply.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Multiply.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/OutBox.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/OutBox.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Pixel.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Pixel.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Point.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Point.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Render.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Render.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Substract.cpp">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Substract.h">
+			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
 </CodeBlocks_project_file>

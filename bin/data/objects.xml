@@ -35,4 +35,6 @@
   </OBJECT>
   <OBJECT NAME="Pixel" TYPE="Pixel">
   </OBJECT>
+  <OBJECT NAME="String" TYPE="BitmapString">
+  </OBJECT>
 </OBJECTS>
