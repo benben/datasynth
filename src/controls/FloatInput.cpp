@@ -1,8 +1,8 @@
-#include "TextInput.h"
+#include "FloatInput.h"
 
 using namespace ds;
 
-TextInput::TextInput(float* _x, float* _y, string _name, string* _value, bool* _bProcessed, bool* _bIsNodeActive)
+FloatInput::FloatInput(float* _x, float* _y, string _name, float* _value, bool* _bProcessed, bool* _bIsNodeActive)
 {
     ofRegisterMouseEvents(this);
     ofRegisterKeyEvents(this);
@@ -18,13 +18,13 @@ TextInput::TextInput(float* _x, float* _y, string _name, string* _value, bool* _
     b.height = 15;
 }
 
-TextInput::~TextInput()
+FloatInput::~FloatInput()
 {
     ofUnregisterMouseEvents(this);
     ofUnregisterKeyEvents(this);
 }
 
-void TextInput::draw()
+void FloatInput::draw()
 {
     b.x = *x + 2;
     b.y = *y + 11;
@@ -43,13 +43,13 @@ void TextInput::draw()
     ofFill();
 }
 
-void TextInput::setValue(string _val)
+void FloatInput::setValue(string _val)
 {
-    *value = _val;
+    *value = boost::lexical_cast<float>(_val);
     *bProcessed = false;
 }
 
-void TextInput::keyPressed(ofKeyEventArgs & args)
+void FloatInput::keyPressed(ofKeyEventArgs & args)
 {
     if(bIsActive)
     {
@@ -65,6 +65,10 @@ void TextInput::keyPressed(ofKeyEventArgs & args)
         else if(args.key == OF_KEY_RETURN)
         {
             //if first char is a dot, add a zero in front
+            if(input[0] == '.')
+            {
+                input = "0" + input;
+            }
             setValue(input);
             bIsActive = false;
         }
@@ -76,17 +80,17 @@ void TextInput::keyPressed(ofKeyEventArgs & args)
     }
 }
 
-void TextInput::keyReleased(ofKeyEventArgs & args)
+void FloatInput::keyReleased(ofKeyEventArgs & args)
 {
 }
 
-void TextInput::mouseMoved(ofMouseEventArgs & args)
+void FloatInput::mouseMoved(ofMouseEventArgs & args)
 {
     mouseX = args.x;
     mouseY = args.y;
 }
 
-void TextInput::mousePressed(ofMouseEventArgs & args)
+void FloatInput::mousePressed(ofMouseEventArgs & args)
 {
     if(b.inside(args.x,args.y))
     {
@@ -94,7 +98,7 @@ void TextInput::mousePressed(ofMouseEventArgs & args)
         {
             *bIsNodeActive = false;
             bIsActive = true;
-            input = *value;
+            input = ofToString(*value);
         }
     }
     else
@@ -103,10 +107,10 @@ void TextInput::mousePressed(ofMouseEventArgs & args)
     }
 }
 
-void TextInput::mouseDragged(ofMouseEventArgs & args)
+void FloatInput::mouseDragged(ofMouseEventArgs & args)
 {
 }
 
-void TextInput::mouseReleased(ofMouseEventArgs & args)
+void FloatInput::mouseReleased(ofMouseEventArgs & args)
 {
 }

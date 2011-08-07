@@ -5,6 +5,8 @@
   </OBJECT>
   <OBJECT NAME="Constant" TYPE="Constant">
   </OBJECT>
+  <OBJECT NAME="Text" TYPE="Text">
+  </OBJECT>
   <OBJECT NAME="Min" TYPE="Min">
   </OBJECT>
   <OBJECT NAME="Max" TYPE="Max">

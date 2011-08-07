@@ -1,5 +1,5 @@
-#ifndef TEXTINPUT_H
-#define TEXTINPUT_H
+#ifndef FLOATINPUT_H
+#define FLOATINPUT_H
 
 #include <boost/lexical_cast.hpp>
 #include "src/BaseNode.h"
@@ -7,11 +7,11 @@
 namespace ds
 {
 
-class TextInput
+class FloatInput
 {
     public:
-        TextInput(float* _x, float* _y, string _name, string* _value, bool* _bProcessed,  bool* _bIsNodeActive);
-        ~TextInput();
+        FloatInput(float* _x, float* _y, string _name, float* _value, bool* _bProcessed,  bool* _bIsNodeActive);
+        ~FloatInput();
         void draw();
         void setValue(string _val);
         virtual void mouseMoved(ofMouseEventArgs & args);
@@ -23,7 +23,7 @@ class TextInput
         virtual void keyReleased(ofKeyEventArgs & args);
 
         string name;
-        string* value;
+        float* value;
         float* x, * y;
         ofRectangle b;
 
@@ -40,4 +40,4 @@ class TextInput
 
 }
 
-#endif // TEXTINPUT_H
+#endif // FLOATINPUT_H

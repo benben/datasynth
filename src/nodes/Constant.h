@@ -3,10 +3,10 @@
 
 #include "src/BaseNode.h"
 #include "src/controls/Slider.h"
-#include "src/controls/TextInput.h"
+#include "src/controls/FloatInput.h"
 #include "boost/shared_ptr.hpp"
 
-typedef boost::shared_ptr<ds::TextInput> TextInputPtr;
+typedef boost::shared_ptr<ds::FloatInput> FloatInputPtr;
 typedef boost::shared_ptr<ds::Slider> SliderPtr;
 
 namespace ds {
@@ -20,7 +20,7 @@ class Constant : public BaseNode
     void draw();
 
     SliderPtr slider;
-    TextInputPtr textinput;
+    FloatInputPtr floatinput;
 
     float value;
 

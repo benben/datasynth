@@ -99,6 +99,12 @@
 		<Unit filename="src/controls/FileChooser.h">
 			<Option virtualFolder="src/controls" />
 		</Unit>
+		<Unit filename="src/controls/FloatInput.cpp">
+			<Option virtualFolder="src/controls/" />
+		</Unit>
+		<Unit filename="src/controls/FloatInput.h">
+			<Option virtualFolder="src/controls/" />
+		</Unit>
 		<Unit filename="src/controls/Slider.cpp">
 			<Option virtualFolder="src/controls" />
 		</Unit>
@@ -233,6 +239,12 @@
 		</Unit>
 		<Unit filename="src/nodes/Substract.h">
 			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Text.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/Text.h">
+			<Option virtualFolder="src/nodes/" />
 		</Unit>
 		<Extensions>
 			<code_completion />
