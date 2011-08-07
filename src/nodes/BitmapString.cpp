@@ -17,6 +17,9 @@ BitmapString::BitmapString(int _ID, float _x, float _y, string _name)
     Spread str(new SpreadStruct);
     str->name = "str";
     input.push_back(new Pin(str, color, 1));
+    Spread c(new SpreadStruct);
+    c->name = "color";
+    input.push_back(new Pin(c, color, 1));
     winId = ofxFensterManager::get()->getLastCreatedWindow()->id;
     ofAddListener(ofxFensterManager::get()->getWindowById(winId)->events.draw, this, &BitmapString::drawBitmapString);
 }
@@ -36,13 +39,15 @@ void BitmapString::drawBitmapString(ofEventArgs & args)
     int size0 = input[0]->value->data.size();
     int size1 = input[1]->value->data.size();
     int size2 = input[2]->value->data.size();
-    if(size0 > 0 && size1 > 0 && size2 > 0)
+    int size3 = input[3]->value->data.size();
+    if(size0 > 0 && size1 > 0 && size2 > 0 && size3 > 0)
     {
         int it = 0;
         int max = maxSliceCount();
         while(it < max)
         {
-            ofSetColor(255,255,255,255);
+            ofFloatColor c = boost::get<ofFloatColor>(input[3]->value->data[it % size3]);
+            ofSetColor(c.r,c.b,c.g);
             float x = (int)boost::get<float>(input[0]->value->data[it % size0]);
             float y = (int)boost::get<float>(input[1]->value->data[it % size1]);
             string str = boost::get<string>(input[2]->value->data[it % size2]);

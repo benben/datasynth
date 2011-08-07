@@ -137,6 +137,11 @@ void CSVParser::parseFile(string & args)
 
 void CSVParser::process()
 {
+    if(!bProcessed)
+    {
+        parseFile(value);
+        bProcessed = true;
+    }
     //cout << "process from CSVParser()\n";
     //cout << "output pin: " << output[0]->value << endl;
 }
