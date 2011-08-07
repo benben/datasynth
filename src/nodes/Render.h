@@ -19,6 +19,7 @@ class Render : public BaseNode
   public:
     Render(int _ID, float _x, float _y, string _name);
     ~Render();
+    void process();
 
     ofxFenster* win;
     RenderWindow* renderWin;
