@@ -46,6 +46,8 @@ struct Factory {
         f["LessThan"]    = construct<NodePtr>(new_<ds::LessThan>(arg1, arg2, arg3, arg4));
         f["BitmapString"]= construct<NodePtr>(new_<ds::BitmapString>(arg1, arg2, arg3, arg4));
         f["Text"]        = construct<NodePtr>(new_<ds::Text>(arg1, arg2, arg3, arg4));
+        f["Unique"]      = construct<NodePtr>(new_<ds::Unique>(arg1, arg2, arg3, arg4));
+        f["Rect"]        = construct<NodePtr>(new_<ds::Rect>(arg1, arg2, arg3, arg4));
         // ...
     }
 

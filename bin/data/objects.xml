@@ -13,6 +13,8 @@
   </OBJECT>
   <OBJECT NAME="Map" TYPE="Map">
   </OBJECT>
+  <OBJECT NAME="Unique" TYPE="Unique">
+  </OBJECT>
   <OBJECT NAME="OutBox" TYPE="OutBox">
   </OBJECT>
   <OBJECT NAME="+ (Add)" TYPE="Add">
@@ -34,6 +36,8 @@
   <OBJECT NAME="Point" TYPE="Point">
   </OBJECT>
   <OBJECT NAME="Line" TYPE="Line">
+  </OBJECT>
+  <OBJECT NAME="Rectangle" TYPE="Rect">
   </OBJECT>
   <OBJECT NAME="Pixel" TYPE="Pixel">
   </OBJECT>

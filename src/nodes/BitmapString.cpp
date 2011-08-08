@@ -50,7 +50,15 @@ void BitmapString::drawBitmapString(ofEventArgs & args)
             ofSetColor(c.r,c.b,c.g);
             float x = (int)boost::get<float>(input[0]->value->data[it % size0]);
             float y = (int)boost::get<float>(input[1]->value->data[it % size1]);
-            string str = boost::get<string>(input[2]->value->data[it % size2]);
+            string str;
+            try
+            {
+                str = boost::get<string>(input[2]->value->data[it % size2]);
+            }
+            catch(...)
+            {
+                str = ofToString(boost::get<float>(input[2]->value->data[it % size2]));
+            }
             ofDrawBitmapString(str,x,y);
             it++;
         }

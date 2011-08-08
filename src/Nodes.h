@@ -18,3 +18,5 @@
 #include "src/nodes/LessThan.h"
 #include "src/nodes/BitmapString.h"
 #include "src/nodes/Text.h"
+#include "src/nodes/Unique.h"
+#include "src/nodes/Rect.h"
