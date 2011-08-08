@@ -96,6 +96,13 @@ void Core::draw()
 void Core::save()
 {
     saveXml.clear();
+    ofPoint pos = ofxFensterManager::get()->getPrimaryWindow()->getWindowPosition();
+    ofPoint size = ofxFensterManager::get()->getPrimaryWindow()->getWindowSize();
+    saveXml.addTag("WINDOW");
+    saveXml.addAttribute("WINDOW", "X", pos.x, 0);
+    saveXml.addAttribute("WINDOW", "Y", pos.y, 0);
+    saveXml.addAttribute("WINDOW", "WIDTH", size.x, 0);
+    saveXml.addAttribute("WINDOW", "HEIGHT", size.y, 0);
     for(unsigned int i = 0; i < nodes.size(); i++)
     {
         cout << "saving node..." << endl;
@@ -129,6 +136,11 @@ void Core::load()
 {
     cout << "really loading!" << endl;
     loadXml.loadFile("default.xml");
+    if(loadXml.getNumTags("WINDOW") > 0)
+    {
+        ofxFensterManager::get()->getPrimaryWindow()->setWindowPosition(ofToInt(loadXml.getAttribute("WINDOW","X", "", 0).c_str()), ofToInt(loadXml.getAttribute("WINDOW","Y", "", 0).c_str()));
+        ofxFensterManager::get()->getPrimaryWindow()->setWindowShape(ofToInt(loadXml.getAttribute("WINDOW","WIDTH", "", 0).c_str()), ofToInt(loadXml.getAttribute("WINDOW","HEIGHT", "", 0).c_str()));
+    }
     ID = 0;
     for(int i = 0; i < loadXml.getNumTags("NODE"); i++)
     {

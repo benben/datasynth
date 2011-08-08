@@ -23,6 +23,9 @@ class Render : public BaseNode
 
     ofxFenster* win;
     RenderWindow* renderWin;
+
+    string getValueAsString();
+    void setValueFromString(string _val);
   protected:
   private:
 };
