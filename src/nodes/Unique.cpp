@@ -58,7 +58,12 @@ void Unique::process()
                         }
                         catch(...)
                         {
-
+                            ofFloatColor col1 = boost::get<ofFloatColor>(input[0]->value->data[i]);
+                            ofFloatColor col2 = boost::get<ofFloatColor>(temp->data[j]);
+                            if(col1.r == col2.r && col1.g == col2.g && col1.b == col2.b)
+                            {
+                                isIn = true;
+                            }
                         }
                     }
                 }

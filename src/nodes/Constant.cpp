@@ -41,7 +41,7 @@ void Constant::process()
 {
     if(!bProcessed)
     {
-        cout << "process from Constant()\n";
+        //cout << "process from Constant()\n";
         //output[0]->value->data[0] = value;
         Spread temp(new SpreadStruct);
         temp->name = "none";

@@ -48,6 +48,7 @@ struct Factory {
         f["Text"]        = construct<NodePtr>(new_<ds::Text>(arg1, arg2, arg3, arg4));
         f["Unique"]      = construct<NodePtr>(new_<ds::Unique>(arg1, arg2, arg3, arg4));
         f["Rect"]        = construct<NodePtr>(new_<ds::Rect>(arg1, arg2, arg3, arg4));
+        f["Scale"]       = construct<NodePtr>(new_<ds::Scale>(arg1, arg2, arg3, arg4));
         // ...
     }
 
