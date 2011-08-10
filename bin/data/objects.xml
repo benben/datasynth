@@ -43,6 +43,8 @@
   </OBJECT>
   <OBJECT NAME="String" TYPE="BitmapString">
   </OBJECT>
-  <OBJECT NAME="Scale" TYPE="Scale">
+  <OBJECT NAME="Color Scale" TYPE="ColorScale">
+  </OBJECT>
+  <OBJECT NAME="Text Scale" TYPE="TextScale">
   </OBJECT>
 </OBJECTS>

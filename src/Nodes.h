@@ -20,4 +20,5 @@
 #include "src/nodes/Text.h"
 #include "src/nodes/Unique.h"
 #include "src/nodes/Rect.h"
-#include "src/nodes/Scale.h"
+#include "src/nodes/ColorScale.h"
+#include "src/nodes/TextScale.h"

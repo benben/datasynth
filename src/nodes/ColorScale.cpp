@@ -1,13 +1,13 @@
-#include "Scale.h"
+#include "ColorScale.h"
 using namespace ds;
 
-Scale::Scale(int _ID, float _x, float _y, string _name)
+ColorScale::ColorScale(int _ID, float _x, float _y, string _name)
 {
     ID = _ID;
     x = _x;
     y = _y;
     name = _name;
-    width = 100;
+    width = 95;
 
     Spread x(new SpreadStruct);
     x->name = "x";
@@ -31,21 +31,21 @@ Scale::Scale(int _ID, float _x, float _y, string _name)
     input.push_back(new Pin(y2, color, 1));
 
     winId = ofxFensterManager::get()->getLastCreatedWindow()->id;
-    ofAddListener(ofxFensterManager::get()->getWindowById(winId)->events.draw, this, &Scale::drawScale);
+    ofAddListener(ofxFensterManager::get()->getWindowById(winId)->events.draw, this, &ColorScale::drawColorScale);
 }
 
-Scale::~Scale()
+ColorScale::~ColorScale()
 {
-    ofRemoveListener(ofxFensterManager::get()->getWindowById(winId)->events.draw, this, &Scale::drawScale);
+    ofRemoveListener(ofxFensterManager::get()->getWindowById(winId)->events.draw, this, &ColorScale::drawColorScale);
     input.clear();
     output.clear();
 }
 
-void Scale::process()
+void ColorScale::process()
 {
 }
 
-void Scale::drawScale(ofEventArgs & args)
+void ColorScale::drawColorScale(ofEventArgs & args)
 {
     float x = 0;
     float y = 0;

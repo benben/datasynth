@@ -120,6 +120,12 @@
 		<Unit filename="src/nodes/CSVParser.h">
 			<Option virtualFolder="src/nodes" />
 		</Unit>
+		<Unit filename="src/nodes/ColorScale.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/ColorScale.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
 		<Unit filename="src/nodes/Constant.cpp">
 			<Option virtualFolder="src/nodes" />
 		</Unit>
@@ -216,12 +222,6 @@
 		<Unit filename="src/nodes/Render.h">
 			<Option virtualFolder="src/nodes" />
 		</Unit>
-		<Unit filename="src/nodes/Scale.cpp">
-			<Option virtualFolder="src/nodes/" />
-		</Unit>
-		<Unit filename="src/nodes/Scale.h">
-			<Option virtualFolder="src/nodes/" />
-		</Unit>
 		<Unit filename="src/nodes/Substract.cpp">
 			<Option virtualFolder="src/nodes" />
 		</Unit>
@@ -232,6 +232,12 @@
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
 		<Unit filename="src/nodes/Text.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/TextScale.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/TextScale.h">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
 		<Unit filename="src/nodes/Unique.cpp">
