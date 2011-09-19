@@ -78,9 +78,9 @@ void TextScale::drawTextScale(ofEventArgs & args)
     if(width != 0 && step != 0 && step >= 1)
     {
         ofRect(x,y,1,10);
-        ofDrawBitmapString(ofToString(start,1),x-4,y+23);
+        ofDrawBitmapString(ofToString(start,0),x-4,y+23);
         ofRect(x+width,y,1,10);
-        ofDrawBitmapString(ofToString(end,1),x+width-4,y+23);
+        ofDrawBitmapString(ofToString(end,0),x+width-4,y+23);
         for(int i = (int)floor(start); i < (int)floor(end); i++)
         {
             if(i > (int)floor(start) + step/2 && i < (int)floor(end)-step/2)
