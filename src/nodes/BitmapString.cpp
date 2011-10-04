@@ -46,8 +46,8 @@ void BitmapString::drawBitmapString(ofEventArgs & args)
         int max = maxSliceCount();
         while(it < max)
         {
-            ofFloatColor c = boost::get<ofFloatColor>(input[3]->value->data[it % size3]);
-            ofSetColor(c.r,c.b,c.g);
+            ofColor c = boost::get<ofColor>(input[3]->value->data[it % size3]);
+            ofSetColor(c);
             float x = (int)boost::get<float>(input[0]->value->data[it % size0]);
             float y = (int)boost::get<float>(input[1]->value->data[it % size1]);
             string str;

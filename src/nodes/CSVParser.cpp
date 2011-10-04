@@ -139,7 +139,7 @@ void CSVParser::process()
 {
     if(!bProcessed)
     {
-        parseFile(value);
+        //parseFile(value);
         bProcessed = true;
     }
     //cout << "process from CSVParser()\n";

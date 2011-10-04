@@ -47,6 +47,8 @@ class Core : public ofxFensterListener{
 
         bool checkID(int _ID);
         NodePtr getNodeByID(int _ID);
+
+        bool bShowFPS;
 };
 
 }

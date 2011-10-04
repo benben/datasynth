@@ -22,3 +22,5 @@
 #include "src/nodes/Rect.h"
 #include "src/nodes/ColorScale.h"
 #include "src/nodes/TextScale.h"
+#include "src/nodes/Circle.h"
+#include "src/nodes/RGBColor.h"

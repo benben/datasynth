@@ -22,6 +22,7 @@ void Core::setup()
     bLoad = false;
     isInSet = false;
     isOutSet = false;
+    bShowFPS = true;
     cout << "setup finished" << endl;
     load();
 }
@@ -65,7 +66,8 @@ void Core::update()
 void Core::draw()
 {
     ofSetColor(255,255,255,255);
-    ofDrawBitmapString(ofToString(ofGetFrameRate()), 20, 20);
+    if(bShowFPS)
+        ofDrawBitmapString(ofToString(ofGetFrameRate()), 20, 20);
 
     BOOST_FOREACH(NodePtr node, nodes)
     {
@@ -238,9 +240,9 @@ void Core::keyPressed(int key, ofxFenster* win)
 //--------------------------------------------------------------
 void Core::keyReleased(int key, ofxFenster* win)
 {
-    if (key == ' ')
+    if (key == 'f')
     {
-
+        bShowFPS = !bShowFPS;
     }
 }
 //--------------------------------------------------------------

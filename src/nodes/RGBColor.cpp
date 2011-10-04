@@ -1,7 +1,7 @@
-#include "HSBColor.h"
+#include "RGBColor.h"
 using namespace ds;
 
-HSBColor::HSBColor(int _ID, float _x, float _y, string _name)
+RGBColor::RGBColor(int _ID, float _x, float _y, string _name)
 {
     ID = _ID;
     x = _x;
@@ -12,31 +12,31 @@ HSBColor::HSBColor(int _ID, float _x, float _y, string _name)
     color.g = 47;
     color.b = 47;
     Spread h(new SpreadStruct);
-    h->name = "H";
+    h->name = "R";
     input.push_back(new Pin(h, color));
     Spread s(new SpreadStruct);
-    s->name = "S";
+    s->name = "G";
     input.push_back(new Pin(s, color));
     Spread b(new SpreadStruct);
     b->name = "B";
     input.push_back(new Pin(b, color));
 
     Spread c(new SpreadStruct);
-    c->name = "HSBColor";
+    c->name = "RGBColor";
     output.push_back(new Pin(c, color));
 }
 
-HSBColor::~HSBColor()
+RGBColor::~RGBColor()
 {
     input.clear();
     output.clear();
 }
 
-void HSBColor::process()
+void RGBColor::process()
 {
     if(!bProcessed)
     {
-        //cout << "process from HSBColor()\n";
+        //cout << "process from RGBColor()\n";
         int min = 1;
         int max = 0;
         for(unsigned int i = 0; i < input.size(); i++)
@@ -57,12 +57,14 @@ void HSBColor::process()
             temp->name = "none";
             while(it < max)
             {
-                float h = boost::get<float>(input[0]->value->data[it % input[0]->value->data.size()]);
-                float s = boost::get<float>(input[1]->value->data[it % input[1]->value->data.size()]);
+                float r = boost::get<float>(input[0]->value->data[it % input[0]->value->data.size()]);
+                float g = boost::get<float>(input[1]->value->data[it % input[1]->value->data.size()]);
                 float b = boost::get<float>(input[2]->value->data[it % input[2]->value->data.size()]);
 
                 ofColor c;
-                c.setHsb(h,s,b);
+                c.r = (int)r;
+                c.g = (int)g;
+                c.b = (int)b;
                 temp->data.push_back(c);
                 it++;
             }

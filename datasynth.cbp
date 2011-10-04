@@ -120,6 +120,12 @@
 		<Unit filename="src/nodes/CSVParser.h">
 			<Option virtualFolder="src/nodes" />
 		</Unit>
+		<Unit filename="src/nodes/Circle.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/Circle.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
 		<Unit filename="src/nodes/ColorScale.cpp">
 			<Option virtualFolder="src/nodes/" />
 		</Unit>
@@ -215,6 +221,12 @@
 		</Unit>
 		<Unit filename="src/nodes/Point.h">
 			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Rect.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/Rect.h">
+			<Option virtualFolder="src/nodes/" />
 		</Unit>
 		<Unit filename="src/nodes/Render.cpp">
 			<Option virtualFolder="src/nodes" />

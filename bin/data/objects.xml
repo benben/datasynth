@@ -3,6 +3,8 @@
   </OBJECT>
   <OBJECT NAME="Color (HSB)" TYPE="HSBColor">
   </OBJECT>
+  <OBJECT NAME="Color (RGB)" TYPE="RGBColor">
+  </OBJECT>
   <OBJECT NAME="Constant" TYPE="Constant">
   </OBJECT>
   <OBJECT NAME="Text" TYPE="Text">
@@ -38,6 +40,8 @@
   <OBJECT NAME="Line" TYPE="Line">
   </OBJECT>
   <OBJECT NAME="Rectangle" TYPE="Rect">
+  </OBJECT>
+  <OBJECT NAME="Circle" TYPE="Circle">
   </OBJECT>
   <OBJECT NAME="Pixel" TYPE="Pixel">
   </OBJECT>
