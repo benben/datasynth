@@ -3,12 +3,13 @@
 #include "ofMain.h"
 #include "ofxFensterManager.h"
 #include "ofxXmlSettings.h"
+#include "ofxTileSaver.h"
 #include "src/Factory.h"
 #include "src/Menu.h"
 
 namespace ds {
 
-class Core : public ofxFensterListener{
+class Core : public ofxFensterListener {
 
 	public:
 		void setup();
@@ -49,6 +50,8 @@ class Core : public ofxFensterListener{
         NodePtr getNodeByID(int _ID);
 
         bool bShowFPS;
+
+        ofxTileSaver saver;
 };
 
 }

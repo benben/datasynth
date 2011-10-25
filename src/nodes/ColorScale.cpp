@@ -66,7 +66,7 @@ void ColorScale::drawColorScale(ofEventArgs & args)
     if(input[5]->value->data.size() > 0)
         endcolor = boost::get<float>(input[5]->value->data[0]);
 
-    ofFloatColor c;
+    ofColor c;
     c.setHsb(0,255,255);
     if(width != 0 && height != 0)
     {

@@ -1,5 +1,8 @@
 #include "Connection.h"
+
 using namespace ds;
+
+namespace ds {
 
 Connection::Connection(NodePtr _outNode, int _outPinID, NodePtr _inNode, int _inPinID)
 {
@@ -122,4 +125,6 @@ bool Connection::mouseIsOn()
     {
         return false;
     }
+}
+
 }

@@ -52,6 +52,8 @@ struct Factory {
         f["TextScale"]   = construct<NodePtr>(new_<ds::TextScale>(arg1, arg2, arg3, arg4));
         f["Circle"]      = construct<NodePtr>(new_<ds::Circle>(arg1, arg2, arg3, arg4));
         f["RGBColor"]    = construct<NodePtr>(new_<ds::RGBColor>(arg1, arg2, arg3, arg4));
+        f["FontString"]  = construct<NodePtr>(new_<ds::FontString>(arg1, arg2, arg3, arg4));
+        f["Quad"]        = construct<NodePtr>(new_<ds::Quad>(arg1, arg2, arg3, arg4));
         // ...
     }
 

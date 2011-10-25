@@ -60,7 +60,8 @@ void OutBox::draw()
                 }
                 catch(const boost::bad_get &v)
                 {
-                    ofDrawBitmapString(boost::get<string>(input[0]->value->data[i]),x+3, y+13+(i*11));
+                    string str = boost::get<string>(input[0]->value->data[i]);
+                    ofDrawBitmapString(ofToString(str),x+3, y+13+(i*11));
                 }
 
             }

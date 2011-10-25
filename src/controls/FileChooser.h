@@ -18,7 +18,7 @@ struct fileentry
 class FileChooser
 {
     public:
-        FileChooser(float* _x, float* _y, string _name, string* _value,  bool* _bIsNodeActive);
+        FileChooser(float* _x, float* _y, string _name, string* _value,  bool* _bIsNodeActive, string _acceptedFileExtension);
         ~FileChooser();
         void draw();
         void setValue(string _val);

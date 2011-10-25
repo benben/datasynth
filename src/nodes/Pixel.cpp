@@ -50,8 +50,7 @@ void Pixel::drawMe(ofEventArgs & args)
         int it = 0;
         while(it < max)
         {
-            ofFloatColor c = boost::get<ofFloatColor>(input[2]->value->data[it % size2]);
-            ofSetColor(c.r,c.g,c.b,255);
+            ofSetColor(boost::get<ofColor>(input[2]->value->data[it % size2]));
             ofRect(boost::get<float>(input[0]->value->data[it % size0]), boost::get<float>(input[1]->value->data[it % size1]),1,1);
             it++;
         }

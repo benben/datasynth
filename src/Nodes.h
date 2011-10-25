@@ -24,3 +24,5 @@
 #include "src/nodes/TextScale.h"
 #include "src/nodes/Circle.h"
 #include "src/nodes/RGBColor.h"
+#include "src/nodes/FontString.h"
+#include "src/nodes/Quad.h"

@@ -2,7 +2,7 @@
 
 using namespace ds;
 
-FileChooser::FileChooser(float* _x, float* _y, string _name, string* _value, bool* _bIsNodeActive)
+FileChooser::FileChooser(float* _x, float* _y, string _name, string* _value, bool* _bIsNodeActive, string _acceptedFileExtension)
 {
     ofRegisterMouseEvents(this);
     bIsNodeActive = _bIsNodeActive;
@@ -19,7 +19,7 @@ FileChooser::FileChooser(float* _x, float* _y, string _name, string* _value, boo
 
     loadEntries("data/");
 
-    acceptedFileExtension = "csv";
+    acceptedFileExtension = _acceptedFileExtension;
 }
 
 FileChooser::~FileChooser()

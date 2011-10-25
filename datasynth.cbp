@@ -150,6 +150,12 @@
 		<Unit filename="src/nodes/EmptyNode.h">
 			<Option virtualFolder="src/nodes" />
 		</Unit>
+		<Unit filename="src/nodes/FontString.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/FontString.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
 		<Unit filename="src/nodes/GreaterThan.cpp">
 			<Option virtualFolder="src/nodes" />
 		</Unit>
@@ -221,6 +227,18 @@
 		</Unit>
 		<Unit filename="src/nodes/Point.h">
 			<Option virtualFolder="src/nodes" />
+		</Unit>
+		<Unit filename="src/nodes/Quad.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/Quad.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/RGBColor.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/RGBColor.h">
+			<Option virtualFolder="src/nodes/" />
 		</Unit>
 		<Unit filename="src/nodes/Rect.cpp">
 			<Option virtualFolder="src/nodes/" />

@@ -81,6 +81,17 @@ int BaseNode::maxSliceCount()
     return x;
 }
 
+int BaseNode::minSliceCount()
+{
+    int x = 1;
+    for(unsigned int i = 0; i < input.size(); i++)
+    {
+        if(input[i]->value->data.size() < x)
+            x = input[i]->value->data.size();
+    }
+    return x;
+}
+
 void BaseNode::mouseMoved(ofMouseEventArgs & args)
 {
     mouseX = args.x;

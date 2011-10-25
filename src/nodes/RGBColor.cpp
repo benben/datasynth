@@ -6,7 +6,7 @@ RGBColor::RGBColor(int _ID, float _x, float _y, string _name)
     ID = _ID;
     x = _x;
     y = _y;
-    name = "Color";
+    name = "RGB";
     width = 47;
     color.r = 232;
     color.g = 47;

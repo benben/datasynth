@@ -18,7 +18,7 @@ CSVParser::CSVParser(int _ID, float _x, float _y, string _name)
     color.r = 0;
     color.g = 186;
     color.b = 255;
-    FileChooserPtr f(new FileChooser(&x, &y, name, &value, &bIsActive));
+    FileChooserPtr f(new FileChooser(&x, &y, name, &value, &bIsActive, "csv"));
     filechooser = f;
     ofAddListener(filechooser->fileEvent, this, &CSVParser::parseFile);
 }
@@ -139,7 +139,7 @@ void CSVParser::process()
 {
     if(!bProcessed)
     {
-        //parseFile(value);
+        parseFile(value);
         bProcessed = true;
     }
     //cout << "process from CSVParser()\n";

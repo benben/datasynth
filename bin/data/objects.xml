@@ -9,6 +9,8 @@
   </OBJECT>
   <OBJECT NAME="Text" TYPE="Text">
   </OBJECT>
+  <OBJECT NAME="Font String" TYPE="FontString">
+  </OBJECT>
   <OBJECT NAME="Min" TYPE="Min">
   </OBJECT>
   <OBJECT NAME="Max" TYPE="Max">
@@ -40,6 +42,8 @@
   <OBJECT NAME="Line" TYPE="Line">
   </OBJECT>
   <OBJECT NAME="Rectangle" TYPE="Rect">
+  </OBJECT>
+  <OBJECT NAME="Quad" TYPE="Quad">
   </OBJECT>
   <OBJECT NAME="Circle" TYPE="Circle">
   </OBJECT>

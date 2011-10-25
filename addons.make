@@ -1,3 +1,5 @@
 ofxXmlSettings
 ofxFenster
+ofxVectorMath
+ofxTileSaver
 

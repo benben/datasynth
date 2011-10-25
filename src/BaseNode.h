@@ -47,6 +47,7 @@ class BaseNode : virtual public ofRectangle
         bool bProcessed;
 
         int maxSliceCount();
+        int minSliceCount();
     protected:
     private:
 };
