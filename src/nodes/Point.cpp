@@ -1,6 +1,8 @@
 #include "Point.h"
 using namespace ds;
 
+namespace ds {
+
 Point::Point(int _ID, float _x, float _y, string _name)
 {
     ID = _ID;
@@ -50,4 +52,6 @@ void Point::drawPoints(ofEventArgs & args)
             it++;
         }
     }
+}
+
 }

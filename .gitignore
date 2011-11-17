@@ -5,3 +5,5 @@ bin/libs/
 include/
 obj/
 *.layout
+*.depend
+bin/*.dll

@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "ofxFensterManager.h"
 #include "ofxXmlSettings.h"
-#include "ofxTileSaver.h"
+//#include "ofxTileSaver.h"
 #include "src/Factory.h"
 #include "src/Menu.h"
 
@@ -51,7 +51,7 @@ class Core : public ofxFensterListener {
 
         bool bShowFPS;
 
-        ofxTileSaver saver;
+        //ofxTileSaver saver;
 };
 
 }

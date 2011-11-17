@@ -2,7 +2,7 @@
 #define RENDER_H
 
 #include "src/BaseNode.h"
-#include "ofxTileSaver.h"
+//#include "ofxTileSaver.h"
 
 namespace ds {
 
@@ -33,7 +33,7 @@ class Render : public BaseNode
 
     void keyReleased(ofKeyEventArgs & args);
 
-    ofxTileSaver saver;
+    //ofxTileSaver saver;
   protected:
   private:
 };

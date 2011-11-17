@@ -25,7 +25,7 @@ Render::Render(int _ID, float _x, float _y, string _name)
     win->addListener(renderWin);
     bValueIsSaveable = true;
 
-    saver.init(10, 0, true);
+    //saver.init(10, 0, true);
 
     ofAddListener(ofEvents.keyReleased, this, &Render::keyReleased);
     ofAddListener(win->events.draw, this, &Render::start);
@@ -43,12 +43,12 @@ Render::~Render()
 
 void Render::start(ofEventArgs & args)
 {
-    saver.begin();
+    //saver.begin();
 }
 
 void Render::stop(ofEventArgs & args)
 {
-    saver.end();
+    //saver.end();
 }
 
 
@@ -78,6 +78,6 @@ void Render::keyReleased(ofKeyEventArgs & args)
         cout << "pressed in render" << endl;
         char str[1024];
         sprintf(str, "%d%d%d_%d%d%d.png", ofGetYear(), ofGetMonth(), ofGetDay(), ofGetHours(), ofGetMinutes(), ofGetSeconds());
-        saver.finish(ofToString(str), true);
+        //saver.finish(ofToString(str), true);
     }
 }

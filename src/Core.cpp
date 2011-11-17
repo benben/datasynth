@@ -24,7 +24,7 @@ void Core::setup()
     isOutSet = false;
     bShowFPS = true;
     cout << "setup finished" << endl;
-    saver.init(10, 20, true);
+    //saver.init(10, 20, true);
     load();
 }
 //--------------------------------------------------------------
@@ -66,7 +66,7 @@ void Core::update()
 //--------------------------------------------------------------
 void Core::draw()
 {
-    saver.begin();
+    //saver.begin();
     ofSetColor(255,255,255,255);
     if(bShowFPS)
         ofDrawBitmapString(ofToString(ofGetFrameRate()), 20, 20);
@@ -95,7 +95,7 @@ void Core::draw()
         ofLine(out->output[outPinID]->x+7,out->output[outPinID]->y+7,mouseX,mouseY);
     }
     Menu::Get()->draw();
-    saver.end();
+    //saver.end();
 }
 //--------------------------------------------------------------
 void Core::save()
