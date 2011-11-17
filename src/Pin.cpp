@@ -74,6 +74,8 @@ void Pin::draw(float _x, float _y)
     y = _y;
     if(inside(mouseX, mouseY))
     {
+        ofSetColor(255);
+        ofDrawBitmapString(value->name,x+100,y+10);
         ofSetColor(color.r,color.g+40,color.b,255);
     }
     else

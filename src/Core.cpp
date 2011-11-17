@@ -83,6 +83,7 @@ void Core::draw()
         {
             connection->draw();
         }
+
     if(isInSet)
     {
         ofSetColor(255,255,255,255);
@@ -331,8 +332,7 @@ void Core::mouseReleased(int x, int y, int button)
         cout << "creating connection between Node: " <<  out->ID << " Pin: " << outPinID << " and Node " << in->ID << " Pin: " << inPinID << endl;
         ConnectionPtr val(new Connection(out, outPinID, in, inPinID));
         connections.push_back(val);
-        isInSet = false;
-        isOutSet = false;
+        del = true;
     }
     //clicked but not on any pin
     if(del)

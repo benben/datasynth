@@ -55,4 +55,6 @@
   </OBJECT>
   <OBJECT NAME="Text Scale" TYPE="TextScale">
   </OBJECT>
+  <OBJECT NAME="HexToFloat" TYPE="HexToFloat">
+  </OBJECT>
 </OBJECTS>
