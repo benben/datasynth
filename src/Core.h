@@ -9,7 +9,7 @@
 
 namespace ds {
 
-class Core : public ofxFensterListener {
+class Core : public ofBaseApp {
 
 	public:
 		void setup();
@@ -23,9 +23,9 @@ class Core : public ofxFensterListener {
         ofxXmlSettings loadXml;
         bool bLoad;
 
-        void keyPressed(int key, ofxFenster* win);
-        void keyReleased(int key, ofxFenster* win);
-        void mouseMoved(int x, int y, ofxFenster* win);
+        void keyPressed(int key);
+        void keyReleased(int key);
+        void mouseMoved(int x, int y);
         void mouseDragged(int x, int y, int button);
         void mousePressed(int x, int y, int button);
         void mouseReleased(int x, int y, int button);

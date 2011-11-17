@@ -11,10 +11,9 @@ using namespace ds;
 void Core::setup()
 {
     cout << "setup started" << endl;
-    ofxFensterManager::get()->getPrimaryWindow()->addListener(this);
     ofxFensterManager::get()->getPrimaryWindow()->setWindowTitle("datasynth");
     ofxFensterManager::get()->getPrimaryWindow()->setBackgroundColor(80);
-    ofSetFrameRate(25);
+    //ofSetFrameRate(25);
     ID = 0;
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
@@ -237,11 +236,11 @@ void Core::handleMenuEvent(menuEventType & args)
     }
 }
 //--------------------------------------------------------------
-void Core::keyPressed(int key, ofxFenster* win)
+void Core::keyPressed(int key)
 {
 }
 //--------------------------------------------------------------
-void Core::keyReleased(int key, ofxFenster* win)
+void Core::keyReleased(int key)
 {
     if (key == 'f')
     {
@@ -250,7 +249,7 @@ void Core::keyReleased(int key, ofxFenster* win)
     //if(key=='h') saver.finish("high.png", true);
 }
 //--------------------------------------------------------------
-void Core::mouseMoved(int x, int y, ofxFenster* win)
+void Core::mouseMoved(int x, int y)
 {
 }
 //--------------------------------------------------------------

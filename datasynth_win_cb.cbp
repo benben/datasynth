@@ -68,13 +68,13 @@
 			<Add directory="..\..\..\libs\tess2\include" />
 			<Add directory="..\..\..\libs\cairo\include\cairo" />
 			<Add directory="..\..\..\addons\ofxFenster\src" />
-			<Add directory="..\..\..\..\..\boost_1_47_0\boost_1_47_0" />
 			<Add directory="..\..\..\addons\ofxFenster\libs\string\include" />
 			<Add directory="..\..\..\addons\ofxFenster\libs\ghost\include" />
-			<Add directory="C:\Users\vbox\Downloads\of_preRelease_v007_win_cb\apps\examples\datasynth\" />
 			<Add directory="..\..\..\addons\ofxTileSaver\src" />
 			<Add directory="..\..\..\addons\ofxXmlSettings\src" />
 			<Add directory="..\..\..\addons\ofxXmlSettings\libs" />
+			<Add directory="..\datasynth\" />
+			<Add directory="..\..\..\..\Downloads\boost_1_46_1" />
 		</Compiler>
 		<Linker>
 			<Add library="..\..\..\libs\FreeImage\lib\win_cb\FreeImage.lib" />
