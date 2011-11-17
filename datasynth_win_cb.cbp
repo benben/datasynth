@@ -308,6 +308,12 @@
 		<Unit filename="src\nodes\HSBColor.h">
 			<Option virtualFolder="src\nodes" />
 		</Unit>
+		<Unit filename="src\nodes\HexToFloat.cpp">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\HexToFloat.h">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
 		<Unit filename="src\nodes\LessThan.cpp">
 			<Option virtualFolder="src\nodes" />
 		</Unit>
