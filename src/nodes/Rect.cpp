@@ -25,7 +25,6 @@ Rect::Rect(int _ID, float _x, float _y, string _name)
     c->name = "Color";
     input.push_back(new Pin(c, color, 1));
     winId = ofxFensterManager::get()->getLastCreatedWindow()->id;
-    cout << winId << endl;
     ofAddListener(ofxFensterManager::get()->getWindowById(winId)->events.draw, this, &Rect::drawRect);
 }
 
