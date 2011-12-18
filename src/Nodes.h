@@ -26,3 +26,4 @@
 #include "src/nodes/RGBColor.h"
 #include "src/nodes/FontString.h"
 #include "src/nodes/Quad.h"
+#include "src/nodes/Donut.h"

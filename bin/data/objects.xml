@@ -47,6 +47,8 @@
   </OBJECT>
   <OBJECT NAME="Circle" TYPE="Circle">
   </OBJECT>
+  <OBJECT NAME="Donut" TYPE="Donut">
+  </OBJECT>
   <OBJECT NAME="Pixel" TYPE="Pixel">
   </OBJECT>
   <OBJECT NAME="String" TYPE="BitmapString">

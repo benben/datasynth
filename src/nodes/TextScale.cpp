@@ -57,7 +57,10 @@ void TextScale::drawTextScale(ofEventArgs & args)
     float start = 0;
     float end = 0;
     float step = 50;
-    ofFloatColor col = 255;
+    ofColor col;
+    col.r = 255;
+    col.g = 255;
+    col.b = 255;
     if(input[0]->value->data.size() > 0)
         x = boost::get<float>(input[0]->value->data[0]);
     if(input[1]->value->data.size() > 0)

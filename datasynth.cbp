@@ -144,6 +144,12 @@
 		<Unit filename="src/nodes/Divide.h">
 			<Option virtualFolder="src/nodes" />
 		</Unit>
+		<Unit filename="src/nodes/Donut.cpp">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
+		<Unit filename="src/nodes/Donut.h">
+			<Option virtualFolder="src/nodes/" />
+		</Unit>
 		<Unit filename="src/nodes/EmptyNode.cpp">
 			<Option virtualFolder="src/nodes" />
 		</Unit>

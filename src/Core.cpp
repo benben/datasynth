@@ -42,8 +42,15 @@ void Core::update()
             load();
         }
     } else {
+        try
+        {
         BOOST_FOREACH(NodePtr node, nodes)
             node->process();
+        }
+        catch(...)
+        {
+            cout << "something went wrong! can't process!" << endl;
+        }
     }
     //cout << "processing connections..." << endl;
     for(unsigned int i = 0; i < connections.size(); i++)

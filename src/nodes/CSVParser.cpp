@@ -54,85 +54,87 @@ void CSVParser::init()
 void CSVParser::parseFile(string & args)
 {
     cout << "parsing " << args << "..." << endl;
-    BOOST_FOREACH(Pin* p, output)
-        p->value->data.clear();
-    spreads.clear();
-    inputFile.open(args);
-    buffer = inputFile.readToBuffer();
-    str = buffer.getNextLine();
-    CSVLine line(str);
-    for(CSVLine::iterator l=line.begin(); l!=line.end();++l){
-        Spread temp(new SpreadStruct);
-        temp->name = *l;
-        spreads.push_back(temp);
-    }
-    int i;
-    while(!buffer.isLastLine())
-    {
+    if (args.length() > 0) {
+        BOOST_FOREACH(Pin* p, output)
+            p->value->data.clear();
+        spreads.clear();
+        inputFile.open(args);
+        buffer = inputFile.readToBuffer();
         str = buffer.getNextLine();
         CSVLine line(str);
-        i = 0;
         for(CSVLine::iterator l=line.begin(); l!=line.end();++l){
-            string t = *l;
-            t.resize(remove_if(t.begin(), t.end(), filter) - t.begin() );
-            if(t != "")
+            Spread temp(new SpreadStruct);
+            temp->name = *l;
+            spreads.push_back(temp);
+        }
+        int i;
+        while(!buffer.isLastLine())
+        {
+            str = buffer.getNextLine();
+            CSVLine line(str);
+            i = 0;
+            for(CSVLine::iterator l=line.begin(); l!=line.end();++l){
+                string t = *l;
+                t.resize(remove_if(t.begin(), t.end(), filter) - t.begin() );
+                if(t != "")
+                {
+                    try
+                    {
+                        //add a float
+                        spreads[i]->data.push_back(boost::lexical_cast<float>(t));
+                    }
+                    catch(boost::bad_lexical_cast &)
+                    {
+                        //add a string
+                        spreads[i]->data.push_back(t);
+                    }
+                }
+                else
+                {
+                    spreads[i]->data.push_back("");
+                }
+                i++;
+            }
+            //cout << endl;
+        }
+        //if spreads.size is less than out.size, then delete some outputs beginning from the end of the output vector!
+        int outsize = output.size();
+        for(int i = 0; i < outsize; i++)
+        {
+            if(i >= spreads.size())
             {
-                try
-                {
-                    //add a float
-                    spreads[i]->data.push_back(boost::lexical_cast<float>(t));
-                }
-                catch(boost::bad_lexical_cast &)
-                {
-                    //add a string
-                    spreads[i]->data.push_back(t);
-                }
+                output[outsize-i]->setInvalid();
+                //cout << "killing output " << outsize-i << endl;
+                output.erase(output.begin()+(outsize-i));
+            }
+        }
+        //if there are already outputs, just update them, if not, make new ones
+        unsigned int outputsize = output.size();
+        for(unsigned int i = 0; i < spreads.size(); i++)
+        {
+            if(i >= outputsize)
+            {
+                Spread temp(new SpreadStruct);
+                output.push_back(new Pin(temp, color));
+                output[i]->setValue(spreads[i]);
             }
             else
             {
-                spreads[i]->data.push_back("");
+                output[i]->setValue(spreads[i]);
             }
-            i++;
         }
-        //cout << endl;
-    }
-    //if spreads.size is less than out.size, then delete some outputs beginning from the end of the output vector!
-    int outsize = output.size();
-    for(int i = 0; i < outsize; i++)
-    {
-        if(i >= spreads.size())
+        /*
+        cout << "######################" << endl;
+        BOOST_FOREACH(Spread s, spreads)
         {
-            output[outsize-i]->setInvalid();
-            //cout << "killing output " << outsize-i << endl;
-            output.erase(output.begin()+(outsize-i));
-        }
+            cout << s->name << endl;
+            BOOST_FOREACH(double d, s->data)
+                cout << d << endl;
+            cout << endl;
+        }*/
+        inputFile.close();
+        buffer.clear();
     }
-    //if there are already outputs, just update them, if not, make new ones
-    unsigned int outputsize = output.size();
-    for(unsigned int i = 0; i < spreads.size(); i++)
-    {
-        if(i >= outputsize)
-        {
-            Spread temp(new SpreadStruct);
-            output.push_back(new Pin(temp, color));
-            output[i]->setValue(spreads[i]);
-        }
-        else
-        {
-            output[i]->setValue(spreads[i]);
-        }
-    }
-    /*
-    cout << "######################" << endl;
-    BOOST_FOREACH(Spread s, spreads)
-    {
-        cout << s->name << endl;
-        BOOST_FOREACH(double d, s->data)
-            cout << d << endl;
-        cout << endl;
-    }*/
-    inputFile.close();
-    buffer.clear();
 }
 
 void CSVParser::process()

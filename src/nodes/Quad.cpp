@@ -91,7 +91,7 @@ void Quad::drawQuad(ofEventArgs & args)
             float x4 = (int)boost::get<float>(input[6]->value->data[it % input[6]->value->data.size()]);
             float y4 = (int)boost::get<float>(input[7]->value->data[it % input[7]->value->data.size()]);
 
-            ofNoFill();
+
             ofSetPolyMode(OF_POLY_WINDING_NONZERO);
             ofBeginShape();
                 ofVertex(x1,y1);
@@ -99,7 +99,6 @@ void Quad::drawQuad(ofEventArgs & args)
                 ofVertex(x3,y3);
                 ofVertex(x4,y4);
             ofEndShape();
-            ofFill();
             it++;
         }
     }

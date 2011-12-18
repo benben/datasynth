@@ -68,7 +68,7 @@ void FontString::init()
 void FontString::parseFile(string & args)
 {
     cout << "parsing " << args << "..." << endl;
-    myFont.loadFont(args, 15, true, true);
+    myFont.loadFont(args, 1, true, true);
 }
 
 void FontString::process()
