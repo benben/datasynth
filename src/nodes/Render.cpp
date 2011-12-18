@@ -17,9 +17,9 @@ Render::Render(int _ID, float _x, float _y, string _name)
     temp->data.push_back(0.0);
     input.push_back(new Pin(temp, color));
 
-    win = ofxFensterManager::get()->createFenster(0, 0 ,1200, 800, OF_WINDOW);
+    win = ofxFensterManager::get()->createFenster(0, 0 ,100, 100, OF_WINDOW);
     win->setWindowTitle("Render");
-    win->setBackgroundColor(0);
+    win->setBackgroundColor(255,0);
 	renderWin = new RenderWindow();
 	renderWin->setup();
     win->addListener(renderWin);
@@ -54,7 +54,7 @@ void Render::stop(ofEventArgs & args)
 
 void Render::process()
 {
-    win->setBackgroundColor(boost::get<float>(input[0]->value->data[0]));
+    win->setBackgroundColor(boost::get<float>(input[0]->value->data[0]),0);
 }
 
 string Render::getValueAsString()

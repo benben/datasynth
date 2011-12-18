@@ -11,10 +11,9 @@ using namespace ds;
 void Core::setup()
 {
     cout << "setup started" << endl;
-    ofxFensterManager::get()->getPrimaryWindow()->addListener(this);
     ofxFensterManager::get()->getPrimaryWindow()->setWindowTitle("datasynth");
     ofxFensterManager::get()->getPrimaryWindow()->setBackgroundColor(80);
-    ofSetFrameRate(25);
+    //ofSetFrameRate(25);
     ID = 0;
     XMLObjects.loadFile("objects.xml");
     XMLObjects.pushTag("OBJECTS", 0);
