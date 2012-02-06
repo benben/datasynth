@@ -1,7 +1,6 @@
 #include "ofMain.h"
 #include "Core.h"
 #include "ofxFensterManager.h"
-#include "ProgramParams.h"
 #include <boost/program_options.hpp>
 using namespace ds;
 namespace po=boost::program_options;
