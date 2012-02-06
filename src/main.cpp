@@ -26,16 +26,19 @@ int main(int argc, char *argv[]){
             std::cout << desc <<endl;
         }
 
-        int width = 800;
-        int height = 800;
+        else
+        {
+            int width = 800;
+            int height = 800;
 
-        if (vm.count("width") & vm.count("height")){
-            width = vm["width"].as<int>();
-            height = vm["height"].as<int>();
-        }
+            if (vm.count("width") & vm.count("height")){
+                width = vm["width"].as<int>();
+                height = vm["height"].as<int>();
+            }
 
-        ofSetupOpenGL(ofxFensterManager::get(), width ,height, OF_WINDOW);
-	    ofRunFensterApp(new Core());
+            ofSetupOpenGL(ofxFensterManager::get(), width ,height, OF_WINDOW);
+	        ofRunFensterApp(new Core());
+	    }
 
     }
     catch(...)
