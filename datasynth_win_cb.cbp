@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="datasynth" />
+		<Option makefile="makefile" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="addons\;src\;xml\;build config\;src\controls\;src\nodes\;" />
+		<Build>
+			<Target title="release">
+				<Option output="bin\$(PROJECT_NAME)" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj\release" />
+				<Option external_deps="..\..\..\libs\openFrameworksCompiled\lib\win_cb\openFrameworks.lib;" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="../../../libs/openFrameworksCompiled/lib/win_cb/openFrameworks.lib" />
+				</Linker>
+			</Target>
+			<Target title="debug">
+				<Option output="bin\$(PROJECT_NAME)_DEBUG" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj\debug\" />
+				<Option external_deps="..\..\..\libs\openFrameworksCompiled\lib\win_cb\openFrameworksDebug.lib;" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="../../../libs/openFrameworksCompiled/lib/win_cb/openFrameworksDebug.lib" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wno-multichar" />
+			<Add directory="..\..\..\libs\glu\include" />
+			<Add directory="..\..\..\libs\freetype\include" />
+			<Add directory="..\..\..\libs\freetype\include\freetype2" />
+			<Add directory="..\..\..\libs\FreeImage\include" />
+			<Add directory="..\..\..\libs\quicktime\include" />
+			<Add directory="..\..\..\libs\rtAudio\include" />
+			<Add directory="..\..\..\libs\fmodex\include" />
+			<Add directory="..\..\..\libs\videoInput\include" />
+			<Add directory="..\..\..\libs\glew\include" />
+			<Add directory="..\..\..\libs\glut\include" />
+			<Add directory="..\..\..\libs\openFrameworks" />
+			<Add directory="..\..\..\libs\openFrameworks\3d" />
+			<Add directory="..\..\..\libs\openFrameworks\app" />
+			<Add directory="..\..\..\libs\openFrameworks\communication" />
+			<Add directory="..\..\..\libs\openFrameworks\events" />
+			<Add directory="..\..\..\libs\openFrameworks\gl" />
+			<Add directory="..\..\..\libs\openFrameworks\graphics" />
+			<Add directory="..\..\..\libs\openFrameworks\math" />
+			<Add directory="..\..\..\libs\openFrameworks\sound" />
+			<Add directory="..\..\..\libs\openFrameworks\types" />
+			<Add directory="..\..\..\libs\openFrameworks\utils" />
+			<Add directory="..\..\..\libs\openFrameworks\video" />
+			<Add directory="..\..\..\libs\poco\include" />
+			<Add directory="..\..\..\libs\tess2\include" />
+			<Add directory="..\..\..\libs\cairo\include\cairo" />
+			<Add directory="..\..\..\addons\ofxFenster\src" />
+			<Add directory="..\..\..\addons\ofxFenster\libs\string\include" />
+			<Add directory="..\..\..\addons\ofxFenster\libs\ghost\include" />
+			<Add directory="..\..\..\addons\ofxTileSaver\src" />
+			<Add directory="..\..\..\addons\ofxXmlSettings\src" />
+			<Add directory="..\..\..\addons\ofxXmlSettings\libs" />
+			<Add directory="..\datasynth\" />
+			<Add directory="..\..\..\..\Downloads\boost_1_46_1" />
+		</Compiler>
+		<Linker>
+			<Add library="..\..\..\libs\FreeImage\lib\win_cb\FreeImage.lib" />
+			<Add library="..\..\..\libs\rtAudio\lib\win_cb\librtaudio.a" />
+			<Add library="..\..\..\libs\quicktime\lib\win_cb\qtmlClient.lib" />
+			<Add library="..\..\..\libs\cairo\lib\win_cb\libcairo.a" />
+			<Add library="..\..\..\libs\cairo\lib\win_cb\libpixman-1.a" />
+			<Add library="..\..\..\libs\freetype\lib\win_cb\libfreetype.a" />
+			<Add library="..\..\..\libs\glut\lib\win_cb\libglut.a" />
+			<Add library="..\..\..\libs\videoInput\lib\win_cb\videoInputLib.a" />
+			<Add library="..\..\..\libs\fmodex\lib\win_cb\libfmodex.a" />
+			<Add library="..\..\..\libs\glew\lib\win_cb\glew32s.lib" />
+			<Add library="..\..\..\libs\glu\lib\win_cb\glu32.lib" />
+			<Add library="..\..\..\libs\poco\lib\win_cb\libPocoNetmt.a" />
+			<Add library="..\..\..\libs\poco\lib\win_cb\libPocoUtilmt.a" />
+			<Add library="..\..\..\libs\poco\lib\win_cb\libPocoXMLmt.a" />
+			<Add library="..\..\..\libs\poco\lib\win_cb\libPocoFoundationmt.a" />
+			<Add library="..\..\..\libs\tess2\lib\win_cb\libtess2.a" />
+			<Add library="..\..\..\addons\ofxFenster\libs\ghost\lib\win_cb\libGhost32.a" />
+			<Add library="opengl32" />
+			<Add library="gdi32" />
+			<Add library="msimg32" />
+			<Add library="glu32" />
+			<Add library="dsound" />
+			<Add library="winmm" />
+			<Add library="dxguid" />
+			<Add library="strmbase" />
+			<Add library="strmiids" />
+			<Add library="z" />
+			<Add library="uuid" />
+			<Add library="ole32" />
+			<Add library="oleaut32" />
+			<Add library="setupapi" />
+			<Add library="wsock32" />
+			<Add library="ws2_32" />
+			<Add library="Iphlpapi" />
+		</Linker>
+		<ExtraCommands>
+			<Add after='xcopy /e /i /y &quot;$(PROJECT_DIR)..\..\..\export\win_cb\*.dll&quot;  &quot;$(PROJECT_DIR)bin&quot;' />
+			<Add after='cmd /c if not exist &quot;$(PROJECT_DIR)bin/data&quot; mkdir &quot;$(PROJECT_DIR)bin/data&quot;' />
+			<Mode after="always" />
+		</ExtraCommands>
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_Buttons.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_C-api.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_CallbackEventConsumer.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_Debug.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_DisplayManager.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_DisplayManagerNULL.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_Event.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_EventButton.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_EventCursor.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_EventDragnDrop.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_EventKey.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_EventManager.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_EventNDOF.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_EventPrinter.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_EventString.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_EventTrackpad.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_EventWheel.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_IEvent.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_IEventConsumer.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_ISystem.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_ISystemPaths.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_ITimerTask.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_IWindow.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_ModifierKeys.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_Path-api.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_Rect.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_System.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_SystemNULL.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_SystemPaths.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_TimerManager.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_TimerTask.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_Types.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_Window.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_WindowManager.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\ghost\include\GHOST_WindowNULL.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\libs\string\include\STR_String.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\src\ofxDisplay.cpp" />
+		<Unit filename="..\..\..\addons\ofxFenster\src\ofxDisplay.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\src\ofxDisplayManager.cpp" />
+		<Unit filename="..\..\..\addons\ofxFenster\src\ofxDisplayManager.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\src\ofxFenster.cpp" />
+		<Unit filename="..\..\..\addons\ofxFenster\src\ofxFenster.h" />
+		<Unit filename="..\..\..\addons\ofxFenster\src\ofxFensterManager.cpp" />
+		<Unit filename="..\..\..\addons\ofxFenster\src\ofxFensterManager.h" />
+		<Unit filename="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
+		<Unit filename="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
+		<Unit filename="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
+		<Unit filename="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
+		<Unit filename="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
+		<Unit filename="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
+		<Unit filename="bin\data\menu.xml">
+			<Option virtualFolder="xml\" />
+		</Unit>
+		<Unit filename="bin\data\objects.xml">
+			<Option virtualFolder="xml\" />
+		</Unit>
+		<Unit filename="config.make">
+			<Option virtualFolder="build config" />
+		</Unit>
+		<Unit filename="src\BaseNode.cpp">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src\BaseNode.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src\Connection.cpp">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src\Connection.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src\Core.cpp">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src\Core.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src\Factory.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src\Menu.cpp">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src\Menu.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src\Nodes.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src\Pin.cpp">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src\Pin.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src\Singleton.h">
+			<Option virtualFolder="src" />
+		</Unit>
+		<Unit filename="src\controls\FileChooser.cpp">
+			<Option virtualFolder="src\controls" />
+		</Unit>
+		<Unit filename="src\controls\FileChooser.h">
+			<Option virtualFolder="src\controls" />
+		</Unit>
+		<Unit filename="src\controls\FloatInput.cpp">
+			<Option virtualFolder="src\controls\" />
+		</Unit>
+		<Unit filename="src\controls\FloatInput.h">
+			<Option virtualFolder="src\controls\" />
+		</Unit>
+		<Unit filename="src\controls\Slider.cpp">
+			<Option virtualFolder="src\controls" />
+		</Unit>
+		<Unit filename="src\controls\Slider.h">
+			<Option virtualFolder="src\controls" />
+		</Unit>
+		<Unit filename="src\controls\TextInput.cpp">
+			<Option virtualFolder="src\controls" />
+		</Unit>
+		<Unit filename="src\controls\TextInput.h">
+			<Option virtualFolder="src\controls" />
+		</Unit>
+		<Unit filename="src\main.cpp">
+			<Option virtualFolder="src\" />
+		</Unit>
+		<Unit filename="src\nodes\Add.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Add.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\BitmapString.cpp">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\BitmapString.h">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\CSVParser.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\CSVParser.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Circle.cpp">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\Circle.h">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\ColorScale.cpp">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\ColorScale.h">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\Constant.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Constant.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Divide.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Divide.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\EmptyNode.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\EmptyNode.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\FontString.cpp">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\FontString.h">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\GreaterThan.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\GreaterThan.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\HSBColor.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\HSBColor.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\HexToFloat.cpp">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\HexToFloat.h">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\LessThan.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\LessThan.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Line.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Line.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Map.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Map.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Max.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Max.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Min.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Min.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Modulo.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Modulo.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Multiply.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Multiply.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\OutBox.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\OutBox.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Pixel.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Pixel.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Point.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Point.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Quad.cpp">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\Quad.h">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\RGBColor.cpp">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\RGBColor.h">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\Rect.cpp">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\Rect.h">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\Render.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Render.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Substract.cpp">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Substract.h">
+			<Option virtualFolder="src\nodes" />
+		</Unit>
+		<Unit filename="src\nodes\Text.cpp">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\Text.h">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\TextScale.cpp">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\TextScale.h">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\Unique.cpp">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Unit filename="src\nodes\Unique.h">
+			<Option virtualFolder="src\nodes\" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

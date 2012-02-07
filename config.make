@@ -23,7 +23,7 @@ USER_LD_FLAGS =
 # use this to add system libraries for example:
 # USER_LIBS = -lpango
 
-USER_LIBS = -lX11
+USER_LIBS = -lX11 -lboost_program_options
 
 
 # change this to add different compiler optimizations to your project
@@ -43,3 +43,4 @@ USER_SOURCE_DIR =
 # useful if you have some code for reference in the project folder but don't want it to be compiled
 
 EXCLUDE_FROM_SOURCE="bin,.xcodeproj,obj,.git"
+

@@ -1,5 +1,6 @@
 #include "RGBColor.h"
-using namespace ds;
+
+namespace ds {
 
 RGBColor::RGBColor(int _ID, float _x, float _y, string _name)
 {
@@ -74,4 +75,6 @@ void RGBColor::process()
         //cout << "output pin: " << output[0]->value << endl;
         bProcessed = true;
     }
+}
+
 }

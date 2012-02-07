@@ -55,6 +55,7 @@ struct Factory {
         f["FontString"]  = construct<NodePtr>(new_<ds::FontString>(arg1, arg2, arg3, arg4));
         f["Quad"]        = construct<NodePtr>(new_<ds::Quad>(arg1, arg2, arg3, arg4));
         f["Donut"]       = construct<NodePtr>(new_<ds::Donut>(arg1, arg2, arg3, arg4));
+        f["HexToFloat"]  = construct<NodePtr>(new_<ds::HexToFloat>(arg1, arg2, arg3, arg4));
         // ...
     }
 

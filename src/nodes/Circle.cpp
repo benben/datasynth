@@ -15,7 +15,7 @@ Circle::Circle(int _ID, float _x, float _y, string _name)
     y->name = "Y";
     input.push_back(new Pin(y, color, 1));
     Spread r(new SpreadStruct);
-    y->name = "Radius";
+    r->name = "Radius";
     input.push_back(new Pin(r, color, 1));
     Spread c(new SpreadStruct);
     c->name = "Color";

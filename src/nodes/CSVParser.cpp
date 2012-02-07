@@ -54,11 +54,11 @@ void CSVParser::init()
 void CSVParser::parseFile(string & args)
 {
     cout << "parsing " << args << "..." << endl;
-    if (args.length() > 0) {
-        BOOST_FOREACH(Pin* p, output)
-            p->value->data.clear();
-        spreads.clear();
-        inputFile.open(args);
+    BOOST_FOREACH(Pin* p, output)
+        p->value->data.clear();
+    spreads.clear();
+    if(inputFile.open(args))
+    {
         buffer = inputFile.readToBuffer();
         str = buffer.getNextLine();
         CSVLine line(str);
@@ -132,9 +132,9 @@ void CSVParser::parseFile(string & args)
                 cout << d << endl;
             cout << endl;
         }*/
-        inputFile.close();
-        buffer.clear();
     }
+    inputFile.close();
+    buffer.clear();
 }
 
 void CSVParser::process()

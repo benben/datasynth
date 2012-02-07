@@ -17,7 +17,7 @@ FileChooser::FileChooser(float* _x, float* _y, string _name, string* _value, boo
     bFileIsSet = false;
     bShow = false;
 
-    loadEntries("data/");
+    loadEntries("csv/");
 
     acceptedFileExtension = _acceptedFileExtension;
 }
@@ -39,9 +39,9 @@ void FileChooser::loadEntries(string _dir)
         fileentry temp;
         temp.name = dir.getName(i);
         testfile.open(dir.getPath(i));
-        temp.isFile = testfile.isFile();
-        if(temp.isFile)
+        if(testfile.getExtension() != "")
         {
+            cout << testfile.getExtension() << endl;
             temp.type = testfile.getExtension();
             temp.path = testfile.path();
         }

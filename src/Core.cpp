@@ -23,7 +23,7 @@ void Core::setup()
     isOutSet = false;
     bShowFPS = true;
     cout << "setup finished" << endl;
-    saver.init(10, 20, true);
+    //saver.init(10, 20, true);
     load();
 }
 //--------------------------------------------------------------
@@ -72,7 +72,7 @@ void Core::update()
 //--------------------------------------------------------------
 void Core::draw()
 {
-    saver.begin();
+    //saver.begin();
     ofSetColor(255,255,255,255);
     if(bShowFPS)
         ofDrawBitmapString(ofToString(ofGetFrameRate()), 20, 20);
@@ -90,6 +90,7 @@ void Core::draw()
         {
             connection->draw();
         }
+
     if(isInSet)
     {
         ofSetColor(255,255,255,255);
@@ -101,7 +102,7 @@ void Core::draw()
         ofLine(out->output[outPinID]->x+7,out->output[outPinID]->y+7,mouseX,mouseY);
     }
     Menu::Get()->draw();
-    saver.end();
+    //saver.end();
 }
 //--------------------------------------------------------------
 void Core::save()
@@ -243,11 +244,11 @@ void Core::handleMenuEvent(menuEventType & args)
     }
 }
 //--------------------------------------------------------------
-void Core::keyPressed(int key, ofxFenster* win)
+void Core::keyPressed(int key)
 {
 }
 //--------------------------------------------------------------
-void Core::keyReleased(int key, ofxFenster* win)
+void Core::keyReleased(int key)
 {
     if (key == 'f')
     {
@@ -256,7 +257,7 @@ void Core::keyReleased(int key, ofxFenster* win)
     //if(key=='h') saver.finish("high.png", true);
 }
 //--------------------------------------------------------------
-void Core::mouseMoved(int x, int y, ofxFenster* win)
+void Core::mouseMoved(int x, int y)
 {
 }
 //--------------------------------------------------------------
@@ -338,8 +339,7 @@ void Core::mouseReleased(int x, int y, int button)
         cout << "creating connection between Node: " <<  out->ID << " Pin: " << outPinID << " and Node " << in->ID << " Pin: " << inPinID << endl;
         ConnectionPtr val(new Connection(out, outPinID, in, inPinID));
         connections.push_back(val);
-        isInSet = false;
-        isOutSet = false;
+        del = true;
     }
     //clicked but not on any pin
     if(del)

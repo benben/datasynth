@@ -1,5 +1,6 @@
 #include "Rect.h"
-using namespace ds;
+
+namespace ds {
 
 Rect::Rect(int _ID, float _x, float _y, string _name)
 {
@@ -78,4 +79,6 @@ void Rect::drawRect(ofEventArgs & args)
             it++;
         }
     }
+}
+
 }
